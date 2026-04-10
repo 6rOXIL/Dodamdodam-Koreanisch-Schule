@@ -21,6 +21,25 @@
     "subtitle": "Growing together in Korean, opening doors to tomorrow",
     "cta": "About the school"
   },
+  "introduction": {
+    "label": "introduction",
+    "title": "About the school",
+    "lead": "Greeting, school overview, calendar, and directions. Main text is in Korean.",
+    "backHome": "← Home",
+    "sectionNav": "On this page",
+    "schoolOrgTitle": "Organization & contact",
+    "schoolName": "Name",
+    "principal": "Principal",
+    "address": "Address",
+    "phone": "Phone",
+    "historyTitle": "History",
+    "links": {
+      "greeting": "Greeting",
+      "summary": "School overview",
+      "calendar": "School calendar",
+      "map": "Directions"
+    }
+  },
   "about": {
     "label": "about",
     "title": "About",

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import InstagramFeed from "./components/InstagramFeed";
 import LegacyPostTable from "./components/LegacyPostTable";
 import PhotoGallery from "./components/PhotoGallery";
@@ -47,15 +48,12 @@ export default function Home() {
           <p className="mt-4 text-base leading-relaxed text-white/90 sm:mt-6 sm:text-lg md:text-xl">
             {t("hero.subtitle")}
           </p>
-          <button
-            type="button"
-            onClick={() =>
-              document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
-            }
+          <Link
+            href="/introduction/greeting/"
             className="mt-8 inline-flex min-h-12 w-full max-w-xs items-center justify-center rounded-full border border-white/40 bg-white/10 px-8 py-3 text-sm font-semibold backdrop-blur-sm transition hover:bg-white/20 sm:mt-10 sm:w-auto"
           >
             {t("hero.cta")}
-          </button>
+          </Link>
         </div>
       </section>
 

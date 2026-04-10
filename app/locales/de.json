@@ -21,6 +21,25 @@
     "subtitle": "Gemeinsam Koreanisch lernen, gemeinsam wachsen",
     "cta": "Zur Schulvorstellung"
   },
+  "introduction": {
+    "label": "introduction",
+    "title": "Über die Schule",
+    "lead": "Begrüßung, Schulportrait, Kalender und Anfahrt. Der Fließtext steht auf Koreanisch.",
+    "backHome": "← Start",
+    "sectionNav": "Auf dieser Seite",
+    "schoolOrgTitle": "Träger & Kontakt",
+    "schoolName": "Name",
+    "principal": "Schulleitung",
+    "address": "Adresse",
+    "phone": "Telefon",
+    "historyTitle": "Chronik",
+    "links": {
+      "greeting": "Begrüßung",
+      "summary": "Schulportrait",
+      "calendar": "Schulkalender",
+      "map": "Anfahrt"
+    }
+  },
   "about": {
     "label": "about",
     "title": "Über uns",

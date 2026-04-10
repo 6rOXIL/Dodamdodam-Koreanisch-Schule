@@ -21,6 +21,25 @@
     "subtitle": "함께 자라는 한글, 함께 여는 내일",
     "cta": "학교 소개 보기"
   },
+  "introduction": {
+    "label": "introduction",
+    "title": "학교 소개",
+    "lead": "인사말, 학교 소개, 학사일정, 오시는 길을 안내합니다.",
+    "backHome": "← 홈",
+    "sectionNav": "이 페이지 안에서 이동",
+    "schoolOrgTitle": "단체명 · 연락처",
+    "schoolName": "단체명",
+    "principal": "교장",
+    "address": "주소",
+    "phone": "대표전화",
+    "historyTitle": "연혁",
+    "links": {
+      "greeting": "인사말",
+      "summary": "학교소개",
+      "calendar": "학사일정",
+      "map": "오시는 길"
+    }
+  },
   "about": {
     "label": "about",
     "title": "학교 소개",

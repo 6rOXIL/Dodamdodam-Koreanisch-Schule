@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useEffect, useState } from "react";
 import { SECTION_IDS, type SectionId } from "../navConfig";
@@ -16,12 +18,29 @@ const NAV_KEYS: { id: SectionId; labelKey: string }[] = [
   { id: "location", labelKey: "nav.location" },
 ];
 
+const INTRO_HREF = "/introduction/greeting/";
+
+function isHomePath(pathname: string | null) {
+  return pathname === "/" || pathname === "";
+}
+
+function isIntroductionPath(pathname: string | null) {
+  if (!pathname) return false;
+  return pathname.includes("/introduction");
+}
+
 export default function Navigation() {
+  const pathname = usePathname();
   const { t } = useLanguage();
   const [activeSection, setActiveSection] = useState<SectionId>("home");
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const isHome = isHomePath(pathname);
+  const isIntro = isIntroductionPath(pathname);
+
   useEffect(() => {
+    if (!isHome) return;
+
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 120;
       let current: SectionId = "home";
@@ -41,7 +60,7 @@ export default function Navigation() {
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHome]);
 
   useEffect(() => {
     if (typeof document === "undefined") return;
@@ -65,12 +84,61 @@ export default function Navigation() {
     setMobileOpen(false);
   };
 
-  const navButtonClass = (id: SectionId) =>
+  const navItemClass = (active: boolean) =>
     `whitespace-nowrap rounded-md px-2 py-2 text-sm transition-colors md:px-3 ${
-      activeSection === id
-        ? "bg-amber-100 font-semibold text-amber-950"
-        : "text-slate-700 hover:bg-slate-100"
+      active ? "bg-amber-100 font-semibold text-amber-950" : "text-slate-700 hover:bg-slate-100"
     }`;
+
+  const isAboutActive = isIntro || (isHome && activeSection === "about");
+
+  const renderNavItem = (id: SectionId, labelKey: string, mobile = false) => {
+    const baseClass = mobile
+      ? `w-full rounded-xl px-4 py-4 text-left text-base ${
+          (id === "about" ? isAboutActive : isHome && activeSection === id)
+            ? "bg-amber-100 font-semibold text-amber-950"
+            : "text-slate-800 active:bg-slate-100"
+        }`
+      : navItemClass(
+          id === "about" ? isAboutActive : isHome && activeSection === id
+        );
+
+    if (id === "about") {
+      return (
+        <Link
+          key={id}
+          href={INTRO_HREF}
+          className={baseClass}
+          onClick={() => setMobileOpen(false)}
+        >
+          {t(labelKey)}
+        </Link>
+      );
+    }
+
+    if (isHome) {
+      return (
+        <button
+          key={id}
+          type="button"
+          onClick={() => scrollToSection(id)}
+          className={baseClass}
+        >
+          {t(labelKey)}
+        </button>
+      );
+    }
+
+    return (
+      <Link
+        key={id}
+        href={`/#${id}`}
+        className={baseClass}
+        onClick={() => setMobileOpen(false)}
+      >
+        {t(labelKey)}
+      </Link>
+    );
+  };
 
   return (
     <>
@@ -92,30 +160,27 @@ export default function Navigation() {
             </svg>
           </button>
 
-          <button
-            type="button"
-            onClick={() => scrollToSection("home")}
-            className="min-w-0 flex-1 text-left md:flex-none"
-          >
-            <span className="block truncate font-semibold text-slate-900 sm:text-base md:text-lg">
-              {t("site.nameShort")}
-            </span>
-            <span className="hidden text-xs text-slate-500 sm:block">
-              {t("site.nameEn")}
-            </span>
-          </button>
-
+          {isHome ? (
+            <button
+              type="button"
+              onClick={() => scrollToSection("home")}
+              className="min-w-0 flex-1 text-left md:flex-none"
+            >
+              <span className="block truncate font-semibold text-slate-900 sm:text-base md:text-lg">
+                {t("site.nameShort")}
+              </span>
+              <span className="hidden text-xs text-slate-500 sm:block">{t("site.nameEn")}</span>
+            </button>
+          ) : (
+            <Link href="/" className="min-w-0 flex-1 text-left md:flex-none" onClick={() => setMobileOpen(false)}>
+              <span className="block truncate font-semibold text-slate-900 sm:text-base md:text-lg">
+                {t("site.nameShort")}
+              </span>
+              <span className="hidden text-xs text-slate-500 sm:block">{t("site.nameEn")}</span>
+            </Link>
+          )}
           <nav className="hidden flex-1 items-center justify-center gap-0.5 overflow-x-auto md:flex lg:gap-1">
-            {NAV_KEYS.map(({ id, labelKey }) => (
-              <button
-                key={id}
-                type="button"
-                onClick={() => scrollToSection(id)}
-                className={navButtonClass(id)}
-              >
-                {t(labelKey)}
-              </button>
-            ))}
+            {NAV_KEYS.map(({ id, labelKey }) => renderNavItem(id, labelKey, false))}
           </nav>
 
           <div className="shrink-0">
@@ -132,23 +197,10 @@ export default function Navigation() {
           }}
         >
           <nav
-            className="flex h-full max-h-[calc(100dvh-4rem-env(safe-area-inset-top,0px))] flex-col gap-0 overflow-y-auto overscroll-contain px-4 pb-[max(1.5rem,env(safe-area-inset-bottom)]"
+            className="flex h-full max-h-[calc(100dvh-4rem-env(safe-area-inset-top,0px))] flex-col gap-0 overflow-y-auto overscroll-contain px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))]"
             aria-label="모바일 메뉴"
           >
-            {NAV_KEYS.map(({ id, labelKey }) => (
-              <button
-                key={id}
-                type="button"
-                onClick={() => scrollToSection(id)}
-                className={`w-full rounded-xl px-4 py-4 text-left text-base ${
-                  activeSection === id
-                    ? "bg-amber-100 font-semibold text-amber-950"
-                    : "text-slate-800 active:bg-slate-100"
-                }`}
-              >
-                {t(labelKey)}
-              </button>
-            ))}
+            {NAV_KEYS.map(({ id, labelKey }) => renderNavItem(id, labelKey, true))}
           </nav>
         </div>
       )}
