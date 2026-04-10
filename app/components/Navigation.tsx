@@ -9,10 +9,10 @@ const NAV_KEYS: { id: SectionId; labelKey: string }[] = [
   { id: "home", labelKey: "nav.home" },
   { id: "about", labelKey: "nav.about" },
   { id: "vision", labelKey: "nav.vision" },
-  { id: "gallery", labelKey: "nav.gallery" },
   { id: "teachers", labelKey: "nav.teachers" },
-  { id: "events", labelKey: "nav.events" },
   { id: "schedule", labelKey: "nav.schedule" },
+  { id: "gallery", labelKey: "nav.gallery" },
+  { id: "events", labelKey: "nav.events" },
   { id: "location", labelKey: "nav.location" },
 ];
 

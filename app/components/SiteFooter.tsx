@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "../contexts/LanguageContext";
+import { LEGACY_BOARDS } from "../data/legacySite";
 
 export default function SiteFooter() {
   const { t } = useLanguage();
@@ -38,6 +39,16 @@ export default function SiteFooter() {
                   className="-mx-1 inline-block rounded-md px-1 py-2.5 text-slate-600 underline-offset-4 hover:text-amber-800 hover:underline"
                 >
                   {t("footer.linkSchedule")}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={LEGACY_BOARDS.noticeList}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="-mx-1 inline-block rounded-md px-1 py-2.5 text-slate-600 underline-offset-4 hover:text-amber-800 hover:underline"
+                >
+                  {t("footer.linkLegacyNotice")}
                 </a>
               </li>
             </ul>

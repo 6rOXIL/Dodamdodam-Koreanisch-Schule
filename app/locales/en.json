@@ -24,7 +24,14 @@
   "about": {
     "label": "about",
     "title": "About",
-    "body": "Dodamdodam is a place for children and families who love Korean language and culture. We help students read, write, sing, and enjoy learning Hangul."
+    "body": "Dodamdodam Korean Language School in Berlin welcomes children and families who love Korean language and culture. We continue information from the Overseas Koreans Foundation Korean Net (homepy.korean.net) homepage. We help students read, write, sing, and enjoy learning Hangul."
+  },
+  "legacy": {
+    "colDate": "Date",
+    "colTitle": "Title",
+    "externalHint": "Opens original post on Korean Net in a new tab",
+    "boardFullNotice": "All notices on Korean Net",
+    "boardFullCurriculum": "Full curriculum list on Korean Net"
   },
   "vision": {
     "label": "vision",
@@ -50,40 +57,46 @@
     "label": "gallery",
     "title": "Gallery",
     "lead": "Moments from classes and events.",
-    "alt": "Gallery image"
+    "alt": "Gallery image",
+    "legacyNote": "Moments from classes and school events. If you need more photos from a specific date or activity, please contact the school."
   },
   "events": {
-    "label": "events",
-    "title": "News & events",
-    "lead": "Upcoming gatherings and notices",
+    "label": "notices",
+    "title": "Notices",
+    "lead": "Recent posts from the Korean Net board. Open a title to read the full text and attachments.",
     "empty": "No events scheduled yet."
   },
   "schedule": {
     "label": "schedule",
-    "title": "Class schedule",
-    "lead": "Sample weekly times",
+    "title": "Classes",
+    "lead": "See the curriculum board below for class plans by group and month.",
+    "curriculumLabel": "curriculum",
+    "curriculumTitle": "This month’s curriculum",
+    "curriculumLead": "Recently posted entries. Open a row for details.",
+    "curriculumMore": "Full curriculum list",
     "class1Title": "Early elementary",
     "class1Time": "Saturday 10:00 – 12:00",
     "class1Note": "Hangul basics · play-based",
     "class2Title": "Middle grades",
     "class2Time": "Saturday 14:00 – 16:00",
     "class2Note": "Reading, writing, expression",
-    "note": "Final schedules are announced each term."
+    "note": "Final schedules follow each term’s notices and the curriculum board."
   },
   "location": {
     "label": "location",
     "title": "Location",
     "addressLabel": "Address",
-    "address": "Address TBD — please update (e.g. Berlin).",
+    "address": "Blissestr. 58, 10713 Berlin",
     "contactLabel": "Contact",
-    "phone": "+49 …",
-    "email": "hello@example.com",
+    "phone": "+49-30-8550-6368",
+    "email": "dodamdodam054@gmail.com",
     "mapCta": "Open in Maps"
   },
   "footer": {
     "addressTitle": "Address",
     "quickTitle": "Quick links",
     "linkGallery": "Gallery",
-    "linkSchedule": "Classes"
+    "linkSchedule": "Classes",
+    "linkLegacyNotice": "Korean Net notices"
   }
 }

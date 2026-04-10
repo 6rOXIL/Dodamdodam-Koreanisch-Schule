@@ -3,10 +3,10 @@ export const SECTION_IDS = [
   "home",
   "about",
   "vision",
-  "gallery",
   "teachers",
-  "events",
   "schedule",
+  "gallery",
+  "events",
   "location",
 ] as const;
 

@@ -24,7 +24,14 @@
   "about": {
     "label": "about",
     "title": "학교 소개",
-    "body": "도담도담 한글학교는 한국어와 한국 문화를 사랑하는 아이들과 가족을 위한 공간입니다. 읽고, 쓰고, 노래하며 한글을 즐겁게 배울 수 있도록 돕습니다."
+    "body": "도담도담 한글학교는 베를린에서 한국어와 한국 문화를 사랑하는 아이들과 가족을 위한 공간입니다. 재외동포재단 코리안넷(homepy.korean.net) 연계 홈페이지를 바탕으로 안내를 이어가고 있습니다. 읽고, 쓰고, 노래하며 한글을 즐겁게 배울 수 있도록 돕습니다."
+  },
+  "legacy": {
+    "colDate": "날짜",
+    "colTitle": "제목",
+    "externalHint": "새 탭에서 코리안넷 원문 열기",
+    "boardFullNotice": "전체 공지 목록(코리안넷)",
+    "boardFullCurriculum": "전체 커리큘럼 목록(코리안넷)"
   },
   "vision": {
     "label": "vision",
@@ -50,40 +57,46 @@
     "label": "gallery",
     "title": "갤러리",
     "lead": "수업과 행사의 순간을 담았습니다.",
-    "alt": "갤러리 이미지"
+    "alt": "갤러리 이미지",
+    "legacyNote": "수업과 행사에서의 순간을 모았습니다. 특정 일정이나 행사의 사진이 더 필요하시면 학교로 연락해 주세요."
   },
   "events": {
-    "label": "events",
-    "title": "학교 소식",
-    "lead": "다가오는 모임과 공지",
+    "label": "notice",
+    "title": "공지사항",
+    "lead": "최근 공지는 코리안넷 게시판에서 가져왔습니다. 제목을 누르면 원문과 첨부 파일을 볼 수 있습니다.",
     "empty": "등록된 일정이 없습니다."
   },
   "schedule": {
     "label": "schedule",
     "title": "수업 안내",
-    "lead": "정기 수업 시간 (예시)",
+    "lead": "반별·월별 세부 계획은 아래 커리큘럼 게시판을 참고해 주세요.",
+    "curriculumLabel": "curriculum",
+    "curriculumTitle": "이 달의 커리큘럼",
+    "curriculumLead": "최근 등록된 글입니다. 자세한 내용은 원문을 확인해 주세요.",
+    "curriculumMore": "전체 커리큘럼 보기",
     "class1Title": "유치·초등 반",
     "class1Time": "토요일 10:00 – 12:00",
     "class1Note": "한글 기초 · 놀이 중심",
     "class2Title": "중등 반",
     "class2Time": "토요일 14:00 – 16:00",
     "class2Note": "읽기·쓰기·표현",
-    "note": "실제 시간표는 학기별로 안내드립니다."
+    "note": "실제 시간표는 학기별 공지 및 커리큘럼 게시판을 기준으로 합니다."
   },
   "location": {
     "label": "location",
     "title": "오시는 길",
     "addressLabel": "주소",
-    "address": "주소는 준비 중입니다. (베를린 등 지역 정보로 수정해 주세요)",
+    "address": "Blissestr. 58, 10713 Berlin",
     "contactLabel": "연락처",
-    "phone": "+49 …",
-    "email": "hello@example.com",
+    "phone": "+49-30-8550-6368",
+    "email": "dodamdodam054@gmail.com",
     "mapCta": "지도에서 보기"
   },
   "footer": {
     "addressTitle": "주소",
     "quickTitle": "바로가기",
     "linkGallery": "갤러리",
-    "linkSchedule": "수업 안내"
+    "linkSchedule": "수업 안내",
+    "linkLegacyNotice": "코리안넷 공지"
   }
 }

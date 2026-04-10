@@ -24,7 +24,14 @@
   "about": {
     "label": "about",
     "title": "Über uns",
-    "body": "Dodamdodam ist ein Ort für Kinder und Familien, die die koreanische Sprache und Kultur lieben. Wir unterstützen beim Lesen, Schreiben, Singen und beim freudigen Erlernen von Hangul."
+    "body": "Die Koreanische Sprachschule Dodamdodam in Berlin ist ein Ort für Kinder und Familien, die die koreanische Sprache und Kultur lieben. Die Informationen knüpfen an die Korean-Net-Homepage (homepy.korean.net) der Overseas Koreans Foundation an. Wir unterstützen beim Lesen, Schreiben, Singen und beim freudigen Erlernen von Hangul."
+  },
+  "legacy": {
+    "colDate": "Datum",
+    "colTitle": "Titel",
+    "externalHint": "Öffnet den Originalbeitrag auf Korean Net in einem neuen Tab",
+    "boardFullNotice": "Alle Bekanntmachungen auf Korean Net",
+    "boardFullCurriculum": "Gesamte Curriculum-Liste auf Korean Net"
   },
   "vision": {
     "label": "vision",
@@ -50,18 +57,23 @@
     "label": "gallery",
     "title": "Galerie",
     "lead": "Eindrücke aus Unterricht und Veranstaltungen.",
-    "alt": "Galeriebild"
+    "alt": "Galeriebild",
+    "legacyNote": "Eindrücke aus Unterricht und Schulveranstaltungen. Für weitere Fotos zu einem bestimmten Termin oder Anlass wenden Sie sich bitte an die Schule."
   },
   "events": {
-    "label": "events",
-    "title": "Aktuelles",
-    "lead": "Kommende Treffen und Hinweise",
+    "label": "hinweise",
+    "title": "Bekanntmachungen",
+    "lead": "Aktuelle Einträge vom Korean-Net-Forum. Titel anklicken für den vollen Text und Anhänge.",
     "empty": "Derzeit keine Termine."
   },
   "schedule": {
     "label": "schedule",
     "title": "Unterricht",
-    "lead": "Beispielzeiten (wöchentlich)",
+    "lead": "Pläne nach Gruppe und Monat stehen im Curriculum-Board unten.",
+    "curriculumLabel": "curriculum",
+    "curriculumTitle": "Curriculum dieses Monats",
+    "curriculumLead": "Kürzlich eingestellte Beiträge. Für Details zur Zeile den Originalbeitrag öffnen.",
+    "curriculumMore": "Gesamte Curriculum-Liste",
     "class1Title": "Kita & Grundschule",
     "class1Time": "Samstag 10:00 – 12:00",
     "class1Note": "Hangul-Grundlagen · spielerisch",
@@ -74,16 +86,17 @@
     "label": "location",
     "title": "Anfahrt",
     "addressLabel": "Adresse",
-    "address": "Adresse folgt — bitte anpassen (z. B. Berlin).",
+    "address": "Blissestr. 58, 10713 Berlin",
     "contactLabel": "Kontakt",
-    "phone": "+49 …",
-    "email": "hello@example.com",
+    "phone": "+49-30-8550-6368",
+    "email": "dodamdodam054@gmail.com",
     "mapCta": "In Karten öffnen"
   },
   "footer": {
     "addressTitle": "Adresse",
     "quickTitle": "Schnellzugriff",
     "linkGallery": "Galerie",
-    "linkSchedule": "Unterricht"
+    "linkSchedule": "Unterricht",
+    "linkLegacyNotice": "Korean Net: Bekanntmachungen"
   }
 }

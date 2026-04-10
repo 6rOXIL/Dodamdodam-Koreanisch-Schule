@@ -1,7 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import LegacyPostTable from "./components/LegacyPostTable";
 import PhotoGallery from "./components/PhotoGallery";
+import {
+  LEGACY_BOARDS,
+  LEGACY_CURRICULUM,
+  LEGACY_MAPS_SEARCH_URL,
+  LEGACY_NOTICES,
+} from "./data/legacySite";
 import { useLanguage } from "./contexts/LanguageContext";
 import { getImagePath } from "./utils/imagePath";
 
@@ -139,47 +146,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Gallery */}
-      <section
-        id="gallery"
-        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-white py-14 sm:py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
-              {t("gallery.label")}
-            </p>
-            <h2 className="mt-3 font-serif text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
-              {t("gallery.title")}
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-slate-600">{t("gallery.lead")}</p>
-          </div>
-          <div className="mt-12">
-            <PhotoGallery photos={GALLERY_PHOTOS} altPrefix={t("gallery.alt")} />
-          </div>
-        </div>
-      </section>
-
-      {/* Events / news */}
-      <section
-        id="events"
-        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-slate-50 py-14 sm:py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 md:px-8">
-          <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
-            {t("events.label")}
-          </p>
-          <h2 className="mt-3 font-serif text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
-            {t("events.title")}
-          </h2>
-          <p className="mt-4 text-slate-600">{t("events.lead")}</p>
-          <p className="mt-10 rounded-2xl border border-slate-200 bg-white px-6 py-12 text-slate-500 shadow-sm">
-            {t("events.empty")}
-          </p>
-        </div>
-      </section>
-
-      {/* Schedule */}
+      {/* Schedule: 커리큘럼 게시판 + 요약 카드 */}
       <section
         id="schedule"
         className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] border-t border-slate-100 bg-white py-14 sm:py-20 md:py-28"
@@ -194,7 +161,36 @@ export default function Home() {
             </h2>
             <p className="mt-4 text-slate-600">{t("schedule.lead")}</p>
           </div>
-          <div className="mt-10 grid gap-4 sm:mt-12 sm:gap-6 md:grid-cols-2">
+
+          <div className="mt-10 text-center">
+            <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
+              {t("schedule.curriculumLabel")}
+            </p>
+            <h3 className="mt-2 font-serif text-xl font-bold text-slate-900 sm:text-2xl">
+              {t("schedule.curriculumTitle")}
+            </h3>
+            <p className="mx-auto mt-2 max-w-2xl text-sm text-slate-600 sm:text-base">
+              {t("schedule.curriculumLead")}
+            </p>
+          </div>
+          <LegacyPostTable
+            posts={LEGACY_CURRICULUM}
+            colDate={t("legacy.colDate")}
+            colTitle={t("legacy.colTitle")}
+            externalHint={t("legacy.externalHint")}
+          />
+          <p className="mt-6 text-center">
+            <a
+              href={LEGACY_BOARDS.curriculumList}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold text-amber-900 underline-offset-2 hover:underline"
+            >
+              {t("schedule.curriculumMore")}
+            </a>
+          </p>
+
+          <div className="mt-14 grid gap-4 sm:gap-6 md:grid-cols-2">
             <article className="rounded-2xl border border-slate-200 bg-slate-50/80 p-6 sm:p-8">
               <h3 className="text-lg font-semibold text-slate-900">{t("schedule.class1Title")}</h3>
               <p className="mt-2 break-words text-xl font-bold text-amber-900 sm:text-2xl">
@@ -211,6 +207,64 @@ export default function Home() {
             </article>
           </div>
           <p className="mt-8 text-center text-sm text-slate-500">{t("schedule.note")}</p>
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section
+        id="gallery"
+        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-slate-50 py-14 sm:py-20 md:py-28"
+      >
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
+          <div className="text-center">
+            <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
+              {t("gallery.label")}
+            </p>
+            <h2 className="mt-3 font-serif text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
+              {t("gallery.title")}
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-slate-600">{t("gallery.lead")}</p>
+            <p className="mx-auto mt-4 max-w-2xl text-left text-sm leading-relaxed text-slate-500 sm:text-center">
+              {t("gallery.legacyNote")}
+            </p>
+          </div>
+          <div className="mt-12">
+            <PhotoGallery photos={GALLERY_PHOTOS} altPrefix={t("gallery.alt")} />
+          </div>
+        </div>
+      </section>
+
+      {/* 공지사항 (코리안넷 게시판 링크) */}
+      <section
+        id="events"
+        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-white py-14 sm:py-20 md:py-28"
+      >
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-8">
+          <div className="text-center">
+            <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
+              {t("events.label")}
+            </p>
+            <h2 className="mt-3 font-serif text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
+              {t("events.title")}
+            </h2>
+            <p className="mt-4 text-slate-600">{t("events.lead")}</p>
+          </div>
+          <LegacyPostTable
+            posts={LEGACY_NOTICES}
+            colDate={t("legacy.colDate")}
+            colTitle={t("legacy.colTitle")}
+            externalHint={t("legacy.externalHint")}
+          />
+          <p className="mt-6 text-center">
+            <a
+              href={LEGACY_BOARDS.noticeList}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold text-amber-900 underline-offset-2 hover:underline"
+            >
+              {t("legacy.boardFullNotice")}
+            </a>
+          </p>
         </div>
       </section>
 
@@ -246,7 +300,7 @@ export default function Home() {
           </div>
           <div className="mt-10 flex justify-center">
             <a
-              href="https://www.google.com/maps"
+              href={LEGACY_MAPS_SEARCH_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-12 min-w-[12rem] items-center justify-center rounded-full border border-white/30 bg-white/10 px-8 py-3 text-sm font-semibold backdrop-blur-sm transition hover:bg-white/20"
