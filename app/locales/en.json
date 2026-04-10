@@ -58,7 +58,12 @@
     "title": "Gallery",
     "lead": "Moments from classes and events.",
     "alt": "Gallery image",
-    "legacyNote": "Moments from classes and school events. If you need more photos from a specific date or activity, please contact the school."
+    "legacyNote": "Moments from classes and school events. If you need more photos from a specific date or activity, please contact the school.",
+    "instagramLabel": "instagram",
+    "instagramTitle": "Instagram",
+    "instagramHint": "Posts below are fetched before each deploy; this is not a live feed.",
+    "instagramProfile": "View profile",
+    "instagramViewPost": "Open on Instagram"
   },
   "events": {
     "label": "notices",

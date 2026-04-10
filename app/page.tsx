@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import InstagramFeed from "./components/InstagramFeed";
 import LegacyPostTable from "./components/LegacyPostTable";
 import PhotoGallery from "./components/PhotoGallery";
 import {
@@ -11,8 +12,11 @@ import {
 } from "./data/legacySite";
 import { useLanguage } from "./contexts/LanguageContext";
 import { getImagePath } from "./utils/imagePath";
+import instagramFeedJson from "./data/instagramFeed.json";
+import type { InstagramFeedFile } from "./types/instagramFeed";
 
 const GALLERY_PHOTOS = Array.from({ length: 12 }, (_, i) => `photo-${i + 1}.jpg`);
+const instagramFeed = instagramFeedJson as InstagramFeedFile;
 
 export default function Home() {
   const { t } = useLanguage();
@@ -231,6 +235,7 @@ export default function Home() {
           <div className="mt-12">
             <PhotoGallery photos={GALLERY_PHOTOS} altPrefix={t("gallery.alt")} />
           </div>
+          <InstagramFeed feed={instagramFeed} />
         </div>
       </section>
 

@@ -58,7 +58,12 @@
     "title": "Galerie",
     "lead": "Eindrücke aus Unterricht und Veranstaltungen.",
     "alt": "Galeriebild",
-    "legacyNote": "Eindrücke aus Unterricht und Schulveranstaltungen. Für weitere Fotos zu einem bestimmten Termin oder Anlass wenden Sie sich bitte an die Schule."
+    "legacyNote": "Eindrücke aus Unterricht und Schulveranstaltungen. Für weitere Fotos zu einem bestimmten Termin oder Anlass wenden Sie sich bitte an die Schule.",
+    "instagramLabel": "instagram",
+    "instagramTitle": "Instagram",
+    "instagramHint": "Die Beiträge werden vor dem Build per Skript geladen — kein Live-Feed.",
+    "instagramProfile": "Profil ansehen",
+    "instagramViewPost": "Auf Instagram öffnen"
   },
   "events": {
     "label": "hinweise",

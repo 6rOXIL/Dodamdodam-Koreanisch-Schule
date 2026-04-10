@@ -58,7 +58,12 @@
     "title": "갤러리",
     "lead": "수업과 행사의 순간을 담았습니다.",
     "alt": "갤러리 이미지",
-    "legacyNote": "수업과 행사에서의 순간을 모았습니다. 특정 일정이나 행사의 사진이 더 필요하시면 학교로 연락해 주세요."
+    "legacyNote": "수업과 행사에서의 순간을 모았습니다. 특정 일정이나 행사의 사진이 더 필요하시면 학교로 연락해 주세요.",
+    "instagramLabel": "instagram",
+    "instagramTitle": "Instagram",
+    "instagramHint": "아래 글은 배포 전에 스크립트로 가져온 최근 게시물입니다. 실시간 피드가 아닙니다.",
+    "instagramProfile": "프로필 보기",
+    "instagramViewPost": "인스타그램에서 보기"
   },
   "events": {
     "label": "notice",
