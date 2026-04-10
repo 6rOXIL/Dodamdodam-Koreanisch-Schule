@@ -1,0 +1,89 @@
+{
+  "site": {
+    "name": "Koreanische Sprachschule Dodamdodam",
+    "nameShort": "Dodamdodam",
+    "nameEn": "Dodamdodam Korean Language School",
+    "copyright": "© 2026 Koreanische Sprachschule Dodamdodam. Alle Rechte vorbehalten."
+  },
+  "nav": {
+    "home": "Start",
+    "about": "Über uns",
+    "vision": "Vision",
+    "gallery": "Galerie",
+    "teachers": "Lehrkräfte",
+    "events": "Aktuelles",
+    "schedule": "Unterricht",
+    "location": "Anfahrt"
+  },
+  "hero": {
+    "welcome": "WILLKOMMEN",
+    "title": "Koreanische Sprachschule Dodamdodam",
+    "subtitle": "Gemeinsam Koreanisch lernen, gemeinsam wachsen",
+    "cta": "Zur Schulvorstellung"
+  },
+  "about": {
+    "label": "about",
+    "title": "Über uns",
+    "body": "Dodamdodam ist ein Ort für Kinder und Familien, die die koreanische Sprache und Kultur lieben. Wir unterstützen beim Lesen, Schreiben, Singen und beim freudigen Erlernen von Hangul."
+  },
+  "vision": {
+    "label": "vision",
+    "title": "Vision",
+    "lead": "Wir erweitern den Horizont mit Koreanisch und wachsen in der Gemeinschaft.",
+    "card1Title": "Nächste Generation",
+    "card1Subtitle": "Next Generation",
+    "card1Body": "Altersgerechter Unterricht für eine solide Hangul-Grundlage.",
+    "card2Title": "Kultur & Begegnung",
+    "card2Subtitle": "Culture",
+    "card2Body": "Traditionen, Feste und Geschichten bringen Korea näher.",
+    "card3Title": "Offene Gemeinschaft",
+    "card3Subtitle": "Community",
+    "card3Body": "Ein warmer Lernort mit Bezug zu Familien und Nachbarschaft."
+  },
+  "teachers": {
+    "label": "teachers",
+    "title": "Lehrkräfte",
+    "lead": "Lernen Sie die Lehrkräfte kennen, die den Alltag der Kinder begleiten.",
+    "placeholder": "Profile und Grußworte folgen in Kürze."
+  },
+  "gallery": {
+    "label": "gallery",
+    "title": "Galerie",
+    "lead": "Eindrücke aus Unterricht und Veranstaltungen.",
+    "alt": "Galeriebild"
+  },
+  "events": {
+    "label": "events",
+    "title": "Aktuelles",
+    "lead": "Kommende Treffen und Hinweise",
+    "empty": "Derzeit keine Termine."
+  },
+  "schedule": {
+    "label": "schedule",
+    "title": "Unterricht",
+    "lead": "Beispielzeiten (wöchentlich)",
+    "class1Title": "Kita & Grundschule",
+    "class1Time": "Samstag 10:00 – 12:00",
+    "class1Note": "Hangul-Grundlagen · spielerisch",
+    "class2Title": "Mittelstufe",
+    "class2Time": "Samstag 14:00 – 16:00",
+    "class2Note": "Lesen, Schreiben, Ausdruck",
+    "note": "Die endgültigen Zeiten werden pro Semester bekannt gegeben."
+  },
+  "location": {
+    "label": "location",
+    "title": "Anfahrt",
+    "addressLabel": "Adresse",
+    "address": "Adresse folgt — bitte anpassen (z. B. Berlin).",
+    "contactLabel": "Kontakt",
+    "phone": "+49 …",
+    "email": "hello@example.com",
+    "mapCta": "In Karten öffnen"
+  },
+  "footer": {
+    "addressTitle": "Adresse",
+    "quickTitle": "Schnellzugriff",
+    "linkGallery": "Galerie",
+    "linkSchedule": "Unterricht"
+  }
+}

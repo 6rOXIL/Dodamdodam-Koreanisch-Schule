@@ -1,0 +1,89 @@
+{
+  "site": {
+    "name": "Dodamdodam Korean Language School",
+    "nameShort": "Dodamdodam",
+    "nameEn": "Dodamdodam Korean Language School",
+    "copyright": "© 2026 Dodamdodam Korean Language School. All rights reserved."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "vision": "Vision",
+    "gallery": "Gallery",
+    "teachers": "Teachers",
+    "events": "News",
+    "schedule": "Classes",
+    "location": "Visit"
+  },
+  "hero": {
+    "welcome": "WELCOME",
+    "title": "Dodamdodam Korean Language School",
+    "subtitle": "Growing together in Korean, opening doors to tomorrow",
+    "cta": "About the school"
+  },
+  "about": {
+    "label": "about",
+    "title": "About",
+    "body": "Dodamdodam is a place for children and families who love Korean language and culture. We help students read, write, sing, and enjoy learning Hangul."
+  },
+  "vision": {
+    "label": "vision",
+    "title": "Vision",
+    "lead": "We broaden horizons through Korean and grow together in community.",
+    "card1Title": "Next generation",
+    "card1Subtitle": "Next Generation",
+    "card1Body": "Age-appropriate classes to build a solid foundation in Hangul.",
+    "card2Title": "Culture & connection",
+    "card2Subtitle": "Culture",
+    "card2Body": "Traditions, holidays, and stories bring Korea closer.",
+    "card3Title": "Open community",
+    "card3Subtitle": "Community",
+    "card3Body": "A warm place of learning connected to families and the neighborhood."
+  },
+  "teachers": {
+    "label": "teachers",
+    "title": "Teachers",
+    "lead": "Meet the teachers who walk with students each day.",
+    "placeholder": "Profiles and greetings are coming soon."
+  },
+  "gallery": {
+    "label": "gallery",
+    "title": "Gallery",
+    "lead": "Moments from classes and events.",
+    "alt": "Gallery image"
+  },
+  "events": {
+    "label": "events",
+    "title": "News & events",
+    "lead": "Upcoming gatherings and notices",
+    "empty": "No events scheduled yet."
+  },
+  "schedule": {
+    "label": "schedule",
+    "title": "Class schedule",
+    "lead": "Sample weekly times",
+    "class1Title": "Early elementary",
+    "class1Time": "Saturday 10:00 – 12:00",
+    "class1Note": "Hangul basics · play-based",
+    "class2Title": "Middle grades",
+    "class2Time": "Saturday 14:00 – 16:00",
+    "class2Note": "Reading, writing, expression",
+    "note": "Final schedules are announced each term."
+  },
+  "location": {
+    "label": "location",
+    "title": "Location",
+    "addressLabel": "Address",
+    "address": "Address TBD — please update (e.g. Berlin).",
+    "contactLabel": "Contact",
+    "phone": "+49 …",
+    "email": "hello@example.com",
+    "mapCta": "Open in Maps"
+  },
+  "footer": {
+    "addressTitle": "Address",
+    "quickTitle": "Quick links",
+    "linkGallery": "Gallery",
+    "linkSchedule": "Classes"
+  }
+}

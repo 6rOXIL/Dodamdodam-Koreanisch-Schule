@@ -1,0 +1,89 @@
+{
+  "site": {
+    "name": "도담도담 한글학교",
+    "nameShort": "도담도담",
+    "nameEn": "Dodamdodam Korean Language School",
+    "copyright": "© 2026 도담도담 한글학교. All rights reserved."
+  },
+  "nav": {
+    "home": "홈",
+    "about": "학교 소개",
+    "vision": "비전",
+    "gallery": "갤러리",
+    "teachers": "교사 소개",
+    "events": "학교 소식",
+    "schedule": "수업 안내",
+    "location": "오시는 길"
+  },
+  "hero": {
+    "welcome": "WELCOME",
+    "title": "도담도담 한글학교",
+    "subtitle": "함께 자라는 한글, 함께 여는 내일",
+    "cta": "학교 소개 보기"
+  },
+  "about": {
+    "label": "about",
+    "title": "학교 소개",
+    "body": "도담도담 한글학교는 한국어와 한국 문화를 사랑하는 아이들과 가족을 위한 공간입니다. 읽고, 쓰고, 노래하며 한글을 즐겁게 배울 수 있도록 돕습니다."
+  },
+  "vision": {
+    "label": "vision",
+    "title": "비전",
+    "lead": "한글로 세상을 넓히고, 공동체 안에서 함께 성장합니다.",
+    "card1Title": "다음 세대 한글",
+    "card1Subtitle": "Next Generation",
+    "card1Body": "연령에 맞는 수업으로 한글의 기초를 다집니다.",
+    "card2Title": "문화와 소통",
+    "card2Subtitle": "Culture",
+    "card2Body": "전통·명절·이야기를 통해 한국을 가까이 느낍니다.",
+    "card3Title": "열린 공동체",
+    "card3Subtitle": "Community",
+    "card3Body": "학부모와 지역과 연결되는 따뜻한 배움의 터입니다."
+  },
+  "teachers": {
+    "label": "teachers",
+    "title": "교사 소개",
+    "lead": "아이들의 하루를 함께하는 선생님을 소개합니다.",
+    "placeholder": "프로필과 인사말은 준비 중입니다."
+  },
+  "gallery": {
+    "label": "gallery",
+    "title": "갤러리",
+    "lead": "수업과 행사의 순간을 담았습니다.",
+    "alt": "갤러리 이미지"
+  },
+  "events": {
+    "label": "events",
+    "title": "학교 소식",
+    "lead": "다가오는 모임과 공지",
+    "empty": "등록된 일정이 없습니다."
+  },
+  "schedule": {
+    "label": "schedule",
+    "title": "수업 안내",
+    "lead": "정기 수업 시간 (예시)",
+    "class1Title": "유치·초등 반",
+    "class1Time": "토요일 10:00 – 12:00",
+    "class1Note": "한글 기초 · 놀이 중심",
+    "class2Title": "중등 반",
+    "class2Time": "토요일 14:00 – 16:00",
+    "class2Note": "읽기·쓰기·표현",
+    "note": "실제 시간표는 학기별로 안내드립니다."
+  },
+  "location": {
+    "label": "location",
+    "title": "오시는 길",
+    "addressLabel": "주소",
+    "address": "주소는 준비 중입니다. (베를린 등 지역 정보로 수정해 주세요)",
+    "contactLabel": "연락처",
+    "phone": "+49 …",
+    "email": "hello@example.com",
+    "mapCta": "지도에서 보기"
+  },
+  "footer": {
+    "addressTitle": "주소",
+    "quickTitle": "바로가기",
+    "linkGallery": "갤러리",
+    "linkSchedule": "수업 안내"
+  }
+}
