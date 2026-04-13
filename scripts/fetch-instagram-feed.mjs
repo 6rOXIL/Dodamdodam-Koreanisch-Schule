@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Instagram Graph API로 최근 미디어를 받아 app/data/instagramFeed.json 에 저장합니다.
+ * Instagram Graph API로 최근 미디어를 받아 src/lib/data/instagramFeed.json 에 저장합니다.
  *
  * 필요 조건:
  * - Instagram Professional(비즈니스 또는 크리에이터) 계정
@@ -21,7 +21,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const OUT = join(__dirname, "..", "app", "data", "instagramFeed.json");
+const OUT = join(__dirname, "..", "src", "lib", "data", "instagramFeed.json");
 
 const TOKEN = process.env.IG_ACCESS_TOKEN;
 const USER_ID = process.env.IG_USER_ID;
@@ -96,7 +96,7 @@ async function main() {
   };
 
   writeFileSync(OUT, JSON.stringify(payload, null, 2), "utf8");
-  console.log(`Wrote ${posts.length} posts to app/data/instagramFeed.json`);
+  console.log(`Wrote ${posts.length} posts to src/lib/data/instagramFeed.json`);
 }
 
 main().catch((e) => {
