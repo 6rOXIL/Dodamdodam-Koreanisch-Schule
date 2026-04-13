@@ -26,8 +26,8 @@ docker compose up --build
 ```
 
 - 첫 빌드는 의존성 설치와 `next build` 때문에 시간이 걸릴 수 있습니다.
-- 컨테이너가 뜨면 브라우저에서 **http://localhost:3001** 로 접속합니다.  
-  (`docker-compose.yml`에서 호스트 `3001` → 컨테이너 `3000`으로 매핑되어 있습니다.)
+- 컨테이너가 뜨면 브라우저에서 **http://localhost:3000** 로 접속합니다.  
+  (`docker-compose.yml`에서 호스트 `3000` → 컨테이너 `3000`으로 매핑되어 있습니다.)
 
 백그라운드 실행:
 
@@ -45,10 +45,10 @@ docker compose down
 
 ```bash
 docker build -t dodamdodam .
-docker run --rm -p 3001:3000 dodamdodam
+docker run --rm -p 3000:3000 dodamdodam
 ```
 
-접속 주소: **http://localhost:3001**
+접속 주소: **http://localhost:3000**
 
 ### 4) 개발 모드 (핫 리로드, 로컬 소스 마운트)
 
@@ -58,7 +58,7 @@ docker run --rm -p 3001:3000 dodamdodam
 docker compose -f docker-compose.dev.yml up --build
 ```
 
-역시 **http://localhost:3001** 입니다.
+역시 **http://localhost:3000** 입니다.
 
 ---
 
@@ -69,4 +69,4 @@ docker compose -f docker-compose.dev.yml up --build
 
 ---
 
-문제가 나면 Docker가 실행 중인지, 포트 3001이 이미 쓰이고 있지 않은지 확인하세요.
+문제가 나면 Docker가 실행 중인지, 포트 3000이 이미 쓰이고 있지 않은지 확인하세요.
