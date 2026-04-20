@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { useEffect, useState } from "react";
-import { SECTION_IDS, type SectionId } from "@/lib/navConfig";
+import type { SectionId } from "@/lib/navConfig";
 import { getPathWithoutLocalePrefix } from "@/lib/i18n/pathname";
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -22,35 +22,13 @@ const NAV_KEYS: { id: SectionId; labelKey: string }[] = [
 export default function Navigation() {
   const pathname = usePathname();
   const { t, language } = useLanguage();
-  const [activeSection, setActiveSection] = useState<SectionId>("home");
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const pathWithoutLocale = getPathWithoutLocalePrefix(pathname);
-  const isHome = pathWithoutLocale === "/" || pathWithoutLocale === "";
-
-  useEffect(() => {
-    if (!isHome) return;
-
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 120;
-      let current: SectionId = "home";
-      for (const id of SECTION_IDS) {
-        const el = document.getElementById(id);
-        if (el) {
-          const { offsetTop, offsetHeight } = el;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            current = id;
-            break;
-          }
-        }
-      }
-      setActiveSection(current);
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isHome]);
+  const pathWithoutLocale = getPathWithoutLocalePrefix(pathname) || "/";
+  const normalizedPath =
+    pathWithoutLocale !== "/" && pathWithoutLocale.endsWith("/")
+      ? pathWithoutLocale.slice(0, -1)
+      : pathWithoutLocale;
 
   useEffect(() => {
     if (typeof document === "undefined") return;
@@ -65,45 +43,30 @@ export default function Navigation() {
     };
   }, [mobileOpen]);
 
-  const scrollToSection = (sectionId: SectionId) => {
-    const el = document.getElementById(sectionId);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-      setActiveSection(sectionId);
-    }
-    setMobileOpen(false);
-  };
-
   const navItemClass = (active: boolean) =>
     `whitespace-nowrap rounded-md px-2 py-2 text-sm transition-colors md:px-3 ${
       active ? "bg-amber-100 font-semibold text-amber-950" : "text-slate-700 hover:bg-slate-100"
     }`;
 
   const renderNavItem = (id: SectionId, labelKey: string, mobile = false) => {
-    const active = isHome && activeSection === id;
+    const targetPath = id === "home" ? "/" : id === "about" ? "/introduction" : `/${id}`;
+    const href =
+      id === "home"
+        ? `/${language}/`
+        : id === "about"
+          ? `/${language}/introduction/`
+          : `/${language}/${id}/`;
+    const active = normalizedPath === targetPath;
     const baseClass = mobile
       ? `w-full rounded-xl px-4 py-4 text-left text-base ${
           active ? "bg-amber-100 font-semibold text-amber-950" : "text-slate-800 active:bg-slate-100"
         }`
       : navItemClass(active);
 
-    if (isHome) {
-      return (
-        <button
-          key={id}
-          type="button"
-          onClick={() => scrollToSection(id)}
-          className={baseClass}
-        >
-          {t(labelKey)}
-        </button>
-      );
-    }
-
     return (
       <Link
         key={id}
-        href={`/${language}/#${id}`}
+        href={href}
         className={baseClass}
         onClick={() => setMobileOpen(false)}
       >
@@ -132,29 +95,16 @@ export default function Navigation() {
             </svg>
           </button>
 
-          {isHome ? (
-            <button
-              type="button"
-              onClick={() => scrollToSection("home")}
-              className="min-w-0 flex-1 text-left md:flex-none"
-            >
-              <span className="block truncate font-semibold text-slate-900 sm:text-base md:text-lg">
-                {t("site.nameShort")}
-              </span>
-              <span className="hidden text-xs text-slate-500 sm:block">{t("site.nameEn")}</span>
-            </button>
-          ) : (
-            <Link
-              href={`/${language}/`}
-              className="min-w-0 flex-1 text-left md:flex-none"
-              onClick={() => setMobileOpen(false)}
-            >
-              <span className="block truncate font-semibold text-slate-900 sm:text-base md:text-lg">
-                {t("site.nameShort")}
-              </span>
-              <span className="hidden text-xs text-slate-500 sm:block">{t("site.nameEn")}</span>
-            </Link>
-          )}
+          <Link
+            href={`/${language}/`}
+            className="min-w-0 flex-1 text-left md:flex-none"
+            onClick={() => setMobileOpen(false)}
+          >
+            <span className="block truncate font-semibold text-slate-900 sm:text-base md:text-lg">
+              {t("site.nameShort")}
+            </span>
+            <span className="hidden text-xs text-slate-500 sm:block">{t("site.nameEn")}</span>
+          </Link>
           <nav className="hidden flex-1 items-center justify-center gap-0.5 overflow-x-auto md:flex lg:gap-1">
             {NAV_KEYS.map(({ id, labelKey }) => renderNavItem(id, labelKey, false))}
           </nav>

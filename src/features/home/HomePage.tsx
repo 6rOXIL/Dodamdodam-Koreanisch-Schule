@@ -2,22 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import InstagramFeed from "@/components/InstagramFeed";
-import LegacyPostTable from "@/components/LegacyPostTable";
-import PhotoGallery from "@/components/PhotoGallery";
-import {
-  LEGACY_BOARDS,
-  LEGACY_CURRICULUM,
-  LEGACY_MAPS_SEARCH_URL,
-  LEGACY_NOTICES,
-} from "@/lib/data/legacySite";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { getImagePath } from "@/lib/utils/imagePath";
-import instagramFeedJson from "@/lib/data/instagramFeed.json";
-import type { InstagramFeedFile } from "@/lib/types/instagramFeed";
-
-const GALLERY_PHOTOS = Array.from({ length: 12 }, (_, i) => `photo-${i + 1}.jpg`);
-const instagramFeed = instagramFeedJson as InstagramFeedFile;
+import { AboutSection } from "@/features/about/AboutSection";
+import { VisionSection } from "@/features/vision/VisionSection";
+import { TeachersSection } from "@/features/teachers/TeachersSection";
+import { ScheduleSection } from "@/features/schedule/ScheduleSection";
+import { GallerySection } from "@/features/gallery/GallerySection";
+import { EventsSection } from "@/features/events/EventsSection";
+import { LocationSection } from "@/features/location/LocationSection";
 
 export default function HomePage() {
   const { t, language } = useLanguage();
@@ -57,262 +50,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* About */}
-      <section
+      <AboutSection
         id="about"
         className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] border-b border-slate-100 bg-white py-14 sm:py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 md:px-8">
-          <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
-            {t("about.label")}
-          </p>
-          <h2 className="mt-3 font-serif text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
-            {t("about.title")}
-          </h2>
-          <p className="mt-6 text-[15px] leading-relaxed text-slate-600 sm:mt-8 sm:text-base md:text-lg">
-            {t("about.body")}
-          </p>
-        </div>
-      </section>
-
-      {/* Vision — 3 cards */}
-      <section
+      />
+      <VisionSection
         id="vision"
         className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-slate-50 py-14 sm:py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
-              {t("vision.label")}
-            </p>
-            <h2 className="mt-3 font-serif text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
-              {t("vision.title")}
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-[15px] text-slate-600 sm:text-base">
-              {t("vision.lead")}
-            </p>
-          </div>
-          <div className="mt-10 grid gap-6 sm:mt-14 sm:gap-8 md:grid-cols-3">
-            {[
-              {
-                title: t("vision.card1Title"),
-                sub: t("vision.card1Subtitle"),
-                body: t("vision.card1Body"),
-              },
-              {
-                title: t("vision.card2Title"),
-                sub: t("vision.card2Subtitle"),
-                body: t("vision.card2Body"),
-              },
-              {
-                title: t("vision.card3Title"),
-                sub: t("vision.card3Subtitle"),
-                body: t("vision.card3Body"),
-              },
-            ].map((card) => (
-              <article
-                key={card.title}
-                className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm transition hover:shadow-md sm:p-8"
-              >
-                <p className="text-xs font-medium uppercase tracking-wide text-amber-800/90">
-                  {card.sub}
-                </p>
-                <h3 className="mt-2 text-xl font-semibold text-slate-900">{card.title}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-slate-600">{card.body}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Teachers */}
-      <section
+      />
+      <TeachersSection
         id="teachers"
         className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] border-b border-slate-100 bg-white py-14 sm:py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
-              {t("teachers.label")}
-            </p>
-            <h2 className="mt-3 font-serif text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
-              {t("teachers.title")}
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-slate-600">{t("teachers.lead")}</p>
-          </div>
-          <div className="mt-12 flex justify-center">
-            <div className="max-w-md rounded-2xl border border-dashed border-slate-300 bg-slate-50/80 px-5 py-12 text-center text-sm text-slate-500 sm:px-8 sm:py-14 sm:text-base">
-              {t("teachers.placeholder")}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Schedule: 커리큘럼 게시판 + 요약 카드 */}
-      <section
+      />
+      <ScheduleSection
         id="schedule"
         className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] border-t border-slate-100 bg-white py-14 sm:py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-8">
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
-              {t("schedule.label")}
-            </p>
-            <h2 className="mt-3 font-serif text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
-              {t("schedule.title")}
-            </h2>
-            <p className="mt-4 text-slate-600">{t("schedule.lead")}</p>
-          </div>
-
-          <div className="mt-10 text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
-              {t("schedule.curriculumLabel")}
-            </p>
-            <h3 className="mt-2 font-serif text-xl font-bold text-slate-900 sm:text-2xl">
-              {t("schedule.curriculumTitle")}
-            </h3>
-            <p className="mx-auto mt-2 max-w-2xl text-sm text-slate-600 sm:text-base">
-              {t("schedule.curriculumLead")}
-            </p>
-          </div>
-          <LegacyPostTable
-            posts={LEGACY_CURRICULUM}
-            colDate={t("legacy.colDate")}
-            colTitle={t("legacy.colTitle")}
-            externalHint={t("legacy.externalHint")}
-          />
-          <p className="mt-6 text-center">
-            <a
-              href={LEGACY_BOARDS.curriculumList}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-semibold text-amber-900 underline-offset-2 hover:underline"
-            >
-              {t("schedule.curriculumMore")}
-            </a>
-          </p>
-
-          <div className="mt-14 grid gap-4 sm:gap-6 md:grid-cols-2">
-            <article className="rounded-2xl border border-slate-200 bg-slate-50/80 p-6 sm:p-8">
-              <h3 className="text-lg font-semibold text-slate-900">{t("schedule.class1Title")}</h3>
-              <p className="mt-2 break-words text-xl font-bold text-amber-900 sm:text-2xl">
-                {t("schedule.class1Time")}
-              </p>
-              <p className="mt-3 text-sm text-slate-600">{t("schedule.class1Note")}</p>
-            </article>
-            <article className="rounded-2xl border border-slate-200 bg-slate-50/80 p-6 sm:p-8">
-              <h3 className="text-lg font-semibold text-slate-900">{t("schedule.class2Title")}</h3>
-              <p className="mt-2 break-words text-xl font-bold text-amber-900 sm:text-2xl">
-                {t("schedule.class2Time")}
-              </p>
-              <p className="mt-3 text-sm text-slate-600">{t("schedule.class2Note")}</p>
-            </article>
-          </div>
-          <p className="mt-8 text-center text-sm text-slate-500">{t("schedule.note")}</p>
-        </div>
-      </section>
-
-      {/* Gallery */}
-      <section
+      />
+      <GallerySection
         id="gallery"
         className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-slate-50 py-14 sm:py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
-              {t("gallery.label")}
-            </p>
-            <h2 className="mt-3 font-serif text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
-              {t("gallery.title")}
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-slate-600">{t("gallery.lead")}</p>
-            <p className="mx-auto mt-4 max-w-2xl text-left text-sm leading-relaxed text-slate-500 sm:text-center">
-              {t("gallery.legacyNote")}
-            </p>
-          </div>
-          <div className="mt-12">
-            <PhotoGallery photos={GALLERY_PHOTOS} altPrefix={t("gallery.alt")} />
-          </div>
-          <InstagramFeed feed={instagramFeed} />
-        </div>
-      </section>
-
-      {/* 공지사항 (코리안넷 게시판 링크) */}
-      <section
+      />
+      <EventsSection
         id="events"
         className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-white py-14 sm:py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-8">
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
-              {t("events.label")}
-            </p>
-            <h2 className="mt-3 font-serif text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
-              {t("events.title")}
-            </h2>
-            <p className="mt-4 text-slate-600">{t("events.lead")}</p>
-          </div>
-          <LegacyPostTable
-            posts={LEGACY_NOTICES}
-            colDate={t("legacy.colDate")}
-            colTitle={t("legacy.colTitle")}
-            externalHint={t("legacy.externalHint")}
-          />
-          <p className="mt-6 text-center">
-            <a
-              href={LEGACY_BOARDS.noticeList}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-semibold text-amber-900 underline-offset-2 hover:underline"
-            >
-              {t("legacy.boardFullNotice")}
-            </a>
-          </p>
-        </div>
-      </section>
-
-      {/* Location */}
-      <section
+      />
+      <LocationSection
         id="location"
         className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-slate-900 py-14 text-white sm:py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-8">
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-amber-200/90">
-              {t("location.label")}
-            </p>
-            <h2 className="mt-3 font-serif text-2xl font-bold sm:text-3xl md:text-4xl">
-              {t("location.title")}
-            </h2>
-          </div>
-          <div className="mt-10 grid gap-8 sm:mt-12 md:grid-cols-2 md:gap-16">
-            <div>
-              <h3 className="text-sm font-semibold text-amber-200/95">{t("location.addressLabel")}</h3>
-              <p className="mt-2 break-words whitespace-pre-line text-white/90">{t("location.address")}</p>
-            </div>
-            <div>
-              <h3 className="text-sm font-semibold text-amber-200/95">{t("location.contactLabel")}</h3>
-              <p className="mt-2 text-white/90">{t("location.phone")}</p>
-              <a
-                href={`mailto:${t("location.email")}`}
-                className="mt-1 inline-block text-amber-200 underline-offset-4 hover:underline"
-              >
-                {t("location.email")}
-              </a>
-            </div>
-          </div>
-          <div className="mt-10 flex justify-center">
-            <a
-              href={LEGACY_MAPS_SEARCH_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-12 min-w-[12rem] items-center justify-center rounded-full border border-white/30 bg-white/10 px-8 py-3 text-sm font-semibold backdrop-blur-sm transition hover:bg-white/20"
-            >
-              {t("location.mapCta")}
-            </a>
-          </div>
-        </div>
-      </section>
+      />
     </main>
   );
 }
