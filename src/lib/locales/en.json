@@ -8,9 +8,9 @@
   "nav": {
     "home": "Home",
     "about": "About",
+    "classes": "Class overview",
     "vision": "Vision",
     "gallery": "Gallery",
-    "teachers": "Teachers",
     "events": "News",
     "schedule": "Classes",
     "location": "Visit"
@@ -20,6 +20,28 @@
     "title": "Dodamdodam Korean Language School",
     "subtitle": "Growing together in Korean, opening doors to tomorrow",
     "cta": "About the school"
+  },
+  "classes": {
+    "label": "classes",
+    "title": "Class overview",
+    "lead": "Class groups, schedules, and teaching approach by age. Main text is in Korean.",
+    "sectionNav": "On this page",
+    "location": "Location",
+    "table": {
+      "group": "Group",
+      "class": "Class",
+      "time": "Schedule"
+    },
+    "links": {
+      "kindergarten": "Kindergarten",
+      "elementary": "Elementary",
+      "adults": "Adults"
+    },
+    "adults": {
+      "schedule": "Schedule",
+      "tuition": "Tuition",
+      "textbook": "Textbook"
+    }
   },
   "introduction": {
     "label": "introduction",
@@ -33,6 +55,7 @@
     "address": "Address",
     "phone": "Phone",
     "historyTitle": "History",
+    "educationGoalsTitle": "Educational goals & direction",
     "links": {
       "greeting": "Greeting",
       "summary": "School overview",
@@ -65,12 +88,6 @@
     "card3Title": "Open community",
     "card3Subtitle": "Community",
     "card3Body": "A warm place of learning connected to families and the neighborhood."
-  },
-  "teachers": {
-    "label": "teachers",
-    "title": "Teachers",
-    "lead": "Meet the teachers who walk with students each day.",
-    "placeholder": "Profiles and greetings are coming soon."
   },
   "gallery": {
     "label": "gallery",

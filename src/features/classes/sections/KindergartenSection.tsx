@@ -1,0 +1,49 @@
+"use client";
+
+import { kindergartenClass } from "@/lib/data/classContent";
+import { useLanguage } from "@/lib/contexts/LanguageContext";
+import ClassDetailBlock from "../components/ClassDetailBlock";
+import ClassScheduleTable from "../components/ClassScheduleTable";
+
+export default function KindergartenSection() {
+  const { t } = useLanguage();
+  const data = kindergartenClass;
+
+  return (
+    <section className="space-y-8" aria-labelledby="page-heading">
+      <h2
+        id="page-heading"
+        className="border-b border-amber-200/80 pb-2 font-serif text-2xl font-bold text-slate-900"
+      >
+        {t("classes.links.kindergarten")}
+      </h2>
+      <div className="space-y-8 text-[15px] leading-relaxed text-slate-700 sm:text-base">
+        {data.schedule && (
+          <ClassScheduleTable
+            title={data.scheduleTitle}
+            rows={data.schedule}
+            fixedGroupLabel={data.scheduleGroupLabel}
+            colGroup={t("classes.table.group")}
+            colClass={t("classes.table.class")}
+            colTime={t("classes.table.time")}
+          />
+        )}
+        <ClassDetailBlock
+          title={data.title}
+          location={data.location}
+          locationLabel={t("classes.location")}
+          lead={data.lead}
+          paragraphs={data.paragraphs}
+          bullets={data.bullets}
+          textbooks={data.textbooks}
+          note={data.note}
+          koOnlyImage={{
+            afterParagraphIndex: 1,
+            src: "/images/class_ kindergarten.png",
+            alt: "유치반 수업 활동 사진",
+          }}
+        />
+      </div>
+    </section>
+  );
+}

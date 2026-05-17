@@ -11,8 +11,7 @@ import LanguageSwitcher from "./LanguageSwitcher";
 const NAV_KEYS: { id: SectionId; labelKey: string }[] = [
   { id: "home", labelKey: "nav.home" },
   { id: "about", labelKey: "nav.about" },
-  { id: "vision", labelKey: "nav.vision" },
-  { id: "teachers", labelKey: "nav.teachers" },
+  { id: "classes", labelKey: "nav.classes" },
   { id: "schedule", labelKey: "nav.schedule" },
   { id: "gallery", labelKey: "nav.gallery" },
   { id: "events", labelKey: "nav.events" },
@@ -49,13 +48,16 @@ export default function Navigation() {
     }`;
 
   const renderNavItem = (id: SectionId, labelKey: string, mobile = false) => {
-    const targetPath = id === "home" ? "/" : id === "about" ? "/introduction" : `/${id}`;
+    const targetPath =
+      id === "home" ? "/" : id === "about" ? "/introduction" : id === "classes" ? "/classes" : `/${id}`;
     const href =
       id === "home"
         ? `/${language}/`
         : id === "about"
           ? `/${language}/introduction/`
-          : `/${language}/${id}/`;
+          : id === "classes"
+            ? `/${language}/classes/`
+            : `/${language}/${id}/`;
     const active = normalizedPath === targetPath;
     const baseClass = mobile
       ? `w-full rounded-xl px-4 py-4 text-left text-base ${

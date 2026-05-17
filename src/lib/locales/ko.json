@@ -8,9 +8,9 @@
   "nav": {
     "home": "홈",
     "about": "학교 소개",
+    "classes": "학급 소개",
     "vision": "비전",
     "gallery": "갤러리",
-    "teachers": "교사 소개",
     "events": "학교 소식",
     "schedule": "수업 안내",
     "location": "오시는 길"
@@ -20,6 +20,28 @@
     "title": "도담도담 한글학교",
     "subtitle": "함께 자라는 한글, 함께 여는 내일",
     "cta": "학교 소개 보기"
+  },
+  "classes": {
+    "label": "classes",
+    "title": "학급 소개",
+    "lead": "연령별 반 구성, 수업 시간, 교육 방향을 안내합니다. 본문은 한국어로 제공됩니다.",
+    "sectionNav": "이 페이지 안에서 이동",
+    "location": "수업 장소",
+    "table": {
+      "group": "반 구성",
+      "class": "반",
+      "time": "수업 시간"
+    },
+    "links": {
+      "kindergarten": "유치반",
+      "elementary": "초등반",
+      "adults": "성인반"
+    },
+    "adults": {
+      "schedule": "수업 시간",
+      "tuition": "수업료",
+      "textbook": "교재"
+    }
   },
   "introduction": {
     "label": "introduction",
@@ -33,6 +55,7 @@
     "address": "주소",
     "phone": "대표전화",
     "historyTitle": "연혁",
+    "educationGoalsTitle": "교육 목표 및 방향",
     "links": {
       "greeting": "인사말",
       "summary": "학교소개",
@@ -65,12 +88,6 @@
     "card3Title": "열린 공동체",
     "card3Subtitle": "Community",
     "card3Body": "학부모와 지역과 연결되는 따뜻한 배움의 터입니다."
-  },
-  "teachers": {
-    "label": "teachers",
-    "title": "교사 소개",
-    "lead": "아이들의 하루를 함께하는 선생님을 소개합니다.",
-    "placeholder": "프로필과 인사말은 준비 중입니다."
   },
   "gallery": {
     "label": "gallery",

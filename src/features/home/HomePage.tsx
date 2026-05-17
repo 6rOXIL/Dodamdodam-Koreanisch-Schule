@@ -6,7 +6,6 @@ import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { getImagePath } from "@/lib/utils/imagePath";
 import { AboutSection } from "@/features/about/AboutSection";
 import { VisionSection } from "@/features/vision/VisionSection";
-import { TeachersSection } from "@/features/teachers/TeachersSection";
 import { ScheduleSection } from "@/features/schedule/ScheduleSection";
 import { GallerySection } from "@/features/gallery/GallerySection";
 import { EventsSection } from "@/features/events/EventsSection";
@@ -57,10 +56,6 @@ export default function HomePage() {
       <VisionSection
         id="vision"
         className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-slate-50 py-14 sm:py-20 md:py-28"
-      />
-      <TeachersSection
-        id="teachers"
-        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] border-b border-slate-100 bg-white py-14 sm:py-20 md:py-28"
       />
       <ScheduleSection
         id="schedule"

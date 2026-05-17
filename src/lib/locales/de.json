@@ -8,9 +8,9 @@
   "nav": {
     "home": "Start",
     "about": "Über uns",
+    "classes": "Klassen",
     "vision": "Vision",
     "gallery": "Galerie",
-    "teachers": "Lehrkräfte",
     "events": "Aktuelles",
     "schedule": "Unterricht",
     "location": "Anfahrt"
@@ -20,6 +20,28 @@
     "title": "Koreanische Sprachschule Dodamdodam",
     "subtitle": "Gemeinsam Koreanisch lernen, gemeinsam wachsen",
     "cta": "Zur Schulvorstellung"
+  },
+  "classes": {
+    "label": "classes",
+    "title": "Klassenübersicht",
+    "lead": "Klassen, Unterrichtszeiten und pädagogische Schwerpunkte nach Alter. Der Fließtext steht auf Koreanisch.",
+    "sectionNav": "Auf dieser Seite",
+    "location": "Unterrichtsort",
+    "table": {
+      "group": "Gruppe",
+      "class": "Klasse",
+      "time": "Unterrichtszeit"
+    },
+    "links": {
+      "kindergarten": "Kindergarten",
+      "elementary": "Grundschule",
+      "adults": "Erwachsene"
+    },
+    "adults": {
+      "schedule": "Unterrichtszeit",
+      "tuition": "Unterrichtsgebühr",
+      "textbook": "Lehrbuch"
+    }
   },
   "introduction": {
     "label": "introduction",
@@ -33,6 +55,7 @@
     "address": "Adresse",
     "phone": "Telefon",
     "historyTitle": "Chronik",
+    "educationGoalsTitle": "Bildungsziele & -ausrichtung",
     "links": {
       "greeting": "Begrüßung",
       "summary": "Schulportrait",
@@ -65,12 +88,6 @@
     "card3Title": "Offene Gemeinschaft",
     "card3Subtitle": "Community",
     "card3Body": "Ein warmer Lernort mit Bezug zu Familien und Nachbarschaft."
-  },
-  "teachers": {
-    "label": "teachers",
-    "title": "Lehrkräfte",
-    "lead": "Lernen Sie die Lehrkräfte kennen, die den Alltag der Kinder begleiten.",
-    "placeholder": "Profile und Grußworte folgen in Kürze."
   },
   "gallery": {
     "label": "gallery",

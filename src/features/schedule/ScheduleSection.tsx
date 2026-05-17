@@ -58,7 +58,7 @@ export function ScheduleSection({
           </a>
         </p>
 
-        <div className="mt-14 grid gap-4 sm:gap-6 md:grid-cols-2">
+        {/* <div className="mt-14 grid gap-4 sm:gap-6 md:grid-cols-2">
           <article className="rounded-2xl border border-slate-200 bg-slate-50/80 p-6 sm:p-8">
             <h3 className="text-lg font-semibold text-slate-900">{t("schedule.class1Title")}</h3>
             <p className="mt-2 break-words text-xl font-bold text-amber-900 sm:text-2xl">
@@ -74,7 +74,7 @@ export function ScheduleSection({
             <p className="mt-3 text-sm text-slate-600">{t("schedule.class2Note")}</p>
           </article>
         </div>
-        <p className="mt-8 text-center text-sm text-slate-500">{t("schedule.note")}</p>
+        <p className="mt-8 text-center text-sm text-slate-500">{t("schedule.note")}</p> */}
       </div>
     </section>
   );

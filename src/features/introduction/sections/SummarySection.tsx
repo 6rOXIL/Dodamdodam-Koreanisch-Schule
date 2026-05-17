@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  educationGoalsIntro,
+  educationGoals,
   historyEntries,
   schoolOrganization,
 } from "@/lib/data/introductionContent";
@@ -63,7 +63,55 @@ export default function SummarySection() {
           </dl>
         </div>
 
-        <div className="whitespace-pre-line text-slate-700">{educationGoalsIntro}</div>
+        <div>
+          <h3 className="mb-4 font-semibold text-slate-900">
+            {t("introduction.educationGoalsTitle")}
+          </h3>
+          <div className="space-y-6">
+            <div className="rounded-lg border border-amber-100 bg-amber-50/50 px-4 py-3 sm:px-5 sm:py-4">
+              <h4 className="text-sm font-semibold tracking-wide text-amber-900 uppercase">
+                {educationGoals.purpose.title}
+              </h4>
+              <p className="mt-2 text-[15px] leading-relaxed font-medium text-slate-800 sm:text-base">
+                {educationGoals.purpose.text}
+              </p>
+            </div>
+
+            <div>
+              <h4 className="mb-3 font-semibold text-slate-900">{educationGoals.goals.title}</h4>
+              <ol className="list-none space-y-3 border-l-2 border-amber-200 pl-4">
+                {educationGoals.goals.items.map((item, i) => (
+                  <li key={i} className="flex gap-3">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-100 text-sm font-semibold text-amber-900">
+                      {i + 1}
+                    </span>
+                    <span className="pt-0.5">{item}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <div>
+              <h4 className="mb-3 font-semibold text-slate-900">{educationGoals.direction.title}</h4>
+              <div className="space-y-4">
+                {educationGoals.direction.paragraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+                <p className="text-slate-600">{educationGoals.direction.quoteIntro}</p>
+                <blockquote className="border-l-4 border-amber-300 bg-slate-50 px-4 py-3 italic text-slate-800">
+                  &ldquo;{educationGoals.direction.quote}&rdquo;
+                </blockquote>
+                <p>
+                  {educationGoals.direction.closing.before}
+                  <strong className="font-semibold text-amber-900">
+                    {educationGoals.direction.closing.highlight}
+                  </strong>
+                  {educationGoals.direction.closing.after}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div>
           <h3 className="mb-4 font-semibold text-slate-900">{t("introduction.historyTitle")}</h3>

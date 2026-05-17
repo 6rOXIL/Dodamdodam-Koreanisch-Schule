@@ -2,8 +2,8 @@
 export const SECTION_IDS = [
   "home",
   "about",
+  "classes",
   "vision",
-  "teachers",
   "schedule",
   "gallery",
   "events",
