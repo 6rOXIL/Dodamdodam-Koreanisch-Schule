@@ -4,8 +4,8 @@
 
 @layer base {
   body {
-    background-color: var(--surface);
-    color: var(--ink-900);
+    background-color: rgb(var(--surface));
+    color: rgb(var(--ink-900));
   }
 }
 
