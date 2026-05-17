@@ -41,34 +41,34 @@ export default function ClassScheduleTable({
 
   return (
     <div className="space-y-3">
-      <h3 className="text-sm font-semibold text-amber-900">{title}</h3>
-      <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
+      <h3 className="text-sm font-semibold text-brand-900">{title}</h3>
+      <div className="overflow-x-auto rounded-xl border border-ink-200 shadow-sm">
         <table className="w-full min-w-[520px] border-collapse text-left text-sm">
           <thead>
-            <tr className="border-b border-slate-200 bg-slate-50">
+            <tr className="border-b border-ink-200 bg-ink-50">
               {showGroupColumn && (
-                <th scope="col" className="px-3 py-2.5 font-semibold text-slate-800">
+                <th scope="col" className="px-3 py-2.5 font-semibold text-ink-800">
                   {colGroup}
                 </th>
               )}
-              <th scope="col" className="px-3 py-2.5 font-semibold text-slate-800">
+              <th scope="col" className="px-3 py-2.5 font-semibold text-ink-800">
                 {colClass}
               </th>
-              <th scope="col" className="px-3 py-2.5 font-semibold text-slate-800">
+              <th scope="col" className="px-3 py-2.5 font-semibold text-ink-800">
                 {colTime}
               </th>
             </tr>
           </thead>
           <tbody>
             {rows.map((row, i) => (
-              <tr key={i} className="border-b border-slate-100 last:border-0">
+              <tr key={i} className="border-b border-ink-100 last:border-0">
                 {showGroupColumn &&
                   (fixedGroupLabel ? (
                     i === 0 && (
                       <th
                         scope="row"
                         rowSpan={rows.length}
-                        className="whitespace-nowrap border-r border-slate-100 bg-amber-50/50 px-3 py-2 align-top font-medium text-slate-800"
+                        className="whitespace-nowrap border-r border-ink-100 bg-brand-50/50 px-3 py-2 align-top font-medium text-ink-800"
                       >
                         {fixedGroupLabel}
                       </th>
@@ -78,14 +78,14 @@ export default function ClassScheduleTable({
                       <th
                         scope="row"
                         rowSpan={spans[i]}
-                        className="whitespace-nowrap border-r border-slate-100 bg-amber-50/50 px-3 py-2 align-top font-medium text-slate-800"
+                        className="whitespace-nowrap border-r border-ink-100 bg-brand-50/50 px-3 py-2 align-top font-medium text-ink-800"
                       >
                         {row.group}
                       </th>
                     )
                   ))}
-                <td className="px-3 py-2 text-slate-800">{row.className}</td>
-                <td className="whitespace-nowrap px-3 py-2 text-slate-700">{row.time}</td>
+                <td className="px-3 py-2 text-ink-800">{row.className}</td>
+                <td className="whitespace-nowrap px-3 py-2 text-ink-700">{row.time}</td>
               </tr>
             ))}
           </tbody>

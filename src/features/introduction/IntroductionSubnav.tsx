@@ -15,7 +15,7 @@ export default function IntroductionSubnav() {
   return (
     <nav
       aria-label={t("introduction.sectionNav")}
-      className="mb-10 flex flex-wrap justify-center gap-2 border-b border-slate-200 pb-12 sm:pb-14"
+      className="mb-10 flex flex-wrap justify-center gap-2 border-b border-ink-200 pb-12 sm:pb-14"
     >
       {INTRO_SUBPAGES.map(({ segment, labelKey }) => {
         const target = `/introduction/${segment}/`;
@@ -26,8 +26,8 @@ export default function IntroductionSubnav() {
             href={`/${language}${target}`}
             className={`rounded-full border px-3 py-1.5 text-xs font-medium transition sm:text-sm ${
               active
-                ? "border-amber-600 bg-amber-100 text-amber-950"
-                : "border-slate-200 bg-slate-50 text-slate-700 hover:border-amber-300 hover:bg-amber-50"
+                ? "border-brand-600 bg-brand-100 text-brand-950"
+                : "border-ink-200 bg-ink-50 text-ink-700 hover:border-brand-300 hover:bg-brand-50"
             }`}
           >
             {t(labelKey)}

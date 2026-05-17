@@ -34,24 +34,24 @@ export default function ClassDetailBlock({
 }: Props) {
   const { language } = useLanguage();
   return (
-    <article className="space-y-4 rounded-xl border border-slate-200 bg-white p-4 sm:p-5">
-      <h3 className="font-semibold text-slate-900">{title}</h3>
+    <article className="space-y-4 rounded-xl border border-ink-200 bg-surface p-4 sm:p-5">
+      <h3 className="font-semibold text-ink-900">{title}</h3>
       {location && (
-        <div className="rounded-lg border-l-4 border-amber-300 bg-amber-50/40 px-4 py-3">
-          <p className="text-xs font-semibold uppercase tracking-wide text-amber-900">
+        <div className="rounded-lg border-l-4 border-brand-300 bg-brand-50/40 px-4 py-3">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-900">
             {locationLabel}
           </p>
-          <p className="mt-1 whitespace-pre-line text-sm text-slate-800">{location}</p>
+          <p className="mt-1 whitespace-pre-line text-sm text-ink-800">{location}</p>
         </div>
       )}
-      {lead && <p className="font-medium text-slate-800">{lead}</p>}
+      {lead && <p className="font-medium text-ink-800">{lead}</p>}
       {paragraphs?.map((p, i) => (
         <Fragment key={i}>
-          <p className="leading-relaxed text-slate-700">{p}</p>
+          <p className="leading-relaxed text-ink-700">{p}</p>
           {language === "ko" &&
             koOnlyImage &&
             koOnlyImage.afterParagraphIndex === i && (
-              <figure className="my-2 w-1/2 max-w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50 shadow-sm">
+              <figure className="my-2 w-1/2 max-w-full overflow-hidden rounded-xl border border-ink-200 bg-ink-50 shadow-sm">
                 <Image
                   src={getImagePath(koOnlyImage.src)}
                   alt={koOnlyImage.alt}
@@ -65,23 +65,23 @@ export default function ClassDetailBlock({
         </Fragment>
       ))}
       {bullets && bullets.length > 0 && (
-        <ul className="list-none space-y-2 border-l-2 border-amber-200 pl-4">
+        <ul className="list-none space-y-2 border-l-2 border-brand-200 pl-4">
           {bullets.map((item, i) => (
-            <li key={i} className="flex gap-2 text-slate-700">
-              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" aria-hidden />
+            <li key={i} className="flex gap-2 text-ink-700">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-500" aria-hidden />
               <span>{item}</span>
             </li>
           ))}
         </ul>
       )}
       {textbooks && textbooks.length > 0 && (
-        <ul className="space-y-1 text-sm text-slate-600">
+        <ul className="space-y-1 text-sm text-ink-600">
           {textbooks.map((line, i) => (
             <li key={i}>{line}</li>
           ))}
         </ul>
       )}
-      {note && <p className="text-sm text-slate-500">{note}</p>}
+      {note && <p className="text-sm text-ink-500">{note}</p>}
     </article>
   );
 }

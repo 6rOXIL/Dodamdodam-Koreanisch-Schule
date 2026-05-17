@@ -12,7 +12,7 @@ export default function RootPageRedirect() {
   }, [router]);
 
   return (
-    <div className="flex min-h-[100dvh] items-center justify-center bg-white text-sm text-slate-500">
+    <div className="flex min-h-[100dvh] items-center justify-center bg-surface text-sm text-ink-500">
       Redirecting...
     </div>
   );

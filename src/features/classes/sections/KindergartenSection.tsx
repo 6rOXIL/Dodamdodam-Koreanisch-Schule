@@ -13,11 +13,11 @@ export default function KindergartenSection() {
     <section className="space-y-8" aria-labelledby="page-heading">
       <h2
         id="page-heading"
-        className="border-b border-amber-200/80 pb-2 font-sans text-2xl font-bold text-slate-900"
+        className="border-b border-brand-200/80 pb-2 font-sans text-2xl font-bold text-ink-900"
       >
         {t("classes.links.kindergarten")}
       </h2>
-      <div className="space-y-8 text-[15px] leading-relaxed text-slate-700 sm:text-base">
+      <div className="space-y-8 text-[15px] leading-relaxed text-ink-700 sm:text-base">
         {data.schedule && (
           <ClassScheduleTable
             title={data.scheduleTitle}

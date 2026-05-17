@@ -17,15 +17,15 @@ export default function InstagramFeed({ feed }: Props) {
     : null;
 
   return (
-    <div className="mt-14 border-t border-slate-200 pt-12">
+    <div className="mt-14 border-t border-ink-200 pt-12">
       <div className="text-center">
-        <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
+        <p className="text-xs font-semibold uppercase tracking-widest text-brand-800/80">
           {t("gallery.instagramLabel")}
         </p>
-        <h3 className="mt-2 font-sans text-xl font-bold text-slate-900 sm:text-2xl">
+        <h3 className="mt-2 font-sans text-xl font-bold text-ink-900 sm:text-2xl">
           {t("gallery.instagramTitle")}
         </h3>
-        <p className="mx-auto mt-2 max-w-xl text-sm text-slate-500">
+        <p className="mx-auto mt-2 max-w-xl text-sm text-ink-500">
           {t("gallery.instagramHint")}
         </p>
         {username && profileHref && (
@@ -34,7 +34,7 @@ export default function InstagramFeed({ feed }: Props) {
               href={profileHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-semibold text-amber-900 underline-offset-2 hover:underline"
+              className="text-sm font-semibold text-brand-900 underline-offset-2 hover:underline"
             >
               {t("gallery.instagramProfile")} @{username}
             </a>
@@ -46,15 +46,15 @@ export default function InstagramFeed({ feed }: Props) {
         {posts.map((post) => (
           <li
             key={post.id}
-            className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md"
+            className="overflow-hidden rounded-2xl border border-ink-200 bg-surface shadow-sm transition hover:shadow-md"
           >
             <a
               href={post.permalink}
               target="_blank"
               rel="noopener noreferrer"
-              className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+              className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
             >
-              <div className="relative aspect-square w-full bg-slate-100">
+              <div className="relative aspect-square w-full bg-ink-100">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={post.imageUrl}
@@ -65,11 +65,11 @@ export default function InstagramFeed({ feed }: Props) {
                 />
               </div>
               {post.caption ? (
-                <p className="line-clamp-4 px-4 py-3 text-left text-sm leading-relaxed text-slate-700">
+                <p className="line-clamp-4 px-4 py-3 text-left text-sm leading-relaxed text-ink-700">
                   {post.caption}
                 </p>
               ) : (
-                <p className="px-4 py-3 text-sm text-amber-800">
+                <p className="px-4 py-3 text-sm text-brand-800">
                   {t("gallery.instagramViewPost")}
                 </p>
               )}

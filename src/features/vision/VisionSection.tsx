@@ -6,7 +6,7 @@ import { getHeadingTag, type HeadingLevel } from "@/features/shared/sectionHeadi
 export function VisionSection({
   id,
   headingLevel = 2,
-  className = "bg-slate-50 py-14 sm:py-20 md:py-28",
+  className = "bg-ink-50 py-14 sm:py-20 md:py-28",
 }: {
   id?: string;
   headingLevel?: HeadingLevel;
@@ -19,13 +19,13 @@ export function VisionSection({
     <section id={id} className={className}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
         <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
+          <p className="text-xs font-semibold uppercase tracking-widest text-brand-800/80">
             {t("vision.label")}
           </p>
-          <HeadingTag className="mt-3 font-sans text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
+          <HeadingTag className="mt-3 font-sans text-2xl font-bold text-ink-900 sm:text-3xl md:text-4xl">
             {t("vision.title")}
           </HeadingTag>
-          <p className="mx-auto mt-4 max-w-2xl text-[15px] text-slate-600 sm:text-base">
+          <p className="mx-auto mt-4 max-w-2xl text-[15px] text-ink-600 sm:text-base">
             {t("vision.lead")}
           </p>
         </div>
@@ -49,13 +49,13 @@ export function VisionSection({
           ].map((card) => (
             <article
               key={card.title}
-              className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm transition hover:shadow-md sm:p-8"
+              className="rounded-2xl border border-ink-200/80 bg-surface p-6 shadow-sm transition hover:shadow-md sm:p-8"
             >
-              <p className="text-xs font-medium uppercase tracking-wide text-amber-800/90">
+              <p className="text-xs font-medium uppercase tracking-wide text-brand-800/90">
                 {card.sub}
               </p>
-              <h3 className="mt-2 text-xl font-semibold text-slate-900">{card.title}</h3>
-              <p className="mt-4 text-sm leading-relaxed text-slate-600">{card.body}</p>
+              <h3 className="mt-2 text-xl font-semibold text-ink-900">{card.title}</h3>
+              <p className="mt-4 text-sm leading-relaxed text-ink-600">{card.body}</p>
             </article>
           ))}
         </div>

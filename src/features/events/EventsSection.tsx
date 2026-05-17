@@ -8,7 +8,7 @@ import { getHeadingTag, type HeadingLevel } from "@/features/shared/sectionHeadi
 export function EventsSection({
   id,
   headingLevel = 2,
-  className = "bg-white py-14 sm:py-20 md:py-28",
+  className = "bg-surface py-14 sm:py-20 md:py-28",
 }: {
   id?: string;
   headingLevel?: HeadingLevel;
@@ -21,13 +21,13 @@ export function EventsSection({
     <section id={id} className={className}>
       <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-8">
         <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
+          <p className="text-xs font-semibold uppercase tracking-widest text-brand-800/80">
             {t("events.label")}
           </p>
-          <HeadingTag className="mt-3 font-sans text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
+          <HeadingTag className="mt-3 font-sans text-2xl font-bold text-ink-900 sm:text-3xl md:text-4xl">
             {t("events.title")}
           </HeadingTag>
-          <p className="mt-4 text-slate-600">{t("events.lead")}</p>
+          <p className="mt-4 text-ink-600">{t("events.lead")}</p>
         </div>
         <LegacyPostTable
           posts={LEGACY_NOTICES}
@@ -40,7 +40,7 @@ export function EventsSection({
             href={LEGACY_BOARDS.noticeList}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-semibold text-amber-900 underline-offset-2 hover:underline"
+            className="text-sm font-semibold text-brand-900 underline-offset-2 hover:underline"
           >
             {t("legacy.boardFullNotice")}
           </a>

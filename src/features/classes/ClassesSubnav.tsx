@@ -25,8 +25,8 @@ export default function ClassesSubnav() {
             href={`/${language}${target}`}
             className={`rounded-full border px-3 py-1.5 text-xs font-medium transition sm:text-sm ${
               active
-                ? "border-amber-600 bg-amber-100 text-amber-950"
-                : "border-slate-200 bg-slate-50 text-slate-700 hover:border-amber-300 hover:bg-amber-50"
+                ? "border-brand-600 bg-brand-100 text-brand-950"
+                : "border-ink-200 bg-ink-50 text-ink-700 hover:border-brand-300 hover:bg-brand-50"
             }`}
           >
             {t(labelKey)}

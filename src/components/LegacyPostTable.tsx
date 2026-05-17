@@ -16,10 +16,10 @@ export default function LegacyPostTable({
   externalHint,
 }: Props) {
   return (
-    <div className="mt-8 w-full overflow-x-auto rounded-xl border border-slate-200 bg-white text-left shadow-sm">
+    <div className="mt-8 w-full overflow-x-auto rounded-xl border border-ink-200 bg-surface text-left shadow-sm">
       <table className="w-full min-w-[280px] border-collapse text-sm">
         <thead>
-          <tr className="border-b border-slate-200 bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-600">
+          <tr className="border-b border-ink-200 bg-ink-50 text-left text-xs font-semibold uppercase tracking-wide text-ink-600">
             <th scope="col" className="whitespace-nowrap px-3 py-3 sm:px-4">
               {colDate}
             </th>
@@ -32,9 +32,9 @@ export default function LegacyPostTable({
           {posts.map((row) => (
             <tr
               key={row.url}
-              className="border-b border-slate-100 last:border-b-0 hover:bg-amber-50/40"
+              className="border-b border-ink-100 last:border-b-0 hover:bg-brand-50/40"
             >
-              <td className="whitespace-nowrap px-3 py-3 align-top text-slate-500 sm:px-4">
+              <td className="whitespace-nowrap px-3 py-3 align-top text-ink-500 sm:px-4">
                 {row.date}
               </td>
               <td className="px-3 py-3 sm:px-4">
@@ -42,7 +42,7 @@ export default function LegacyPostTable({
                   href={row.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-medium text-amber-900 underline-offset-2 hover:underline"
+                  className="font-medium text-brand-900 underline-offset-2 hover:underline"
                 >
                   {row.title}
                 </a>

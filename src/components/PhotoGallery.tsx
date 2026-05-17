@@ -88,7 +88,7 @@ export default function PhotoGallery({ photos, altPrefix = "Photo" }: PhotoGalle
           <div className="relative max-h-[90dvh] w-full max-w-6xl">
             <button
               onClick={() => setSelectedIndex(null)}
-              className="absolute right-4 top-[max(0.5rem,env(safe-area-inset-top))] z-20 flex h-11 min-w-11 items-center justify-center rounded-full bg-black/50 text-3xl font-bold text-white transition-colors hover:bg-black/70 hover:text-gray-200"
+              className="absolute right-4 top-[max(0.5rem,env(safe-area-inset-top))] z-20 flex h-11 min-w-11 items-center justify-center rounded-full bg-black/50 text-3xl font-bold text-surface transition-colors hover:bg-black/70 hover:text-gray-200"
               aria-label="닫기"
             >
               ×
@@ -100,7 +100,7 @@ export default function PhotoGallery({ photos, altPrefix = "Photo" }: PhotoGalle
                   e.stopPropagation();
                   goToPrevious();
                 }}
-                className="absolute left-1 top-1/2 z-20 flex h-12 min-w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-3xl font-bold text-white transition-colors hover:bg-black/70 sm:left-4 sm:text-4xl"
+                className="absolute left-1 top-1/2 z-20 flex h-12 min-w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-3xl font-bold text-surface transition-colors hover:bg-black/70 sm:left-4 sm:text-4xl"
                 aria-label="이전 사진"
               >
                 ‹
@@ -113,7 +113,7 @@ export default function PhotoGallery({ photos, altPrefix = "Photo" }: PhotoGalle
                   e.stopPropagation();
                   goToNext();
                 }}
-                className="absolute right-1 top-1/2 z-20 flex h-12 min-w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-3xl font-bold text-white transition-colors hover:bg-black/70 sm:right-4 sm:text-4xl"
+                className="absolute right-1 top-1/2 z-20 flex h-12 min-w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-3xl font-bold text-surface transition-colors hover:bg-black/70 sm:right-4 sm:text-4xl"
                 aria-label="다음 사진"
               >
                 ›
@@ -121,7 +121,7 @@ export default function PhotoGallery({ photos, altPrefix = "Photo" }: PhotoGalle
             )}
 
             {photos.length > 1 && (
-              <div className="absolute bottom-[max(0.5rem,env(safe-area-inset-bottom))] left-1/2 z-20 -translate-x-1/2 rounded-full bg-black/50 px-4 py-2 text-sm text-white">
+              <div className="absolute bottom-[max(0.5rem,env(safe-area-inset-bottom))] left-1/2 z-20 -translate-x-1/2 rounded-full bg-black/50 px-4 py-2 text-sm text-surface">
                 {selectedIndex + 1} / {photos.length}
               </div>
             )}
