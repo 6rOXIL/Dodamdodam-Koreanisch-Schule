@@ -7,7 +7,7 @@ import { getHeadingTag, type HeadingLevel } from "@/features/shared/sectionHeadi
 export function LocationSection({
   id,
   headingLevel = 2,
-  className = "bg-ink-900 py-14 text-surface sm:py-20 md:py-28",
+  className = "bg-ink-900 py-14 text-white sm:py-20 md:py-28",
 }: {
   id?: string;
   headingLevel?: HeadingLevel;
@@ -30,11 +30,11 @@ export function LocationSection({
         <div className="mt-10 grid gap-8 sm:mt-12 md:grid-cols-2 md:gap-16">
           <div>
             <h3 className="text-sm font-semibold text-brand-200/95">{t("location.addressLabel")}</h3>
-            <p className="mt-2 break-words whitespace-pre-line text-surface/90">{t("location.address")}</p>
+            <p className="mt-2 break-words whitespace-pre-line text-white/90">{t("location.address")}</p>
           </div>
           <div>
             <h3 className="text-sm font-semibold text-brand-200/95">{t("location.contactLabel")}</h3>
-            <p className="mt-2 text-surface/90">{t("location.phone")}</p>
+            <p className="mt-2 text-white/90">{t("location.phone")}</p>
             <a
               href={`mailto:${t("location.email")}`}
               className="mt-1 inline-block text-brand-200 underline-offset-4 hover:underline"

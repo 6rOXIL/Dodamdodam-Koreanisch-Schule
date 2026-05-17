@@ -30,7 +30,7 @@ export default function LanguageSwitcher() {
           onClick={() => switchTo(lang.code)}
           className={`min-h-9 min-w-9 rounded-md px-1.5 text-xs font-medium transition-colors sm:min-h-0 sm:min-w-0 sm:px-3 sm:text-sm ${
             currentLocale === lang.code
-              ? "bg-brand-600 text-surface"
+              ? "bg-brand-600 text-white"
               : "text-ink-600 hover:bg-ink-100"
           }`}
           aria-pressed={currentLocale === lang.code}

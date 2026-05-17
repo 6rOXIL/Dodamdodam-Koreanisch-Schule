@@ -30,14 +30,14 @@ export default function HomePage() {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-ink-900/65 via-ink-900/50 to-ink-900/75" aria-hidden />
-        <div className="relative z-10 mx-auto max-w-4xl px-4 py-16 text-center text-surface sm:px-6 sm:py-24">
+        <div className="relative z-10 mx-auto max-w-4xl px-4 py-16 text-center text-white sm:px-6 sm:py-24">
           <p className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-brand-200/95 sm:text-xs sm:tracking-[0.35em]">
             {t("hero.welcome")}
           </p>
           <h1 className="mt-3 font-sans text-2xl font-bold leading-snug sm:mt-4 sm:text-4xl sm:leading-tight md:text-5xl">
             {t("hero.title")}
           </h1>
-          <p className="mt-4 text-base leading-relaxed text-surface/90 sm:mt-6 sm:text-lg md:text-xl">
+          <p className="mt-4 text-base leading-relaxed text-white/90 sm:mt-6 sm:text-lg md:text-xl">
             {t("hero.subtitle")}
           </p>
           <Link
@@ -71,7 +71,7 @@ export default function HomePage() {
       />
       <LocationSection
         id="location"
-        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-ink-900 py-14 text-surface sm:py-20 md:py-28"
+        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-ink-900 py-14 text-white sm:py-20 md:py-28"
       />
     </main>
   );

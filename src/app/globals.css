@@ -1,16 +1,19 @@
-@import "../styles/theme.css";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    background-color: var(--surface);
+    color: var(--ink-900);
+  }
+}
+
 html {
   scroll-behavior: smooth;
-  /* 고정 헤더(4rem) + 노치/상태바 */
   scroll-padding-top: calc(4rem + env(safe-area-inset-top, 0px));
 }
 
-/* 이미지 다운로드 방지 */
 img {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -24,7 +27,6 @@ img {
   pointer-events: auto;
 }
 
-/* 이미지 컨테이너에서 텍스트 선택 방지 */
 .image-container {
   -webkit-user-select: none;
   -moz-user-select: none;

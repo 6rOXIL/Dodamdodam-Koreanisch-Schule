@@ -1,7 +1,8 @@
 import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
 
-const withAlpha = (variable: string) => `rgb(var(${variable}) / <alpha-value>)`;
+/** theme.css 변수 참조 (hex·rgb 모두 지원, /80 투명도 포함) */
+const fromTheme = (variable: string) => `var(${variable})`;
 
 const config: Config = {
   content: [
@@ -18,32 +19,31 @@ const config: Config = {
       },
       colors: {
         brand: {
-          50: withAlpha("--brand-50"),
-          100: withAlpha("--brand-100"),
-          200: withAlpha("--brand-200"),
-          300: withAlpha("--brand-300"),
-          600: withAlpha("--brand-600"),
-          800: withAlpha("--brand-800"),
-          900: withAlpha("--brand-900"),
-          950: withAlpha("--brand-950"),
+          50: fromTheme("--brand-50"),
+          100: fromTheme("--brand-100"),
+          200: fromTheme("--brand-200"),
+          300: fromTheme("--brand-300"),
+          600: fromTheme("--brand-600"),
+          800: fromTheme("--brand-800"),
+          900: fromTheme("--brand-900"),
+          950: fromTheme("--brand-950"),
         },
         ink: {
-          50: withAlpha("--ink-50"),
-          100: withAlpha("--ink-100"),
-          200: withAlpha("--ink-200"),
-          500: withAlpha("--ink-500"),
-          600: withAlpha("--ink-600"),
-          700: withAlpha("--ink-700"),
-          800: withAlpha("--ink-800"),
-          900: withAlpha("--ink-900"),
-          950: withAlpha("--ink-950"),
+          50: fromTheme("--ink-50"),
+          100: fromTheme("--ink-100"),
+          200: fromTheme("--ink-200"),
+          500: fromTheme("--ink-500"),
+          600: fromTheme("--ink-600"),
+          700: fromTheme("--ink-700"),
+          800: fromTheme("--ink-800"),
+          900: fromTheme("--ink-900"),
+          950: fromTheme("--ink-950"),
         },
         surface: {
-          DEFAULT: withAlpha("--surface"),
-          muted: withAlpha("--surface-muted"),
-          inverse: withAlpha("--surface-inverse"),
+          DEFAULT: fromTheme("--surface"),
+          muted: fromTheme("--surface-muted"),
+          inverse: fromTheme("--surface-inverse"),
         },
-        "on-inverse": withAlpha("--on-inverse"),
       },
     },
   },

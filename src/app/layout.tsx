@@ -1,5 +1,14 @@
 import type { Metadata, Viewport } from "next";
+import { Noto_Sans_KR } from "next/font/google";
+import "@/styles/theme.css";
 import "./globals.css";
+
+const notoSansKr = Noto_Sans_KR({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "도담도담 한글학교 | Dodamdodam Korean Language School",
@@ -19,8 +28,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" suppressHydrationWarning>
-      <body className="min-h-[100dvh] touch-manipulation antialiased">{children}</body>
+    <html lang="ko" className={notoSansKr.variable} suppressHydrationWarning>
+      <body className="min-h-[100dvh] touch-manipulation font-sans antialiased">{children}</body>
     </html>
   );
 }
