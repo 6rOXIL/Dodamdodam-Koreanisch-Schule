@@ -24,7 +24,7 @@ export function EventsSection({
           <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
             {t("events.label")}
           </p>
-          <HeadingTag className="mt-3 font-serif text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
+          <HeadingTag className="mt-3 font-sans text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
             {t("events.title")}
           </HeadingTag>
           <p className="mt-4 text-slate-600">{t("events.lead")}</p>

@@ -24,7 +24,7 @@
   "classes": {
     "label": "classes",
     "title": "Klassenübersicht",
-    "lead": "Klassen, Unterrichtszeiten und pädagogische Schwerpunkte nach Alter. Der Fließtext steht auf Koreanisch.",
+    "lead": "Klassen, Unterrichtszeiten und pädagogische Schwerpunkte nach Alter.",
     "sectionNav": "Auf dieser Seite",
     "location": "Unterrichtsort",
     "table": {
@@ -46,7 +46,7 @@
   "introduction": {
     "label": "introduction",
     "title": "Über die Schule",
-    "lead": "Begrüßung, Schulportrait, Kalender und Anfahrt. Der Fließtext steht auf Koreanisch.",
+    "lead": "Begrüßung, Schulportrait, Kalender und Anfahrt.",
     "backHome": "← Start",
     "sectionNav": "Auf dieser Seite",
     "schoolOrgTitle": "Träger & Kontakt",

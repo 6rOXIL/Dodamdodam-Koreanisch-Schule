@@ -24,7 +24,7 @@
   "classes": {
     "label": "classes",
     "title": "Class overview",
-    "lead": "Class groups, schedules, and teaching approach by age. Main text is in Korean.",
+    "lead": "Class groups, schedules, and teaching approach by age.",
     "sectionNav": "On this page",
     "location": "Location",
     "table": {
@@ -46,7 +46,7 @@
   "introduction": {
     "label": "introduction",
     "title": "About the school",
-    "lead": "Greeting, school overview, calendar, and directions. Main text is in Korean.",
+    "lead": "Greeting, school overview, calendar, and directions.",
     "backHome": "← Home",
     "sectionNav": "On this page",
     "schoolOrgTitle": "Organization & contact",

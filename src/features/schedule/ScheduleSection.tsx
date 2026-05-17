@@ -24,7 +24,7 @@ export function ScheduleSection({
           <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
             {t("schedule.label")}
           </p>
-          <HeadingTag className="mt-3 font-serif text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
+          <HeadingTag className="mt-3 font-sans text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
             {t("schedule.title")}
           </HeadingTag>
           <p className="mt-4 text-slate-600">{t("schedule.lead")}</p>
@@ -34,7 +34,7 @@ export function ScheduleSection({
           <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
             {t("schedule.curriculumLabel")}
           </p>
-          <h3 className="mt-2 font-serif text-xl font-bold text-slate-900 sm:text-2xl">
+          <h3 className="mt-2 font-sans text-xl font-bold text-slate-900 sm:text-2xl">
             {t("schedule.curriculumTitle")}
           </h3>
           <p className="mx-auto mt-2 max-w-2xl text-sm text-slate-600 sm:text-base">

@@ -1,0 +1,156 @@
+import type { IntroductionContent } from "./types";
+
+export const introductionDe: IntroductionContent = {
+  greeting: {
+    paragraphs: [
+      "Guten Tag,",
+      "vielen Dank für Ihren Besuch auf der Website der Koreanischen Sprachschule Dodam Dodam in Berlin.",
+      '„Dodam Dodam“ ist ein reines koreanisches Wort und bedeutet „ein kleines Kind wächst unbeschwert und gesund heran“.',
+      "Unsere Koreanische Schule trägt den Wunsch aller in sich, dass unsere Kinder emotional und körperlich gesund aufwachsen.",
+      "Wenn ein Kind geboren wird und zu sprechen beginnt, bedeutet das, dass es die Welt verstehen und begrifflich erfassen kann.\nSprechen und Lesen lernen geht über das Kennen von Zeichen hinaus – das Kind kann als Mensch am gesellschaftlichen Leben teilnehmen.\nSprache ist für das Kind ein weiterer Schritt in eine neue Welt.",
+      "Deshalb sind wir so gerührt und froh, wenn ein Kind seine ersten Schritte macht oder sein erstes Wort „Mama“ sagt.",
+      "Wie unsere Kinder nach den ersten Schritten durch die Welt laufen, hoffen wir, dass sie zu gesunden Menschen heranwachsen – ihre Gedanken in Sprache ausdrücken, lesen und schreiben, beginnend mit dem ersten Wort „Mama“.",
+      "Die Lehrkräfte von Dodam Dodam werden gemeinsam mit den Eltern ihr Bestes geben, jeden weiteren Schritt des Kindes in die Welt zu feiern.\nVielen Dank.\n\nSchulleiterin Ha Chun-hee",
+    ],
+  },
+  schoolOrganization: {
+    name: "Koreanische Sprachschule Dodam Dodam Berlin",
+    principal: "Ha Chun-hee",
+    officeAddress: "Schulbüro; Kindergarten: Pangea Haus e.V. / Trautenaustraße 5, 10717 Berlin",
+    elementaryAddress: "Grundschulklassen: Ruppin-Grundschule / Offenbacher Str. 5A, 14197 Berlin",
+    phone: "+49 15208907055",
+    email: "dodamdodam054@gmail.com",
+  },
+  educationGoals: {
+    purpose: {
+      title: "Bildungszweck",
+      text: "Koreanerinnen und Koreaner zu fördern, die sich selbst, ihre Heimat und die Welt lieben!",
+    },
+    goals: {
+      title: "Bildungsziele",
+      items: [
+        "Unterricht in koreanischer Sprache, Kultur und Geschichte für Koreanerinnen und Koreaner, Kinder aus multikulturellen Familien, Adoptivkinder und Einheimische.",
+        "Die nächste Generation soll koreanische Identität entwickeln, Koreanisch sprechen und durch emotionales Coaching und Charakterbildung gesund wachsen.",
+      ],
+    },
+    direction: {
+      title: "Bildungsausrichtung",
+      paragraphs: [
+        "Bei Dodam Dodam setzen wir nicht auf Auswendiglernen. Vom Kindergartenalter bis zur Jugend unterrichten wir entsprechend Entwicklungsstand und Niveau, damit Kinder Hören, Sprechen, Lesen und Schreiben können, Ideen logisch ausdrücken und einen erweiterten Wortschatz aufbauen.",
+        "Durch verschiedene Programme schaffen wir Raum für Sorgen und Fragen der Kinder und vermitteln koreanische Kultur und Geschichte durch Erlebnisse und Feste.",
+      ],
+      quoteIntro: "Ein Vater an unserer Schule sagte einmal:",
+      quote:
+        "Ich erwarte nicht viel von meinem Kind. Es wäre schön, wenn mein Kind stolz darauf ist, Koreaner zu sein, und mit mir Koreanisch sprechen könnte.",
+      closing: {
+        before: "Diese Worte sind Zweck und Ziel unserer Schule. Wir wünschen uns, dass die nächste Generation als ",
+        highlight: "weltbürgerliche Koreanerinnen und Koreaner mit Stolz und fließendem Koreanisch",
+        after: " auftreten kann.",
+      },
+    },
+  },
+  history: [
+    {
+      period: "März 2015",
+      lines: [
+        "Gründung der Koreanischen Schule Seonhan Mokja in der Seonhan-Mokja-Kirche, Berlin",
+        "Erste Schulleiterin: Jung Seung-an",
+      ],
+    },
+    { period: "März 2015 – Februar 2020", lines: ["Unterricht im Bildungsgebäude der Kirche"] },
+    {
+      period: "März 2020",
+      lines: [
+        "Umbenennung in Koreanische Sprachschule Dodam Dodam Berlin",
+        "Zugehörigkeit zum Berlin Heim_isch Bildungs- und Kulturzentrum",
+        "Amtsantritt der zweiten Schulleiterin Ha Chun-hee",
+      ],
+    },
+    { period: "März 2020 – Dezember 2021", lines: ["Umzug der Schule: Bernhardstr. 13, 10715 Berlin"] },
+    { period: "Januar 2021", lines: ["Registrierung bei der Stiftung für Bildung der Auslandskoreaner"] },
+    { period: "Januar 2022 – Dezember 2025", lines: ["Umzug der Schule: Blissestr. 58, 10713 Berlin"] },
+    {
+      period: "Januar 2026 – heute",
+      lines: ["Umzug der Schule", "Grundschule: Ruppin-Grundschule", "Kindergarten: Pangea Haus e.V."],
+    },
+  ],
+  calendar: {
+    title: "▣ Koreanische Sprachschule Dodam Dodam Berlin\n\nSchulkalender 2026 (insgesamt 38–39 Wochen)",
+    monthWeekHeader: "Monat / Woche",
+    rows: [
+      {
+        month: "Jan",
+        w1: "1. Halbjahr beginnt\nElternabend Kindergarten\nElternabend Grundschule",
+        w2: "",
+        w3: "",
+        w4: "",
+        w5: "",
+      },
+      { month: "Feb", w1: "Winterferien\n3.–7.2.", w2: "Neujahrsfest", w3: "", w4: "", w5: "" },
+      { month: "Mär", w1: "Gedenken an den Unabhängigkeitstag", w2: "", w3: "", w4: "", w5: "" },
+      { month: "Apr", w1: "Osterferien\n(2.4.–14.4.)", w2: "", w3: "", w4: "", w5: "" },
+      { month: "Mai", w1: "Kinderlied-Wettbewerb", w2: "Frieden & Einheit – Mal- und Schreibwettbewerb", w3: "", w4: "", w5: "" },
+      { month: "Jun", w1: "Gedenkfeier", w2: "", w3: "Frühlingsausflug", w4: "", w5: "" },
+      { month: "Jul", w1: "Sommerferien\n9.7.–23.8.", w2: "", w3: "", w4: "", w5: "" },
+      { month: "Aug", w1: "", w2: "", w3: "", w4: "", w5: "" },
+      { month: "Sep", w1: "Chuseok-Fest", w2: "", w3: "", w4: "", w5: "" },
+      {
+        month: "Okt",
+        w1: "",
+        w2: "",
+        w3: "",
+        w4: "Herbstferien\n19.–31.10.",
+        w5: "Lehrerfortbildung\nkoreanische Auslandsschulen\n30.10.–1.11.",
+      },
+      { month: "Nov", w1: "", w2: "", w3: "", w4: "", w5: "" },
+      { month: "Dez", w1: "", w2: "", w3: "", w4: "", w5: "Weihnachtsferien\n23.12.–3.1." },
+    ],
+    footnotes: [
+      "▶ Termine können sich je nach Schullage ändern.",
+      "▶ Die Ferien der Koreanischen Schule entsprechen den Berliner Schulferien.",
+      "▶ An Ferien- und Feiertagen findet kein Unterricht statt.",
+    ],
+    schoolHolidaysTitle: "Berliner Schulferien 2026",
+    schoolHolidays: [
+      { label: "Winterferien", range: "Mo 02.02.2026 – Sa 08.02.2026" },
+      { label: "Osterferien", range: "Mo 30.03.2026 – Sa 12.04.2026" },
+      { label: "Sommerferien", range: "Do 09.07.2026 – Sa 23.08.2026" },
+      { label: "Herbstferien", range: "Mo 19.10.2026 – Sa 01.11.2026" },
+      { label: "Weihnachtsferien", range: "Mi 23.12.2026 – Sa 02.01.2027" },
+    ],
+    publicHolidaysTitle: "Feiertage in Deutschland 2026",
+    holidayNameHeader: "Name",
+    holidayDateHeader: "Datum",
+    publicHolidays: [
+      { name: "Neujahr", date: "01.01.2026" },
+      { name: "Internationaler Frauentag", date: "08.03.2026" },
+      { name: "Karfreitag", date: "03.04.2026" },
+      { name: "Ostermontag", date: "06.04.2026" },
+      { name: "Tag der Arbeit", date: "01.05.2026" },
+      { name: "Christi Himmelfahrt", date: "14.05.2026", note: "Kein Unterricht" },
+      { name: "Brückentag", date: "15.05.2026" },
+      { name: "Pfingstmontag", date: "26.05.2026", note: "Kein Unterricht" },
+      { name: "Pfingstsonntag", date: "30.05.2026" },
+      { name: "Tag der Deutschen Einheit", date: "03.10.2026" },
+      { name: "Weihnachtstag", date: "25.12.2026" },
+      { name: "Zweiter Weihnachtstag", date: "26.12.2026" },
+    ],
+  },
+  directions: {
+    titlePrimary: "Koreanische Sprachschule Dodam Dodam Berlin",
+    titleSecondary: "Berlin Dodam Dodam Korean Language School",
+    teachingSitesLabel: "Unterrichtsorte",
+    lines: [
+      "Ruppin-Grundschule (Grundschulklasse)",
+      "Pangea Haus (Kindergartenklasse)",
+      "",
+      "Pangea Haus e.V. / Trautenaustraße 5, 10717 Berlin",
+      "Ruppin-Grundschule / Offenbacher Str. 5A, 14197 Berlin",
+    ],
+    phones: ["Anfragen: 0153 0890 7055", "+49 30 8550 6368"],
+    emailLine: "E-Mail: dodamdodam054@gmail.com",
+    mapLabel: "Google Maps",
+    mapPangea: "Google Maps — Pangea Haus",
+    mapRuppin: "Google Maps — Ruppin-Grundschule",
+  },
+};

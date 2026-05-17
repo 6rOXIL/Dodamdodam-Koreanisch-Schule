@@ -22,7 +22,7 @@ export default function InstagramFeed({ feed }: Props) {
         <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
           {t("gallery.instagramLabel")}
         </p>
-        <h3 className="mt-2 font-serif text-xl font-bold text-slate-900 sm:text-2xl">
+        <h3 className="mt-2 font-sans text-xl font-bold text-slate-900 sm:text-2xl">
           {t("gallery.instagramTitle")}
         </h3>
         <p className="mx-auto mt-2 max-w-xl text-sm text-slate-500">

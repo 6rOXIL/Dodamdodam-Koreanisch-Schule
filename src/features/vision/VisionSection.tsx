@@ -22,7 +22,7 @@ export function VisionSection({
           <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
             {t("vision.label")}
           </p>
-          <HeadingTag className="mt-3 font-serif text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
+          <HeadingTag className="mt-3 font-sans text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
             {t("vision.title")}
           </HeadingTag>
           <p className="mx-auto mt-4 max-w-2xl text-[15px] text-slate-600 sm:text-base">

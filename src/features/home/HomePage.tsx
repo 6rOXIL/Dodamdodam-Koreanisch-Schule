@@ -34,7 +34,7 @@ export default function HomePage() {
           <p className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-amber-200/95 sm:text-xs sm:tracking-[0.35em]">
             {t("hero.welcome")}
           </p>
-          <h1 className="mt-3 font-serif text-2xl font-bold leading-snug sm:mt-4 sm:text-4xl sm:leading-tight md:text-5xl">
+          <h1 className="mt-3 font-sans text-2xl font-bold leading-snug sm:mt-4 sm:text-4xl sm:leading-tight md:text-5xl">
             {t("hero.title")}
           </h1>
           <p className="mt-4 text-base leading-relaxed text-white/90 sm:mt-6 sm:text-lg md:text-xl">

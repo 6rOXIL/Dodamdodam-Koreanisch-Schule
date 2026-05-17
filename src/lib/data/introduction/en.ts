@@ -1,0 +1,153 @@
+import type { IntroductionContent } from "./types";
+
+export const introductionEn: IntroductionContent = {
+  greeting: {
+    paragraphs: [
+      "Hello,",
+      "Thank you for visiting the website of Berlin Dodam Dodam Korean Language School.",
+      'Dodam Dodam is a pure Korean word meaning "the sight of a young child growing up healthy and without trouble."',
+      "Our Korean school reflects the wish we all share for our children to grow up emotionally and physically healthy.",
+      "When a child is born and begins to speak, it means they can understand the world and form concepts about it.\nLearning to speak and read also goes beyond knowing symbols—it means the child can take part in social life as a human being in the world they live in.\nIn other words, language is another step into a new world for the child.",
+      "That is why we are so moved and joyful when a child takes their first steps or says their first word, \"Mom.\"",
+      "Just as our children walk and run through the world after their first steps, we hope they will grow into healthy members of society—expressing their thoughts in language, reading, and writing, beginning with that first word, \"Mom.\"",
+      "Our Dodam Dodam teachers will do their best, together with parents, to celebrate and rejoice whenever a child takes another step into the world.\nThank you.\n\nPrincipal Ha Chun-hee",
+    ],
+  },
+  schoolOrganization: {
+    name: "Berlin Dodam Dodam Korean Language School",
+    principal: "Ha Chun-hee",
+    officeAddress: "School office; kindergarten classes: Pangea Haus e.V. / Trautenaustraße 5, 10717 Berlin",
+    elementaryAddress: "Elementary classes: Ruppin-Grundschule / Offenbacher Str. 5A, 14197 Berlin",
+    phone: "+49 15208907055",
+    email: "dodamdodam054@gmail.com",
+  },
+  educationGoals: {
+    purpose: {
+      title: "Educational purpose",
+      text: "To nurture Koreans who love themselves, love their homeland, and love the world!",
+    },
+    goals: {
+      title: "Educational goals",
+      items: [
+        "Provide education in Korean language, culture, and history for Korean children, multicultural families, adoptees, and local residents.",
+        "Support the next generation in developing Korean identity, using Korean confidently, and growing healthily through emotional coaching and character education.",
+      ],
+    },
+    direction: {
+      title: "Educational approach",
+      paragraphs: [
+        "At Dodam Dodam we do not rely on rote memorization. From early childhood through adolescence, we guide children according to their developmental stage and level so they can listen, speak, read, and write in Korean, express their ideas logically, and build advanced vocabulary.",
+        "Through various programs we create space for children’s concerns and questions, and help them learn Korean culture and history through hands-on activities and holiday events.",
+      ],
+      quoteIntro: "A father at our school once said:",
+      quote:
+        "I do not expect much from my child. I would be happy if my child could be proud of being Korean and talk with me in Korean.",
+      closing: {
+        before: "These words reflect the purpose and goal of our school. We hope the next generation will stand as ",
+        highlight: "global Koreans with pride in their identity, fluent in Korean",
+        after: ".",
+      },
+    },
+  },
+  history: [
+    {
+      period: "March 2015",
+      lines: ["Seonhan Mokja Korean School founded at Seonhan Mokja Church, Berlin", "First principal: Jung Seung-an"],
+    },
+    { period: "March 2015 – February 2020", lines: ["Classes held at the church education building"] },
+    {
+      period: "March 2020",
+      lines: [
+        "Renamed Berlin Dodam Dodam Korean Language School",
+        "Affiliated with Berlin Heim_isch Education & Culture Center",
+        "Second principal Ha Chun-hee inaugurated",
+      ],
+    },
+    { period: "March 2020 – December 2021", lines: ["School relocated to Bernhardstr. 13, 10715 Berlin"] },
+    { period: "January 2021", lines: ["Registered with the Overseas Koreans Education Foundation"] },
+    { period: "January 2022 – December 2025", lines: ["School relocated to Blissestr. 58, 10713 Berlin"] },
+    {
+      period: "January 2026 – present",
+      lines: ["School relocated", "Elementary: Ruppin-Grundschule", "Kindergarten: Pangea Haus e.V."],
+    },
+  ],
+  calendar: {
+    title: "▣ Berlin Dodam Dodam Korean Language School\n\n2026 school calendar (38–39 weeks total)",
+    monthWeekHeader: "Month / week",
+    rows: [
+      {
+        month: "Jan",
+        w1: "1st semester begins\nKindergarten parent meeting\nElementary parent meeting",
+        w2: "",
+        w3: "",
+        w4: "",
+        w5: "",
+      },
+      { month: "Feb", w1: "Winter break\nFeb 3–7", w2: "Lunar New Year celebration", w3: "", w4: "", w5: "" },
+      { month: "Mar", w1: "Independence Movement Day event", w2: "", w3: "", w4: "", w5: "" },
+      { month: "Apr", w1: "Easter break\n(Apr 2–14)", w2: "", w3: "", w4: "", w5: "" },
+      { month: "May", w1: "Children’s song contest", w2: "Peace & unification art & writing contest", w3: "", w4: "", w5: "" },
+      { month: "Jun", w1: "Memorial Day ceremony", w2: "", w3: "Spring outing", w4: "", w5: "" },
+      { month: "Jul", w1: "Summer break\nJul 9–Aug 23", w2: "", w3: "", w4: "", w5: "" },
+      { month: "Aug", w1: "", w2: "", w3: "", w4: "", w5: "" },
+      { month: "Sep", w1: "Chuseok celebration", w2: "", w3: "", w4: "", w5: "" },
+      {
+        month: "Oct",
+        w1: "",
+        w2: "",
+        w3: "",
+        w4: "Autumn break\nOct 19–31",
+        w5: "Overseas Korean school\nteacher training\nOct 30–Nov 1",
+      },
+      { month: "Nov", w1: "", w2: "", w3: "", w4: "", w5: "" },
+      { month: "Dec", w1: "", w2: "", w3: "", w4: "", w5: "Christmas break\nDec 23–Jan 3" },
+    ],
+    footnotes: [
+      "▶ Dates may change depending on school circumstances.",
+      "▶ Korean school breaks follow Berlin public school holidays.",
+      "▶ No Korean school classes during breaks and public holidays.",
+    ],
+    schoolHolidaysTitle: "Berlin school holidays 2026",
+    schoolHolidays: [
+      { label: "Winter break", range: "Mon 2 Feb 2026 – Sat 8 Feb 2026" },
+      { label: "Easter break", range: "Mon 30 Mar 2026 – Sat 12 Apr 2026" },
+      { label: "Summer break", range: "Thu 9 Jul 2026 – Sat 23 Aug 2026" },
+      { label: "Autumn break", range: "Mon 19 Oct 2026 – Sat 1 Nov 2026" },
+      { label: "Christmas break", range: "Wed 23 Dec 2026 – Sat 2 Jan 2027" },
+    ],
+    publicHolidaysTitle: "German public holidays 2026",
+    holidayNameHeader: "Name",
+    holidayDateHeader: "Date",
+    publicHolidays: [
+      { name: "New Year’s Day", date: "1 Jan 2026" },
+      { name: "International Women’s Day", date: "8 Mar 2026" },
+      { name: "Good Friday", date: "3 Apr 2026" },
+      { name: "Easter Monday", date: "6 Apr 2026" },
+      { name: "Labour Day", date: "1 May 2026" },
+      { name: "Ascension Day", date: "14 May 2026", note: "No classes" },
+      { name: "Bridge day", date: "15 May 2026" },
+      { name: "Whit Monday", date: "26 May 2026", note: "No classes" },
+      { name: "Whit Sunday", date: "30 May 2026" },
+      { name: "German Unity Day", date: "3 Oct 2026" },
+      { name: "Christmas Day", date: "25 Dec 2026" },
+      { name: "Boxing Day", date: "26 Dec 2026" },
+    ],
+  },
+  directions: {
+    titlePrimary: "Berlin Dodam Dodam Korean Language School",
+    titleSecondary: "Berlin Dodam Dodam Koreanische Schule",
+    teachingSitesLabel: "Teaching locations",
+    lines: [
+      "Ruppin Grundschule (elementary classes)",
+      "Pangea Haus (kindergarten classes)",
+      "",
+      "Pangea Haus e.V. / Trautenaustraße 5, 10717 Berlin",
+      "Ruppin-Grundschule / Offenbacher Str. 5A, 14197 Berlin",
+    ],
+    phones: ["Inquiries: 0153 0890 7055", "+49 30 8550 6368"],
+    emailLine: "Email: dodamdodam054@gmail.com",
+    mapLabel: "Google Maps",
+    mapPangea: "Google Maps — Pangea Haus",
+    mapRuppin: "Google Maps — Ruppin-Grundschule",
+  },
+};

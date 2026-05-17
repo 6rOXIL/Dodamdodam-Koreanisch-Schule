@@ -1,4 +1,4 @@
-import type { ClassScheduleRow } from "@/lib/data/classContent";
+import type { ClassScheduleRow } from "@/lib/data/classes";
 
 type Props = {
   title: string;

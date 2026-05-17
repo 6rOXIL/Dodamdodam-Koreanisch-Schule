@@ -14,7 +14,7 @@ export default function IntroductionLayoutClient({ children }: { children: React
           <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
             {t("introduction.label")}
           </p>
-          <h1 className="mt-3 font-serif text-3xl font-bold text-slate-900 sm:text-4xl">
+          <h1 className="mt-3 font-sans text-3xl font-bold text-slate-900 sm:text-4xl">
             {t("introduction.title")}
           </h1>
         </header>

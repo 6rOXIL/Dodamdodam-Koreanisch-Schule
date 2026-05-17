@@ -1,20 +1,17 @@
 "use client";
 
-import {
-  educationGoals,
-  historyEntries,
-  schoolOrganization,
-} from "@/lib/data/introductionContent";
+import { useIntroductionContent } from "@/lib/hooks/useIntroductionContent";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 
 export default function SummarySection() {
   const { t } = useLanguage();
+  const { schoolOrganization, educationGoals, history } = useIntroductionContent();
 
   return (
     <section className="space-y-8" aria-labelledby="page-heading">
       <h2
         id="page-heading"
-        className="border-b border-amber-200/80 pb-2 font-serif text-2xl font-bold text-slate-900"
+        className="border-b border-amber-200/80 pb-2 font-sans text-2xl font-bold text-slate-900"
       >
         {t("introduction.links.summary")}
       </h2>
@@ -24,7 +21,7 @@ export default function SummarySection() {
           <dl className="space-y-2 border-l-2 border-amber-200 pl-4">
             <div>
               <dt className="text-sm font-medium text-slate-500">{t("introduction.schoolName")}</dt>
-              <dd className="mt-0.5 font-medium text-slate-900">{schoolOrganization.nameKo}</dd>
+              <dd className="mt-0.5 font-medium text-slate-900">{schoolOrganization.name}</dd>
             </div>
             <div>
               <dt className="text-sm font-medium text-slate-500">{t("introduction.principal")}</dt>
@@ -116,7 +113,7 @@ export default function SummarySection() {
         <div>
           <h3 className="mb-4 font-semibold text-slate-900">{t("introduction.historyTitle")}</h3>
           <ul className="space-y-4">
-            {historyEntries.map((h) => (
+            {history.map((h) => (
               <li key={h.period} className="border-b border-slate-100 pb-4 last:border-0">
                 <p className="font-semibold text-amber-900">{h.period}</p>
                 <ul className="mt-2 list-inside list-disc space-y-1 text-slate-700">

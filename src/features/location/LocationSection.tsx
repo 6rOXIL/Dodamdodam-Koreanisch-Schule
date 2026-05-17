@@ -23,7 +23,7 @@ export function LocationSection({
           <p className="text-xs font-semibold uppercase tracking-widest text-amber-200/90">
             {t("location.label")}
           </p>
-          <HeadingTag className="mt-3 font-serif text-2xl font-bold sm:text-3xl md:text-4xl">
+          <HeadingTag className="mt-3 font-sans text-2xl font-bold sm:text-3xl md:text-4xl">
             {t("location.title")}
           </HeadingTag>
         </div>

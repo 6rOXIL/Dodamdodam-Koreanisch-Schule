@@ -1,26 +1,27 @@
 "use client";
 
-import { elementaryClass } from "@/lib/data/classContent";
+import { useClassesContent } from "@/lib/hooks/useClassesContent";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import ClassDetailBlock from "../components/ClassDetailBlock";
 import ClassScheduleTable from "../components/ClassScheduleTable";
 
 export default function ElementarySection() {
-  const { t } = useLanguage();
-  const { petalSection, fruitSection } = elementaryClass;
+  const { t, language } = useLanguage();
+  const { elementary } = useClassesContent();
+  const { petalSection, fruitSection } = elementary;
 
   return (
     <section className="space-y-8" aria-labelledby="page-heading">
       <h2
         id="page-heading"
-        className="border-b border-amber-200/80 pb-2 font-serif text-2xl font-bold text-slate-900"
+        className="border-b border-amber-200/80 pb-2 font-sans text-2xl font-bold text-slate-900"
       >
         {t("classes.links.elementary")}
       </h2>
       <div className="space-y-8 text-[15px] leading-relaxed text-slate-700 sm:text-base">
         <ClassScheduleTable
-          title={elementaryClass.scheduleTitle}
-          rows={elementaryClass.schedule}
+          title={elementary.scheduleTitle}
+          rows={elementary.schedule}
           colGroup={t("classes.table.group")}
           colClass={t("classes.table.class")}
           colTime={t("classes.table.time")}
@@ -34,11 +35,15 @@ export default function ElementarySection() {
           bullets={petalSection.bullets}
           textbooks={petalSection.textbooks}
           note={petalSection.note}
-          koOnlyImage={{
-            afterParagraphIndex: 1,
-            src: "/images/class_ elementary.png",
-            alt: "초등반 수업 활동 사진",
-          }}
+          koOnlyImage={
+            language === "ko"
+              ? {
+                  afterParagraphIndex: 1,
+                  src: "/images/class_ elementary.png",
+                  alt: "초등반 수업 활동 사진",
+                }
+              : undefined
+          }
         />
         <ClassDetailBlock
           title={fruitSection.title}

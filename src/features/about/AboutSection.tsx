@@ -21,7 +21,7 @@ export function AboutSection({
         <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
           {t("about.label")}
         </p>
-        <HeadingTag className="mt-3 font-serif text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
+        <HeadingTag className="mt-3 font-sans text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
           {t("about.title")}
         </HeadingTag>
         <p className="mt-6 text-[15px] leading-relaxed text-slate-600 sm:mt-8 sm:text-base md:text-lg">

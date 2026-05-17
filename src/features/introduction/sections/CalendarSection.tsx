@@ -1,28 +1,23 @@
 "use client";
 
-import {
-  calendarFootnotes,
-  calendarRows,
-  calendarTitle,
-  feiertage2026,
-  schulferien2026,
-} from "@/lib/data/introductionContent";
+import { useIntroductionContent } from "@/lib/hooks/useIntroductionContent";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 
 export default function CalendarSection() {
   const { t } = useLanguage();
+  const { calendar } = useIntroductionContent();
 
   return (
     <section className="space-y-6" aria-labelledby="page-heading">
       <h2
         id="page-heading"
-        className="border-b border-amber-200/80 pb-2 font-serif text-2xl font-bold text-slate-900"
+        className="border-b border-amber-200/80 pb-2 font-sans text-2xl font-bold text-slate-900"
       >
         {t("introduction.links.calendar")}
       </h2>
       <div className="space-y-8">
         <p className="whitespace-pre-line text-center text-sm font-medium text-slate-800 sm:text-base">
-          {calendarTitle}
+          {calendar.title}
         </p>
 
         <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
@@ -30,7 +25,7 @@ export default function CalendarSection() {
             <thead>
               <tr className="border-b border-slate-200 bg-slate-50">
                 <th scope="col" className="whitespace-nowrap px-2 py-3 font-semibold text-slate-800 sm:px-3">
-                  월 / 주차
+                  {calendar.monthWeekHeader}
                 </th>
                 {[1, 2, 3, 4, 5].map((n) => (
                   <th
@@ -44,7 +39,7 @@ export default function CalendarSection() {
               </tr>
             </thead>
             <tbody>
-              {calendarRows.map((row) => (
+              {calendar.rows.map((row) => (
                 <tr key={row.month} className="border-b border-slate-100 last:border-0">
                   <th
                     scope="row"
@@ -64,15 +59,15 @@ export default function CalendarSection() {
         </div>
 
         <ul className="space-y-2 text-sm text-slate-600">
-          {calendarFootnotes.map((line, i) => (
+          {calendar.footnotes.map((line, i) => (
             <li key={i}>{line}</li>
           ))}
         </ul>
 
         <div>
-          <h3 className="mb-3 font-semibold text-slate-900">Schulferien 2026</h3>
+          <h3 className="mb-3 font-semibold text-slate-900">{calendar.schoolHolidaysTitle}</h3>
           <ul className="space-y-2 text-sm text-slate-700">
-            {schulferien2026.map((s) => (
+            {calendar.schoolHolidays.map((s) => (
               <li key={s.label}>
                 <span className="font-medium text-slate-800">{s.label}</span> {s.range}
               </li>
@@ -81,17 +76,17 @@ export default function CalendarSection() {
         </div>
 
         <div>
-          <h3 className="mb-3 font-semibold text-slate-900">2026 Feiertag</h3>
+          <h3 className="mb-3 font-semibold text-slate-900">{calendar.publicHolidaysTitle}</h3>
           <div className="overflow-x-auto rounded-lg border border-slate-200">
             <table className="w-full min-w-[320px] border-collapse text-left text-sm">
               <thead>
                 <tr className="border-b border-slate-200 bg-slate-50">
-                  <th className="px-3 py-2 font-semibold">Name</th>
-                  <th className="px-3 py-2 font-semibold">Datum</th>
+                  <th className="px-3 py-2 font-semibold">{calendar.holidayNameHeader}</th>
+                  <th className="px-3 py-2 font-semibold">{calendar.holidayDateHeader}</th>
                 </tr>
               </thead>
               <tbody>
-                {feiertage2026.map((row, i) => (
+                {calendar.publicHolidays.map((row, i) => (
                   <tr key={i} className="border-b border-slate-100 last:border-0">
                     <td className="px-3 py-2 text-slate-800">
                       {row.name}

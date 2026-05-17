@@ -14,7 +14,7 @@ export default function ClassesLayoutClient({ children }: { children: ReactNode 
           <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
             {t("classes.label")}
           </p>
-          <h1 className="mt-3 font-serif text-3xl font-bold text-slate-900 sm:text-4xl">
+          <h1 className="mt-3 font-sans text-3xl font-bold text-slate-900 sm:text-4xl">
             {t("classes.title")}
           </h1>
           <p className="mt-3 text-sm text-slate-600 sm:text-base">{t("classes.lead")}</p>

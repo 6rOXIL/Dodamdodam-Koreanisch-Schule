@@ -1,19 +1,19 @@
 "use client";
 
-import { kindergartenClass } from "@/lib/data/classContent";
+import { useClassesContent } from "@/lib/hooks/useClassesContent";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import ClassDetailBlock from "../components/ClassDetailBlock";
 import ClassScheduleTable from "../components/ClassScheduleTable";
 
 export default function KindergartenSection() {
-  const { t } = useLanguage();
-  const data = kindergartenClass;
+  const { t, language } = useLanguage();
+  const data = useClassesContent().kindergarten;
 
   return (
     <section className="space-y-8" aria-labelledby="page-heading">
       <h2
         id="page-heading"
-        className="border-b border-amber-200/80 pb-2 font-serif text-2xl font-bold text-slate-900"
+        className="border-b border-amber-200/80 pb-2 font-sans text-2xl font-bold text-slate-900"
       >
         {t("classes.links.kindergarten")}
       </h2>
@@ -37,11 +37,15 @@ export default function KindergartenSection() {
           bullets={data.bullets}
           textbooks={data.textbooks}
           note={data.note}
-          koOnlyImage={{
-            afterParagraphIndex: 1,
-            src: "/images/class_ kindergarten.png",
-            alt: "유치반 수업 활동 사진",
-          }}
+          koOnlyImage={
+            language === "ko"
+              ? {
+                  afterParagraphIndex: 1,
+                  src: "/images/class_ kindergarten.png",
+                  alt: "유치반 수업 활동 사진",
+                }
+              : undefined
+          }
         />
       </div>
     </section>
