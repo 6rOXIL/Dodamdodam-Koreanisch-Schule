@@ -8,9 +8,9 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "classes": "Class overview",
     "vision": "Vision",
     "gallery": "Gallery",
+    "classes": "Classes",
     "events": "News",
     "schedule": "Classes",
     "location": "Visit"
@@ -21,32 +21,10 @@
     "subtitle": "Growing together in Korean, opening doors to tomorrow",
     "cta": "About the school"
   },
-  "classes": {
-    "label": "classes",
-    "title": "Class overview",
-    "lead": "Class groups, schedules, and teaching approach by age.",
-    "sectionNav": "On this page",
-    "location": "Location",
-    "table": {
-      "group": "Group",
-      "class": "Class",
-      "time": "Schedule"
-    },
-    "links": {
-      "kindergarten": "Kindergarten",
-      "elementary": "Elementary",
-      "adults": "Adults"
-    },
-    "adults": {
-      "schedule": "Schedule",
-      "tuition": "Tuition",
-      "textbook": "Textbook"
-    }
-  },
   "introduction": {
     "label": "introduction",
     "title": "About the school",
-    "lead": "Greeting, school overview, calendar, and directions.",
+    "lead": "Greeting, school overview, calendar, and directions. Main text is in Korean.",
     "backHome": "← Home",
     "sectionNav": "On this page",
     "schoolOrgTitle": "Organization & contact",
@@ -55,7 +33,6 @@
     "address": "Address",
     "phone": "Phone",
     "historyTitle": "History",
-    "educationGoalsTitle": "Educational goals & direction",
     "links": {
       "greeting": "Greeting",
       "summary": "School overview",
@@ -66,7 +43,7 @@
   "about": {
     "label": "about",
     "title": "About",
-    "body": "Dodamdodam Korean Language School in Berlin welcomes children and families who love Korean language and culture. We continue information from the Overseas Koreans Foundation Korean Net (homepy.korean.net) homepage. We help students read, write, sing, and enjoy learning Hangul."
+    "body": "Dodamdodam Korean Language School in Berlin provide Korean language, Hangul, culture, and history education with the goal of helping the next generation- including Korean children, multicultural children, adoptees, and local foreigners- develop a strong Korean identity, speak Korean confidently, and grow up in a healthy and emotionally supported environment through emotional coaching and character education."
   },
   "legacy": {
     "colDate": "Date",
@@ -88,6 +65,12 @@
     "card3Title": "Open community",
     "card3Subtitle": "Community",
     "card3Body": "A warm place of learning connected to families and the neighborhood."
+  },
+  "Classes": {
+    "label": "classes",
+    "title": "classes",
+    "lead": "Meet the teachers who walk with students each day.",
+    "placeholder": "Profiles and greetings are coming soon."
   },
   "gallery": {
     "label": "gallery",
@@ -126,8 +109,12 @@
   "location": {
     "label": "location",
     "title": "Location",
-    "addressLabel": "Address",
-    "address": "Blissestr. 58, 10713 Berlin",
+    "addressLabel1": "Elementary Class Address",
+    "address1": "Ruppin Grundschule: Offenbacher Str. 5A, 14197 Berlin Room 107/108",
+    "addressLabel2": "Kindergarten / Middle School Class Address",
+    "address2": "Pangea Haus: Trautenaustraße 5, 10717 Berlin Room 215/217",
+    "addressLabel3": "Office Address",
+    "address3": "Pangea Haus: Trautenaustraße 5, 10717 Berlin Room 216",
     "contactLabel": "Contact",
     "phone": "+49-30-8550-6368",
     "email": "dodamdodam054@gmail.com",

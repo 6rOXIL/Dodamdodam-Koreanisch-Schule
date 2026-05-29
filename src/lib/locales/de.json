@@ -1,23 +1,23 @@
 {
   "site": {
-    "name": "Koreanische Sprachschule Dodamdodam",
+    "name": "Dodam Dodam Koreanische Schule",
     "nameShort": "Dodamdodam",
     "nameEn": "Dodamdodam Korean Language School",
-    "copyright": "© 2026 Koreanische Sprachschule Dodamdodam. Alle Rechte vorbehalten."
+    "copyright": "© 2026 Dodam Dodam Koreanische Schule. Alle Rechte vorbehalten."
   },
   "nav": {
     "home": "Start",
     "about": "Über uns",
-    "classes": "Klassen",
     "vision": "Vision",
     "gallery": "Galerie",
+    "classes": "Klassen",
     "events": "Aktuelles",
     "schedule": "Unterricht",
     "location": "Anfahrt"
   },
   "hero": {
     "welcome": "WILLKOMMEN",
-    "title": "Koreanische Sprachschule Dodamdodam",
+    "title": "Dodam Dodam Koreanische Schule",
     "subtitle": "Gemeinsam Koreanisch lernen, gemeinsam wachsen",
     "cta": "Zur Schulvorstellung"
   },
@@ -66,7 +66,7 @@
   "about": {
     "label": "about",
     "title": "Über uns",
-    "body": "Die Koreanische Sprachschule Dodamdodam in Berlin ist ein Ort für Kinder und Familien, die die koreanische Sprache und Kultur lieben. Die Informationen knüpfen an die Korean-Net-Homepage (homepy.korean.net) der Overseas Koreans Foundation an. Wir unterstützen beim Lesen, Schreiben, Singen und beim freudigen Erlernen von Hangul."
+    "body": "Dodam Dodam Koreanische Schule bieten Unterricht in Koreanisch, Hangul, Kultur und Geschichte an, um der nächsten Generation – darunter koreanischen Kindern, Kindern aus multikulturellen Familien, Adoptierten und hier lebenden Ausländer*innen – zu einer starken koreanischen Identität, sicherer Koreanischkompetenz sowie einer gesunden und stabilen Entwicklung durch emotionale Begleitung und Werteerziehung zu verhelfen."
   },
   "legacy": {
     "colDate": "Datum",
@@ -126,8 +126,12 @@
   "location": {
     "label": "location",
     "title": "Anfahrt",
-    "addressLabel": "Adresse",
-    "address": "Blissestr. 58, 10713 Berlin",
+    "addressLabel1": "Adresse der Grundschulklasse",
+    "address1": "Ruppin Grundschule: Offenbacher Str. 5A, 14197 Berlin Raum 107/108",
+    "addressLabel2": "Adresse der Kindergarten- / Mittelstufenklasse  ",
+    "address2": "Pangea Haus: Trautenaustraße 5, 10717 Berlin Raum 215/217",
+    "addressLabel3": "Büroadresse",
+    "address3": "Pangea Haus: Trautenaustraße 5, 10717 Berlin Raum 216",
     "contactLabel": "Kontakt",
     "phone": "+49-30-8550-6368",
     "email": "dodamdodam054@gmail.com",
