@@ -54,17 +54,17 @@ export default function HomePage() {
       />
       <section
         id="vision"
-        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-slate-50 py-14 sm:py-20 md:py-28"
+        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-surface-muted py-14 sm:py-20 md:py-28"
       >
         <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
           <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
+            <p className="text-xs font-semibold uppercase tracking-widest text-brand-600/80">
               {t("vision.label")}
             </p>
-            <h2 className="mt-3 font-serif text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
+            <h2 className="mt-3 font-serif text-2xl font-bold text-ink-900 sm:text-3xl md:text-4xl">
               {t("vision.title")}
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-[15px] text-slate-600 sm:text-base">
+            <p className="mx-auto mt-4 max-w-2xl text-[15px] text-ink-600 sm:text-base">
               {t("vision.lead")}
             </p>
           </div>
@@ -88,13 +88,13 @@ export default function HomePage() {
             ].map((card) => (
               <article
                 key={card.title}
-                className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm transition hover:shadow-md sm:p-8"
+                className="rounded-2xl border border-ink-200/80 bg-surface p-6 shadow-sm transition hover:shadow-md sm:p-8"
               >
-                <p className="text-xs font-medium uppercase tracking-wide text-amber-800/90">
+                <p className="text-xs font-medium uppercase tracking-wide text-brand-600/90">
                   {card.sub}
                 </p>
-                <h3 className="mt-2 text-xl font-semibold text-slate-900">{card.title}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-slate-600">{card.body}</p>
+                <h3 className="mt-2 text-xl font-semibold text-ink-900">{card.title}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-ink-600">{card.body}</p>
               </article>
             ))}
           </div>
@@ -104,20 +104,20 @@ export default function HomePage() {
       {/* Class */}
       <section
         id="classes"
-        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] border-b border-slate-100 bg-white py-14 sm:py-20 md:py-28"
+        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] border-b border-ink-100 bg-surface py-14 sm:py-20 md:py-28"
       >
         <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
           <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-amber-800/80">
+            <p className="text-xs font-semibold uppercase tracking-widest text-brand-600/80">
               {t("classes.label")}
             </p>
-            <h2 className="mt-3 font-serif text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
+            <h2 className="mt-3 font-serif text-2xl font-bold text-ink-900 sm:text-3xl md:text-4xl">
               {t("classes.title")}
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-slate-600">{t("classes.lead")}</p>
+            <p className="mx-auto mt-4 max-w-2xl text-ink-600">{t("classes.lead")}</p>
           </div>
           <div className="mt-12 flex justify-center">
-            <div className="max-w-md rounded-2xl border border-dashed border-slate-300 bg-slate-50/80 px-5 py-12 text-center text-sm text-slate-500 sm:px-8 sm:py-14 sm:text-base">
+            <div className="max-w-md rounded-2xl border border-dashed border-ink-200 bg-surface-muted px-5 py-12 text-center text-sm text-ink-500 sm:px-8 sm:py-14 sm:text-base">
               {t("classes.placeholder")}
             </div>
           </div>
@@ -139,11 +139,11 @@ export default function HomePage() {
       />
       <section
         id="location"
-        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-slate-900 py-14 text-white sm:py-20 md:py-28"
+        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-surface-inverse py-14 text-on-inverse sm:py-20 md:py-28"
       >
         <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-8">
           <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-amber-200/90">
+            <p className="text-xs font-semibold uppercase tracking-widest text-brand-300/90">
               {t("location.label")}
             </p>
             <h2 className="mt-3 font-serif text-2xl font-bold sm:text-3xl md:text-4xl">
@@ -152,25 +152,25 @@ export default function HomePage() {
           </div>
           <div className="mt-10 grid gap-8 sm:mt-12 md:grid-cols-2 md:gap-16">
             <div>
-              <h3 className="text-sm font-semibold text-amber-200/95">{t("location.addressLabel1")}</h3>
-              <p className="mt-2 mb-6 break-words whitespace-pre-line text-white/90">{t("location.address1")}</p>
+              <h3 className="text-sm font-semibold text-brand-300/95">{t("location.addressLabel1")}</h3>
+              <p className="mt-2 mb-6 break-words whitespace-pre-line text-on-inverse/90">{t("location.address1")}</p>
               
-              <h3 className="text-sm font-semibold text-amber-200/95">{t("location.addressLabel2")}</h3>
-              <p className="mt-2 break-words whitespace-pre-line text-white/90">{t("location.address2")}</p>
+              <h3 className="text-sm font-semibold text-brand-300/95">{t("location.addressLabel2")}</h3>
+              <p className="mt-2 break-words whitespace-pre-line text-on-inverse/90">{t("location.address2")}</p>
 
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-amber-200/95">{t("location.contactLabel")}</h3>
-              <p className="mt-2 text-white/90">{t("location.phone")}</p>
+              <h3 className="text-sm font-semibold text-brand-300/95">{t("location.contactLabel")}</h3>
+              <p className="mt-2 text-on-inverse/90">{t("location.phone")}</p>
               <a
                 href={`mailto:${t("location.email")}`}
-                className="mt-1 inline-block text-amber-200 underline-offset-4 hover:underline"
+                className="mt-1 inline-block text-brand-300 underline-offset-4 hover:underline"
               >
                 {t("location.email")}
               </a>
 
-              <h3 className="text-sm mt-6 font-semibold text-amber-200/95">{t("location.addressLabel3")}</h3>
-              <p className="mt-2 break-words whitespace-pre-line text-white/90">{t("location.address3")}</p>
+              <h3 className="text-sm mt-6 font-semibold text-brand-300/95">{t("location.addressLabel3")}</h3>
+              <p className="mt-2 break-words whitespace-pre-line text-on-inverse/90">{t("location.address3")}</p>
 
             </div>
           </div>
@@ -179,7 +179,7 @@ export default function HomePage() {
               href={LEGACY_MAPS_SEARCH_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-12 min-w-[12rem] items-center justify-center rounded-full border border-white/30 bg-white/10 px-8 py-3 text-sm font-semibold backdrop-blur-sm transition hover:bg-white/20"
+              className="inline-flex min-h-12 min-w-[12rem] items-center justify-center rounded-full border border-on-inverse/30 bg-on-inverse/10 px-8 py-3 text-sm font-semibold backdrop-blur-sm transition hover:bg-on-inverse/20"
             >
               {t("location.mapCta")}
             </a>

@@ -10,31 +10,31 @@
  */
 
 :root {
-  /* Brand (accent) — 기본값: warm amber */
-  --brand-50: 255 251 235;
-  --brand-100: 254 243 199;
-  --brand-200: 253 230 138;
-  --brand-300: 252 211 77;
-  --brand-600: 217 119 6;
-  --brand-800: 146 64 14;
-  --brand-900: 120 53 15;
-  --brand-950: 69 26 3;
+  /* Brand (accent) — warm orange (이미지 참고: 따뜻한 오렌지 계열) */
+  --brand-50: 255 247 237;
+  --brand-100: 255 237 213;
+  --brand-200: 254 215 170;
+  --brand-300: 253 186 116;
+  --brand-600: 234 88 12;
+  --brand-800: 154 52 18;
+  --brand-900: 124 45 18;
+  --brand-950: 67 20 7;
 
-  /* Ink (neutral text & borders) — 기본값: slate */
-  --ink-50: 248 250 252;
-  --ink-100: 241 245 249;
-  --ink-200: 226 232 240;
-  --ink-500: 100 116 139;
-  --ink-600: 71 85 105;
-  --ink-700: 51 65 85;
-  --ink-800: 30 41 59;
-  --ink-900: 15 23 42;
-  --ink-950: 2 6 23;
+  /* Ink (neutral text & borders) — warm navy */
+  --ink-50: 250 249 246;
+  --ink-100: 244 242 237;
+  --ink-200: 229 225 218;
+  --ink-500: 107 114 128;
+  --ink-600: 75 85 99;
+  --ink-700: 55 65 81;
+  --ink-800: 31 41 55;
+  --ink-900: 17 24 39;
+  --ink-950: 8 12 24;
 
-  /* Surfaces */
-  --surface: 255 255 255;
-  --surface-muted: 248 250 252;
-  --surface-inverse: 15 23 42;
+  /* Surfaces — 따뜻한 크림 화이트 */
+  --surface: 255 253 248;
+  --surface-muted: 250 248 242;
+  --surface-inverse: 17 24 39;
 
   /* Text on dark / accent buttons (히어로, 푸터 등) — 보통 surface와 동일 */
   --on-inverse: 255 255 255;
