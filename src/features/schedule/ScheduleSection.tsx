@@ -1,7 +1,6 @@
 "use client";
 
-import LegacyPostTable from "@/components/LegacyPostTable";
-import { LEGACY_BOARDS, LEGACY_CURRICULUM } from "@/lib/data/legacySite";
+import NoticePostTable from "@/components/NoticePostTable";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { getHeadingTag, type HeadingLevel } from "@/features/shared/sectionHeading";
 
@@ -32,49 +31,22 @@ export function ScheduleSection({
 
         <div className="mt-10 text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-brand-800/80">
-            {t("schedule.curriculumLabel")}
+            {t("schedule.boardLabel")}
           </p>
           <h3 className="mt-2 font-sans text-xl font-bold text-ink-900 sm:text-2xl">
-            {t("schedule.curriculumTitle")}
+            {t("schedule.boardTitle")}
           </h3>
           <p className="mx-auto mt-2 max-w-2xl text-sm text-ink-600 sm:text-base">
-            {t("schedule.curriculumLead")}
+            {t("schedule.boardLead")}
           </p>
         </div>
-        <LegacyPostTable
-          posts={LEGACY_CURRICULUM}
+
+        <NoticePostTable
           colDate={t("legacy.colDate")}
           colTitle={t("legacy.colTitle")}
-          externalHint={t("legacy.externalHint")}
+          emptyMessage={t("schedule.boardEmpty")}
+          downloadErrorMessage={t("resources.downloadError")}
         />
-        <p className="mt-6 text-center">
-          <a
-            href={LEGACY_BOARDS.curriculumList}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-semibold text-brand-900 underline-offset-2 hover:underline"
-          >
-            {t("schedule.curriculumMore")}
-          </a>
-        </p>
-
-        {/* <div className="mt-14 grid gap-4 sm:gap-6 md:grid-cols-2">
-          <article className="rounded-2xl border border-ink-200 bg-ink-50/80 p-6 sm:p-8">
-            <h3 className="text-lg font-semibold text-ink-900">{t("schedule.class1Title")}</h3>
-            <p className="mt-2 break-words text-xl font-bold text-brand-900 sm:text-2xl">
-              {t("schedule.class1Time")}
-            </p>
-            <p className="mt-3 text-sm text-ink-600">{t("schedule.class1Note")}</p>
-          </article>
-          <article className="rounded-2xl border border-ink-200 bg-ink-50/80 p-6 sm:p-8">
-            <h3 className="text-lg font-semibold text-ink-900">{t("schedule.class2Title")}</h3>
-            <p className="mt-2 break-words text-xl font-bold text-brand-900 sm:text-2xl">
-              {t("schedule.class2Time")}
-            </p>
-            <p className="mt-3 text-sm text-ink-600">{t("schedule.class2Note")}</p>
-          </article>
-        </div>
-        <p className="mt-8 text-center text-sm text-ink-500">{t("schedule.note")}</p> */}
       </div>
     </section>
   );

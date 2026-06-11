@@ -19,11 +19,14 @@ EXPOSE 3000
 ENV PORT 3000
 ENV HOSTNAME "0.0.0.0"
 
-# Entrypoint 스크립트 생성
+# Entrypoint: lockfile이 바뀌면 node_modules 볼륨에 npm ci 재실행
 RUN echo '#!/bin/sh' > /entrypoint.sh && \
-    echo 'if [ ! -d "node_modules" ] || [ -z "$(ls -A node_modules)" ]; then' >> /entrypoint.sh && \
+    echo 'LOCK_STAMP="/app/node_modules/.package-lock.sha"' >> /entrypoint.sh && \
+    echo 'LOCK_SHA=$(sha256sum package-lock.json 2>/dev/null | cut -d" " -f1)' >> /entrypoint.sh && \
+    echo 'if [ ! -d "node_modules" ] || [ -z "$(ls -A node_modules 2>/dev/null)" ] || [ ! -f "$LOCK_STAMP" ] || [ "$(cat "$LOCK_STAMP" 2>/dev/null)" != "$LOCK_SHA" ]; then' >> /entrypoint.sh && \
     echo '  echo "Installing dependencies..."' >> /entrypoint.sh && \
     echo '  npm ci' >> /entrypoint.sh && \
+    echo '  echo "$LOCK_SHA" > "$LOCK_STAMP"' >> /entrypoint.sh && \
     echo 'fi' >> /entrypoint.sh && \
     echo 'exec "$@"' >> /entrypoint.sh && \
     chmod +x /entrypoint.sh
