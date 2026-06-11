@@ -1,8 +1,8 @@
 "use client";
 
-import { LEGACY_MAPS_SEARCH_URL } from "@/lib/data/legacySite";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { getHeadingTag, type HeadingLevel } from "@/features/shared/sectionHeading";
+import { LocationMapEmbed } from "@/features/location/LocationMapEmbed";
 
 export function LocationSection({
   id,
@@ -20,7 +20,7 @@ export function LocationSection({
     <section id={id} className={className}>
       <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-8">
         <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-brand-200/90">
+          <p className="text-xs font-semibold uppercase tracking-widest text-secondary-300/90">
             {t("location.label")}
           </p>
           <HeadingTag className="mt-3 font-sans text-2xl font-bold sm:text-3xl md:text-4xl">
@@ -29,8 +29,11 @@ export function LocationSection({
         </div>
         <div className="mt-10 grid gap-8 sm:mt-12 md:grid-cols-2 md:gap-16">
           <div>
-            <h3 className="text-sm font-semibold text-brand-200/95">{t("location.addressLabel")}</h3>
-            <p className="mt-2 break-words whitespace-pre-line text-surface/90">{t("location.address")}</p>
+            <h3 className="text-sm font-semibold text-brand-200/95">{t("location.addressLabel1")}</h3>
+            <p className="mt-2 mb-6 break-words whitespace-pre-line text-surface/90">{t("location.address1")}</p>
+
+            <h3 className="text-sm font-semibold text-brand-200/95">{t("location.addressLabel2")}</h3>
+            <p className="mt-2 break-words whitespace-pre-line text-surface/90">{t("location.address2")}</p>
           </div>
           <div>
             <h3 className="text-sm font-semibold text-brand-200/95">{t("location.contactLabel")}</h3>
@@ -41,17 +44,13 @@ export function LocationSection({
             >
               {t("location.email")}
             </a>
+
+            <h3 className="mt-6 text-sm font-semibold text-brand-200/95">{t("location.addressLabel3")}</h3>
+            <p className="mt-2 break-words whitespace-pre-line text-surface/90">{t("location.address3")}</p>
           </div>
         </div>
-        <div className="mt-10 flex justify-center">
-          <a
-            href={LEGACY_MAPS_SEARCH_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-12 min-w-[12rem] items-center justify-center rounded-full border border-surface/30 bg-surface/10 px-8 py-3 text-sm font-semibold backdrop-blur-sm transition hover:bg-surface/20"
-          >
-            {t("location.mapCta")}
-          </a>
+        <div className="mt-10">
+          <LocationMapEmbed variant="dark" />
         </div>
       </div>
     </section>

@@ -113,7 +113,7 @@
     "lead": "Schulmitteilungen und unterrichtsbezogene Hinweise.",
     "boardLabel": "board",
     "boardTitle": "Unterrichts-Hinweisboard",
-    "boardLead": "Veröffentlichte Beiträge aus Materialbibliothek → Hinweise. Titel anklicken, um den Anhang zu öffnen.",
+    "boardLead": "Veröffentlichte Beiträge aus Materialbibliothek → Unterrichtshinweise. Titel anklicken, um den Anhang zu öffnen.",
     "boardEmpty": "Noch keine Hinweise.",
     "class1Title": "Kita & Grundschule",
     "class1Time": "Samstag 10:00 – 12:00",
@@ -135,7 +135,11 @@
     "contactLabel": "Kontakt",
     "phone": "+49-30-8550-6368",
     "email": "dodamdodam054@gmail.com",
-    "mapCta": "In Karten öffnen"
+    "mapCta": "Auf Karte anzeigen",
+    "mapHide": "Karte ausblenden",
+    "mapTabsLabel": "Unterrichtsort wählen",
+    "mapPangea": "Pangea Haus",
+    "mapRuppin": "Ruppin Grundschule"
   },
   "footer": {
     "addressTitle": "Adresse",
@@ -184,6 +188,12 @@
     "uploadTitle": "Material hochladen",
     "fieldTitle": "Titel",
     "fieldCategory": "Kategorie",
+    "categories": {
+      "handout": "Unterrichtsmaterialien",
+      "homework": "Hausaufgaben",
+      "notice": "Unterrichtshinweise",
+      "announcement": "Bekanntmachungen"
+    },
     "fieldClass": "Klasse",
     "fieldDescription": "Beschreibung",
     "fieldFile": "Datei",

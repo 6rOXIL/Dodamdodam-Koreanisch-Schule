@@ -66,7 +66,7 @@ export default function SummarySection() {
           </h3>
           <div className="space-y-6">
             <div className="rounded-lg border border-brand-100 bg-brand-50/50 px-4 py-3 sm:px-5 sm:py-4">
-              <h4 className="text-sm font-semibold tracking-wide text-brand-900 uppercase">
+              <h4 className="text-sm font-semibold tracking-wide text-secondary-700 uppercase">
                 {educationGoals.purpose.title}
               </h4>
               <p className="mt-2 text-[15px] leading-relaxed font-medium text-ink-800 sm:text-base">

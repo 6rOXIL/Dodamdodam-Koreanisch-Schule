@@ -32,7 +32,7 @@ export default function LegacyPostTable({
           {posts.map((row) => (
             <tr
               key={row.url}
-              className="border-b border-ink-100 last:border-b-0 hover:bg-brand-50/40"
+              className="border-b border-ink-100 last:border-b-0 hover:bg-ink-50/60"
             >
               <td className="whitespace-nowrap px-3 py-3 align-top text-ink-500 sm:px-4">
                 {row.date}
@@ -42,7 +42,7 @@ export default function LegacyPostTable({
                   href={row.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-medium text-brand-900 underline-offset-2 hover:underline"
+                  className="font-medium text-ink-700 underline-offset-2 hover:text-ink-700 hover:underline"
                 >
                   {row.title}
                 </a>

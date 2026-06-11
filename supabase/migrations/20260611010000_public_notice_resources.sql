@@ -1,4 +1,4 @@
--- 수업안내 게시판: 공개된 「안내」 카테고리 자료·카테고리·파일 읽기
+-- 수업안내 게시판: 공개된 「수업안내」 카테고리 자료·카테고리·파일 읽기
 create policy "categories_select_public"
   on public.resource_categories for select
   to anon, authenticated

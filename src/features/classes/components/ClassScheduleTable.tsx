@@ -41,7 +41,7 @@ export default function ClassScheduleTable({
 
   return (
     <div className="space-y-3">
-      <h3 className="text-sm font-semibold text-brand-900">{title}</h3>
+      <h3 className="text-sm font-semibold text-brand-600">{title}</h3>
       <div className="overflow-x-auto rounded-xl border border-ink-200 shadow-sm">
         <table className="w-full min-w-[520px] border-collapse text-left text-sm">
           <thead>

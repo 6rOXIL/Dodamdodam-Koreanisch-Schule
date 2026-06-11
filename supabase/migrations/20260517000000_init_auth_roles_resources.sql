@@ -329,5 +329,6 @@ create policy "storage_class_materials_delete"
 insert into public.resource_categories (slug, name_ko, sort_order) values
   ('handout', '수업 자료', 1),
   ('homework', '숙제', 2),
-  ('notice', '안내', 3)
+  ('notice', '수업안내', 3),
+  ('announcement', '공지', 4)
 on conflict (slug) do nothing;

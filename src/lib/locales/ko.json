@@ -113,8 +113,8 @@
     "lead": "학교 안내와 수업 관련 공지를 확인할 수 있습니다.",
     "boardLabel": "board",
     "boardTitle": "수업 안내 게시판",
-    "boardLead": "자료실 「안내」에 공개된 글입니다. 제목을 누르면 첨부 파일을 볼 수 있습니다.",
-    "boardEmpty": "등록된 안내 글이 없습니다.",
+    "boardLead": "자료실 「수업안내」에 공개된 글입니다. 제목을 누르면 첨부 파일을 볼 수 있습니다.",
+    "boardEmpty": "등록된 수업 안내 글이 없습니다.",
     "class1Title": "유치·초등 반",
     "class1Time": "토요일 10:00 – 12:00",
     "class1Note": "한글 기초 · 놀이 중심",
@@ -135,7 +135,11 @@
     "contactLabel": "연락처",
     "phone": "+49-30-8550-6368",
     "email": "dodamdodam054@gmail.com",
-    "mapCta": "지도에서 보기"
+    "mapCta": "지도에서 보기",
+    "mapHide": "지도 숨기기",
+    "mapTabsLabel": "수업 장소 선택",
+    "mapPangea": "Pangea Haus",
+    "mapRuppin": "Ruppin Grundschule"
   },
   "footer": {
     "addressTitle": "주소",
@@ -184,6 +188,12 @@
     "uploadTitle": "자료 업로드",
     "fieldTitle": "제목",
     "fieldCategory": "분류",
+    "categories": {
+      "handout": "수업 자료",
+      "homework": "숙제",
+      "notice": "수업안내",
+      "announcement": "공지"
+    },
     "fieldClass": "학급",
     "fieldDescription": "설명",
     "fieldFile": "파일",

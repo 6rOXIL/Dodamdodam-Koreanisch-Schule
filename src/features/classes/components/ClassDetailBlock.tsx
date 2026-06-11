@@ -38,7 +38,7 @@ export default function ClassDetailBlock({
       <h3 className="font-semibold text-ink-900">{title}</h3>
       {location && (
         <div className="rounded-lg border-l-4 border-brand-300 bg-brand-50/40 px-4 py-3">
-          <p className="text-xs font-semibold uppercase tracking-wide text-brand-900">
+          <p className="text-xs font-semibold uppercase tracking-wide text-secondary-700">
             {locationLabel}
           </p>
           <p className="mt-1 whitespace-pre-line text-sm text-ink-800">{location}</p>

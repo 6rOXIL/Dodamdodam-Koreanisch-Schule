@@ -19,7 +19,7 @@ export function VisionSection({
     <section id={id} className={className}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
         <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-brand-800/80">
+          <p className="text-xs font-semibold uppercase tracking-widest text-secondary-600/80">
             {t("vision.label")}
           </p>
           <HeadingTag className="mt-3 font-sans text-2xl font-bold text-ink-900 sm:text-3xl md:text-4xl">
@@ -51,7 +51,7 @@ export function VisionSection({
               key={card.title}
               className="rounded-2xl border border-ink-200/80 bg-surface p-6 shadow-sm transition hover:shadow-md sm:p-8"
             >
-              <p className="text-xs font-medium uppercase tracking-wide text-brand-800/90">
+              <p className="text-xs font-medium uppercase tracking-wide text-secondary-600/90">
                 {card.sub}
               </p>
               <h3 className="mt-2 text-xl font-semibold text-ink-900">{card.title}</h3>

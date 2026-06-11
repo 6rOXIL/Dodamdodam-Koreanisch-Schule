@@ -54,7 +54,7 @@ export default function AdminMembersClient({ initialMembers }: AdminMembersClien
     <div className="mx-auto max-w-5xl px-4 py-10 md:px-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <p className="text-sm font-medium uppercase tracking-wide text-brand-800">{t("auth.adminLabel")}</p>
+          <p className="text-sm font-medium uppercase tracking-wide text-secondary-600">{t("auth.adminLabel")}</p>
           <h1 className="mt-1 text-3xl font-bold text-ink-900">{t("auth.membersTitle")}</h1>
           <p className="mt-2 text-ink-600">{t("auth.membersLead")}</p>
         </div>

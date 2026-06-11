@@ -8,6 +8,7 @@ import {
   formatResourceFileSize,
   validateResourceFile,
 } from "@/lib/resources/fileConstraints";
+import { getResourceCategoryLabel } from "@/lib/resources/categoryLabel";
 import { RESOURCE_CLASS_SLUGS } from "@/lib/resources/classSlugs";
 import { createClient } from "@/lib/supabase/client";
 import type { Resource, ResourceCategory } from "@/lib/supabase/database.types";
@@ -272,7 +273,7 @@ export default function ResourceFormDialog({
               >
                 {categories.map((cat) => (
                   <option key={cat.id} value={cat.id}>
-                    {cat.name_ko}
+                    {getResourceCategoryLabel(cat, t)}
                   </option>
                 ))}
               </select>

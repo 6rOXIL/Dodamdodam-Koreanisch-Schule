@@ -7,6 +7,7 @@ import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { createClient } from "@/lib/supabase/client";
 import { canUploadResources, isAdmin } from "@/lib/supabase/auth";
 import type { Profile, Resource, ResourceCategory } from "@/lib/supabase/database.types";
+import { getResourceCategoryLabel } from "@/lib/resources/categoryLabel";
 import {
   RESOURCE_COMMON_CLASS,
   type ResourceClassFilter,
@@ -222,7 +223,7 @@ export default function ResourcesClient({
     <div className="mx-auto max-w-6xl px-4 py-10 md:px-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <p className="text-sm font-medium uppercase tracking-wide text-brand-800">{t("resources.label")}</p>
+          <p className="text-sm font-medium uppercase tracking-wide text-secondary-600">{t("resources.label")}</p>
           <h1 className="mt-1 text-3xl font-bold text-ink-900">{t("resources.title")}</h1>
           <p className="mt-2 text-ink-600">{t("resources.lead")}</p>
           <p className="mt-1 text-sm text-ink-500">
@@ -321,7 +322,7 @@ export default function ResourcesClient({
                       : "border-ink-200 bg-ink-50 text-ink-700 hover:border-brand-300 hover:bg-brand-50"
                   }`}
                 >
-                  {category.name_ko}
+                  {getResourceCategoryLabel(category, t)}
                   <span className="ml-1.5 text-[0.7rem] opacity-70">({count})</span>
                 </button>
               );
@@ -345,7 +346,7 @@ export default function ResourcesClient({
                       <p className="mt-1 text-sm text-ink-600">{resource.description}</p>
                     )}
                     <p className="mt-1 text-xs text-ink-500">
-                      {category?.name_ko ?? "—"}
+                      {category ? getResourceCategoryLabel(category, t) : "—"}
                       {resource.class_slug ? ` · ${t(`classes.links.${resource.class_slug}`)}` : ""}
                       {resource.file_name ? ` · ${resource.file_name}` : ""}
                       {!resource.is_published ? ` · ${t("resources.draft")}` : ""}

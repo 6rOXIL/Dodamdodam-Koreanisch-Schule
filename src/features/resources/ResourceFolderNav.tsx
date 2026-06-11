@@ -59,7 +59,7 @@ function NavItem({
     >
       <FolderIcon open={active} />
       <span className="min-w-0 flex-1 truncate">{label}</span>
-      <span className={`shrink-0 text-xs ${active ? "text-brand-800/80" : "text-ink-400"}`}>
+      <span className={`shrink-0 text-xs ${active ? "text-brand-600/80" : "text-ink-400"}`}>
         {count}
       </span>
     </button>

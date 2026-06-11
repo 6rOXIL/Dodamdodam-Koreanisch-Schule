@@ -21,7 +21,7 @@ export function EventsSection({
     <section id={id} className={className}>
       <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-8">
         <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-brand-800/80">
+          <p className="text-xs font-semibold uppercase tracking-widest text-secondary-600/80">
             {t("events.label")}
           </p>
           <HeadingTag className="mt-3 font-sans text-2xl font-bold text-ink-900 sm:text-3xl md:text-4xl">
@@ -40,7 +40,7 @@ export function EventsSection({
             href={LEGACY_BOARDS.noticeList}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-semibold text-brand-900 underline-offset-2 hover:underline"
+            className="text-sm font-semibold text-ink-700 underline-offset-2 hover:text-ink-900 hover:underline"
           >
             {t("legacy.boardFullNotice")}
           </a>

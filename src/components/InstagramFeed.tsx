@@ -19,7 +19,7 @@ export default function InstagramFeed({ feed }: Props) {
   return (
     <div className="mt-14 border-t border-ink-200 pt-12">
       <div className="text-center">
-        <p className="text-xs font-semibold uppercase tracking-widest text-brand-800/80">
+        <p className="text-xs font-semibold uppercase tracking-widest text-secondary-600/80">
           {t("gallery.instagramLabel")}
         </p>
         <h3 className="mt-2 font-sans text-xl font-bold text-ink-900 sm:text-2xl">

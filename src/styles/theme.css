@@ -36,6 +36,16 @@
   --surface-muted: 250 248 242;
   --surface-inverse: 17 24 39;
 
+  /* Secondary (accent green) — 이미지의 민트-에메랄드 계열 (진행 바, 보조 버튼) */
+  --secondary-50: 236 253 245;
+  --secondary-100: 209 250 229;
+  --secondary-200: 167 243 208;
+  --secondary-300: 110 231 183;
+  --secondary-500: 16 185 129;
+  --secondary-600: 5 150 105;
+  --secondary-700: 4 120 87;
+  --secondary-900: 6 78 59;
+
   /* Text on dark / accent buttons (히어로, 푸터 등) — 보통 surface와 동일 */
   --on-inverse: 255 255 255;
 }

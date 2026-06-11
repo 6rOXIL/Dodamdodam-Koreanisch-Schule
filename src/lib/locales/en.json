@@ -96,7 +96,7 @@
     "lead": "School notices and class-related announcements.",
     "boardLabel": "board",
     "boardTitle": "Class notice board",
-    "boardLead": "Posts published under Resources → Notice. Click a title to open the attachment.",
+    "boardLead": "Posts published under Resources → Class schedule. Click a title to open the attachment.",
     "boardEmpty": "No notices yet.",
     "class1Title": "Early elementary",
     "class1Time": "Saturday 10:00 – 12:00",
@@ -118,7 +118,11 @@
     "contactLabel": "Contact",
     "phone": "+49-30-8550-6368",
     "email": "dodamdodam054@gmail.com",
-    "mapCta": "Open in Maps"
+    "mapCta": "View on map",
+    "mapHide": "Hide map",
+    "mapTabsLabel": "Select teaching location",
+    "mapPangea": "Pangea Haus",
+    "mapRuppin": "Ruppin Grundschule"
   },
   "footer": {
     "addressTitle": "Address",
@@ -167,6 +171,12 @@
     "uploadTitle": "Upload material",
     "fieldTitle": "Title",
     "fieldCategory": "Category",
+    "categories": {
+      "handout": "Class materials",
+      "homework": "Homework",
+      "notice": "Class schedule",
+      "announcement": "Announcements"
+    },
     "fieldClass": "Class",
     "fieldDescription": "Description",
     "fieldFile": "File",

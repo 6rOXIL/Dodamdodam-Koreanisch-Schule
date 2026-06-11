@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { getImagePath } from "@/lib/utils/imagePath";
-import { LEGACY_MAPS_SEARCH_URL } from "@/lib/data/legacySite";
+import { LocationMapEmbed } from "@/features/location/LocationMapEmbed";
 import { AboutSection } from "@/features/about/AboutSection";
 import { ScheduleSection } from "@/features/schedule/ScheduleSection";
 import { GallerySection } from "@/features/gallery/GallerySection";
@@ -30,7 +30,7 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-ink-900/65 via-ink-900/50 to-ink-900/75" aria-hidden />
         <div className="relative z-10 mx-auto max-w-4xl px-4 py-16 text-center text-surface sm:px-6 sm:py-24">
-          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-brand-200/95 sm:text-xs sm:tracking-[0.35em]">
+          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-secondary-300/95 sm:text-xs sm:tracking-[0.35em]">
             {t("hero.welcome")}
           </p>
           <h1 className="mt-3 font-sans text-2xl font-bold leading-snug sm:mt-4 sm:text-4xl sm:leading-tight md:text-5xl">
@@ -58,7 +58,7 @@ export default function HomePage() {
       >
         <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
           <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-brand-600/80">
+            <p className="text-xs font-semibold uppercase tracking-widest text-secondary-600/80">
               {t("vision.label")}
             </p>
             <h2 className="mt-3 font-serif text-2xl font-bold text-ink-900 sm:text-3xl md:text-4xl">
@@ -90,7 +90,7 @@ export default function HomePage() {
                 key={card.title}
                 className="rounded-2xl border border-ink-200/80 bg-surface p-6 shadow-sm transition hover:shadow-md sm:p-8"
               >
-                <p className="text-xs font-medium uppercase tracking-wide text-brand-600/90">
+                <p className="text-xs font-medium uppercase tracking-wide text-secondary-600/90">
                   {card.sub}
                 </p>
                 <h3 className="mt-2 text-xl font-semibold text-ink-900">{card.title}</h3>
@@ -108,7 +108,7 @@ export default function HomePage() {
       >
         <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
           <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-brand-600/80">
+            <p className="text-xs font-semibold uppercase tracking-widest text-secondary-600/80">
               {t("classes.label")}
             </p>
             <h2 className="mt-3 font-serif text-2xl font-bold text-ink-900 sm:text-3xl md:text-4xl">
@@ -143,7 +143,7 @@ export default function HomePage() {
       >
         <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-8">
           <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-brand-300/90">
+            <p className="text-xs font-semibold uppercase tracking-widest text-secondary-300/90">
               {t("location.label")}
             </p>
             <h2 className="mt-3 font-serif text-2xl font-bold sm:text-3xl md:text-4xl">
@@ -174,15 +174,8 @@ export default function HomePage() {
 
             </div>
           </div>
-          <div className="mt-10 flex justify-center">
-            <a
-              href={LEGACY_MAPS_SEARCH_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-12 min-w-[12rem] items-center justify-center rounded-full border border-on-inverse/30 bg-on-inverse/10 px-8 py-3 text-sm font-semibold backdrop-blur-sm transition hover:bg-on-inverse/20"
-            >
-              {t("location.mapCta")}
-            </a>
+          <div className="mt-10">
+            <LocationMapEmbed variant="dark" />
           </div>
         </div>
       </section>

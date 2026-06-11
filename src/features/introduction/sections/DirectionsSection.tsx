@@ -1,6 +1,6 @@
 "use client";
 
-import { mapUrls } from "@/lib/data/introduction";
+import { LocationMapEmbed } from "@/features/location/LocationMapEmbed";
 import { useIntroductionContent } from "@/lib/hooks/useIntroductionContent";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 
@@ -45,24 +45,7 @@ export default function DirectionsSection() {
           </li>
         </ul>
 
-        <div className="flex flex-wrap gap-3">
-          <a
-            href={mapUrls.pangea}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-full border border-brand-800/30 bg-brand-50 px-5 py-2.5 text-sm font-semibold text-brand-950 transition hover:bg-brand-100"
-          >
-            {directions.mapPangea}
-          </a>
-          <a
-            href={mapUrls.ruppin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-full border border-brand-800/30 bg-brand-50 px-5 py-2.5 text-sm font-semibold text-brand-950 transition hover:bg-brand-100"
-          >
-            {directions.mapRuppin}
-          </a>
-        </div>
+        <LocationMapEmbed collapsible={false} />
       </div>
     </section>
   );
