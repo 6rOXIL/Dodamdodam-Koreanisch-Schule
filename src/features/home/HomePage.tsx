@@ -4,12 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { getImagePath } from "@/lib/utils/imagePath";
+import { LEGACY_MAPS_SEARCH_URL } from "@/lib/data/legacySite";
 import { AboutSection } from "@/features/about/AboutSection";
-import { VisionSection } from "@/features/vision/VisionSection";
 import { ScheduleSection } from "@/features/schedule/ScheduleSection";
 import { GallerySection } from "@/features/gallery/GallerySection";
 import { EventsSection } from "@/features/events/EventsSection";
-import { LocationSection } from "@/features/location/LocationSection";
 
 export default function HomePage() {
   const { t, language } = useLanguage();
@@ -53,7 +52,7 @@ export default function HomePage() {
         id="about"
         className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] border-b border-ink-100 bg-surface py-14 sm:py-20 md:py-28"
       />
-      <VisionSection
+      <section
         id="vision"
         className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-slate-50 py-14 sm:py-20 md:py-28"
       >
@@ -126,7 +125,7 @@ export default function HomePage() {
       </section>
 
       {/* Schedule: 커리큘럼 게시판 + 요약 카드 */}
-      <section
+      <ScheduleSection
         id="schedule"
         className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] border-t border-ink-100 bg-surface py-14 sm:py-20 md:py-28"
       />
@@ -138,7 +137,7 @@ export default function HomePage() {
         id="events"
         className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-surface py-14 sm:py-20 md:py-28"
       />
-      <LocationSection
+      <section
         id="location"
         className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-slate-900 py-14 text-white sm:py-20 md:py-28"
       >
