@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { authCallbackUrl } from "@/lib/supabase/authPaths";
 import { createClient } from "@/lib/supabase/client";
 
 export default function SignupForm() {
@@ -19,8 +20,7 @@ export default function SignupForm() {
     setError(null);
     setLoading(true);
 
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-    const redirectTo = `${window.location.origin}${basePath}/auth/callback/?next=${encodeURIComponent(`/${language}/resources/`)}`;
+    const redirectTo = authCallbackUrl(`/${language}/resources/`);
 
     const supabase = createClient();
     const { error: signUpError } = await supabase.auth.signUp({

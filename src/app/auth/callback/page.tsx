@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { defaultLocale } from "@/lib/i18n/config";
+import { resolveAuthNextPath } from "@/lib/supabase/authPaths";
 import { createClient } from "@/lib/supabase/client";
 
 export default function AuthCallbackPage() {
@@ -13,18 +14,25 @@ export default function AuthCallbackPage() {
       const supabase = createClient();
       const url = new URL(window.location.href);
       const code = url.searchParams.get("code");
-      const next = url.searchParams.get("next") ?? `/${defaultLocale}/resources/`;
-      const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+      const next = resolveAuthNextPath(url.searchParams.get("next"));
 
       if (code) {
         const { error } = await supabase.auth.exchangeCodeForSession(code);
         if (!error) {
-          router.replace(next.startsWith("/") ? `${basePath}${next}` : `${basePath}/${defaultLocale}/resources/`);
+          router.replace(next);
           return;
         }
       }
 
-      router.replace(`${basePath}/${defaultLocale}/login/?error=auth`);
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        router.replace(next);
+        return;
+      }
+
+      router.replace(`/${defaultLocale}/login/?error=auth`);
     }
 
     handleCallback();
