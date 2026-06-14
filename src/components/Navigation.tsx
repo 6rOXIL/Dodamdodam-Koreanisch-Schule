@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
@@ -8,6 +9,7 @@ import type { SectionId } from "@/lib/navConfig";
 import { getPathWithoutLocalePrefix } from "@/lib/i18n/pathname";
 import { createClient } from "@/lib/supabase/client";
 import { useProfile } from "@/lib/supabase/useProfile";
+import { getImagePath } from "@/lib/utils/imagePath";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 const NAV_KEYS: { id: SectionId; labelKey: string }[] = [
@@ -231,13 +233,23 @@ export default function Navigation() {
 
           <Link
             href={`/${language}/`}
-            className="min-w-0 flex-1 text-left md:flex-none"
+            className="flex min-w-0 flex-1 items-center gap-2.5 text-left md:flex-none"
             onClick={() => setMobileOpen(false)}
           >
-            <span className="block truncate font-semibold text-ink-900 sm:text-base md:text-lg">
-              {t("site.nameShort")}
+            <Image
+              src={getImagePath("/images/logo.png")}
+              alt={t("site.nameShort")}
+              width={40}
+              height={40}
+              className="h-9 w-12 shrink-0 rounded-full sm:h-10 sm:w-14"
+              priority
+            />
+            <span className="min-w-0">
+              <span className="block truncate font-semibold text-ink-900 sm:text-base md:text-lg">
+                {t("site.name")}
+              </span>
+              <span className="hidden text-xs text-ink-500 sm:block">{t("site.nameEn")}</span>
             </span>
-            <span className="hidden text-xs text-ink-500 sm:block">{t("site.nameEn")}</span>
           </Link>
           <nav className="hidden flex-1 items-center justify-center gap-0.5 overflow-x-auto md:flex lg:gap-1">
             {NAV_KEYS.map(({ id, labelKey }) => renderNavItem(id, labelKey, false))}

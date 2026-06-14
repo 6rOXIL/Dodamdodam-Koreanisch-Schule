@@ -46,3 +46,17 @@ export interface Resource {
   created_at: string;
   updated_at: string;
 }
+
+export interface PublicNotice {
+  id: string;
+  board_no: string;
+  legacy_url: string;
+  title: string;
+  body_html: string;
+  author: string | null;
+  published_at: string;
+  attachments: { name: string; attachNo: string; url: string }[];
+  synced_at: string;
+  created_at: string;
+  updated_at: string;
+}

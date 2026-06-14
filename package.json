@@ -9,7 +9,8 @@
     "export": "next build",
     "start": "next start",
     "lint": "next lint",
-    "fetch:instagram": "node scripts/fetch-instagram-feed.mjs"
+    "fetch:instagram": "node scripts/fetch-instagram-feed.mjs",
+    "sync:notices": "node scripts/sync-legacy-notices.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.10.3",

@@ -87,8 +87,15 @@
   "events": {
     "label": "notices",
     "title": "Notices",
-    "lead": "Recent posts from the Korean Net board. Open a title to read the full text and attachments.",
-    "empty": "No events scheduled yet."
+    "lead": "The 10 most recent notices. Select a title to read the full post on our site.",
+    "empty": "No notices yet.",
+    "notFound": "Notice not found.",
+    "backToList": "← Back to notices",
+    "metaDate": "Date",
+    "metaAuthor": "Author",
+    "emptyBody": "No body content.",
+    "attachments": "Attachments",
+    "attachmentsHint": "Attachment names are shown for reference. Original files remain on the Korean Net board."
   },
   "schedule": {
     "label": "schedule",

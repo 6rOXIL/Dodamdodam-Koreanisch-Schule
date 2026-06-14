@@ -1,7 +1,6 @@
 "use client";
 
-import LegacyPostTable from "@/components/LegacyPostTable";
-import { LEGACY_BOARDS, LEGACY_NOTICES } from "@/lib/data/legacySite";
+import PublicNoticeTable from "@/components/PublicNoticeTable";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { getHeadingTag, type HeadingLevel } from "@/features/shared/sectionHeading";
 
@@ -29,22 +28,11 @@ export function EventsSection({
           </HeadingTag>
           <p className="mt-4 text-ink-600">{t("events.lead")}</p>
         </div>
-        <LegacyPostTable
-          posts={LEGACY_NOTICES}
+        <PublicNoticeTable
           colDate={t("legacy.colDate")}
           colTitle={t("legacy.colTitle")}
-          externalHint={t("legacy.externalHint")}
+          emptyMessage={t("events.empty")}
         />
-        <p className="mt-6 text-center">
-          <a
-            href={LEGACY_BOARDS.noticeList}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-semibold text-ink-700 underline-offset-2 hover:text-ink-900 hover:underline"
-          >
-            {t("legacy.boardFullNotice")}
-          </a>
-        </p>
       </div>
     </section>
   );

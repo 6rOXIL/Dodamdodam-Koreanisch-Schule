@@ -104,8 +104,15 @@
   "events": {
     "label": "hinweise",
     "title": "Bekanntmachungen",
-    "lead": "Aktuelle Einträge vom Korean-Net-Forum. Titel anklicken für den vollen Text und Anhänge.",
-    "empty": "Derzeit keine Termine."
+    "lead": "Die 10 neuesten Bekanntmachungen. Titel anklicken, um den Beitrag auf unserer Website zu lesen.",
+    "empty": "Derzeit keine Bekanntmachungen.",
+    "notFound": "Bekanntmachung nicht gefunden.",
+    "backToList": "← Zurück zur Liste",
+    "metaDate": "Datum",
+    "metaAuthor": "Autor",
+    "emptyBody": "Kein Inhalt.",
+    "attachments": "Anhänge",
+    "attachmentsHint": "Dateinamen dienen als Referenz. Originaldateien liegen weiterhin auf dem Korean-Net-Board."
   },
   "schedule": {
     "label": "schedule",

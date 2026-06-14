@@ -62,6 +62,37 @@ docker compose -f docker-compose.dev.yml up --build
 
 ---
 
+## 코리안넷 공지 자동 동기화
+
+공지 **최근 10건**은 GitHub Actions가 코리안넷에서 스크래핑해 **Supabase `public_notices`** 테이블에 저장합니다. 사이트에서는 내부 페이지(`/events/[번호]/`)로 본문을 보여 줍니다.
+
+| 트리거 | 동작 |
+|--------|------|
+| **매일 02:00 MEZ** (독일 표준시) | Supabase 동기화 |
+| `main` 푸시 | (선택) 동기화 시도 후 GitHub Pages 배포 |
+| 수동 | Actions → **Sync legacy notices** → Run workflow |
+
+GitHub 저장소 **Secrets**에 다음을 등록해야 합니다.
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `SUPABASE_SERVICE_ROLE_KEY`
+
+Supabase에 마이그레이션 적용:
+
+```bash
+supabase db push
+```
+
+로컬 동기화 (`.env.local`에 Supabase 키 필요):
+
+```bash
+npm run sync:notices
+```
+
+> GitHub cron은 UTC 기준입니다. `01:00 UTC` = 독일 **02:00 (겨울)** / **03:00 (여름)**.
+
+---
+
 ## 배포 대상별 동작
 
 - Docker(로컬/서버): 루트 경로(`/`) 기준으로 동작합니다.
