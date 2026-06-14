@@ -93,6 +93,18 @@ npm run sync:notices
 
 ---
 
+## GitHub Pages 최초 설정 (1회)
+
+`Deploy to GitHub Pages` 워크플로가 실패하고 **Get Pages site failed** 가 나오면, 저장소에서 Pages가 아직 켜져 있지 않은 상태입니다.
+
+1. [저장소 Settings → Pages](https://github.com/6rOXIL/Dodamdodam-Koreanisch-Schule/settings/pages) 로 이동
+2. **Build and deployment → Source** 에서 **GitHub Actions** 선택
+3. Actions 탭에서 실패한 **Deploy to GitHub Pages** 워크플로를 **Re-run** 하거나 `main`에 다시 푸시
+
+배포 URL: `https://6roxil.github.io/Dodamdodam-Koreanisch-Schule/`
+
+---
+
 ## 배포 대상별 동작
 
 - Docker(로컬/서버): 루트 경로(`/`) 기준으로 동작합니다.
