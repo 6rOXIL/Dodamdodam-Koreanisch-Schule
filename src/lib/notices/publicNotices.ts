@@ -1,9 +1,13 @@
-import { createClient } from "@/lib/supabase/client";
+import { createClient, isSupabaseConfigured } from "@/lib/supabase/client";
 import type { PublicNotice } from "@/lib/types/publicNotice";
 
 export const PUBLIC_NOTICE_LIMIT = 10;
 
 export async function fetchPublicNotices(): Promise<PublicNotice[]> {
+  if (!isSupabaseConfigured()) {
+    return [];
+  }
+
   const supabase = createClient();
 
   const { data, error } = await supabase
@@ -23,6 +27,10 @@ export async function fetchPublicNotices(): Promise<PublicNotice[]> {
 export async function fetchPublicNoticeByBoardNo(
   boardNo: string
 ): Promise<PublicNotice | null> {
+  if (!isSupabaseConfigured()) {
+    return null;
+  }
+
   const supabase = createClient();
 
   const { data, error } = await supabase

@@ -74,8 +74,11 @@ docker compose -f docker-compose.dev.yml up --build
 
 GitHub 저장소 **Secrets**에 다음을 등록해야 합니다.
 
-- `NEXT_PUBLIC_SUPABASE_URL`
-- `SUPABASE_SERVICE_ROLE_KEY`
+- `NEXT_PUBLIC_SUPABASE_URL` — Supabase 프로젝트 URL
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` — anon public key (빌드 시 클라이언트 번들에 포함됨)
+- `SUPABASE_SERVICE_ROLE_KEY` — 공지 동기화 스크립트용 (서버 전용)
+
+> GitHub Pages는 정적 배포이므로 `NEXT_PUBLIC_*` 값은 **Build 단계**에서 주입되어야 합니다. Secrets만 등록하고 재배포하면 브라우저 오류가 사라집니다.
 
 Supabase에 마이그레이션 적용:
 
