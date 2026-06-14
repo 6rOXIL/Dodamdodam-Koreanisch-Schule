@@ -26,7 +26,7 @@ export default function Navigation() {
   const pathname = usePathname();
   const router = useRouter();
   const { t, language } = useLanguage();
-  const { user, loading: profileLoading } = useProfile();
+  const { user, profile, loading: profileLoading } = useProfile();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
 
@@ -97,7 +97,7 @@ export default function Navigation() {
   const authLinks = (mobile = false) => {
     if (profileLoading) return null;
 
-    if (user) {
+    if (user && profile) {
       const resourcesHref = `/${language}/resources/`;
       const resourcesActive = normalizedPath === "/resources";
 

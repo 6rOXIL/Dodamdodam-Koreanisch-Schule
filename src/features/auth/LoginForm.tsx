@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { createClient } from "@/lib/supabase/client";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { fetchProfileForUser, getLoginErrorMessage } from "@/lib/supabase/authErrors";
+import { createClient } from "@/lib/supabase/client";
 
 export default function LoginForm() {
   const { t, language } = useLanguage();
@@ -14,7 +15,11 @@ export default function LoginForm() {
   const authError = searchParams.get("error");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(() => {
+    if (authError === "auth") return t("auth.callbackError");
+    if (authError === "account") return t("auth.accountNotFound");
+    return null;
+  });
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: FormEvent) {
@@ -23,20 +28,30 @@ export default function LoginForm() {
     setLoading(true);
 
     const supabase = createClient();
-    const { error: signInError } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
 
-    setLoading(false);
+    try {
+      const { data, error: signInError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    if (signInError) {
-      setError(signInError.message);
-      return;
+      if (signInError || !data.session || !data.user) {
+        setError(getLoginErrorMessage(signInError?.message, t));
+        return;
+      }
+
+      const profile = await fetchProfileForUser(supabase, data.user.id);
+      if (!profile) {
+        await supabase.auth.signOut();
+        setError(t("auth.accountNotFound"));
+        return;
+      }
+
+      router.push(nextPath.startsWith("/") ? nextPath : `/${language}/resources/`);
+      router.refresh();
+    } finally {
+      setLoading(false);
     }
-
-    router.push(nextPath.startsWith("/") ? nextPath : `/${language}/resources/`);
-    router.refresh();
   }
 
   return (
@@ -74,12 +89,6 @@ export default function LoginForm() {
             className="w-full rounded-lg border border-ink-200 bg-surface px-3 py-2.5 text-ink-900 outline-none ring-brand-600 focus:ring-2"
           />
         </div>
-
-        {authError === "auth" && (
-          <p className="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900" role="alert">
-            {t("auth.callbackError")}
-          </p>
-        )}
 
         {error && (
           <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700" role="alert">

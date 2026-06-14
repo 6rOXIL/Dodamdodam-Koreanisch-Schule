@@ -13,16 +13,27 @@ import type { Resource, ResourceCategory } from "@/lib/supabase/database.types";
 function ResourcesPageInner() {
   const router = useRouter();
   const { language, t } = useLanguage();
-  const { profile, loading: profileLoading } = useProfile();
+  const { user, profile, loading: profileLoading } = useProfile();
   const [resources, setResources] = useState<Resource[]>([]);
   const [categories, setCategories] = useState<ResourceCategory[]>([]);
   const [loading, setLoading] = useState(true);
+  const [signingOut, setSigningOut] = useState(false);
 
   useEffect(() => {
-    if (profileLoading) return;
+    if (profileLoading || signingOut) return;
+
+    if (!user) {
+      router.replace(`/${language}/login/?next=${encodeURIComponent(`/${language}/resources/`)}`);
+      return;
+    }
 
     if (!profile) {
-      router.replace(`/${language}/login/?next=${encodeURIComponent(`/${language}/resources/`)}`);
+      setSigningOut(true);
+      createClient()
+        .auth.signOut()
+        .finally(() => {
+          router.replace(`/${language}/login/?error=account`);
+        });
       return;
     }
 
@@ -40,9 +51,9 @@ function ResourcesPageInner() {
       setCategories((categoriesRes.data as ResourceCategory[]) ?? []);
       setLoading(false);
     });
-  }, [profile, profileLoading, language, router]);
+  }, [user, profile, profileLoading, signingOut, language, router]);
 
-  if (profileLoading || (profile && canAccessResources(profile) && loading)) {
+  if (profileLoading || signingOut || (profile && canAccessResources(profile) && loading)) {
     return (
       <main className="bg-surface px-4 py-16 text-center text-ink-500">
         {t("auth.loading")}
@@ -50,7 +61,7 @@ function ResourcesPageInner() {
     );
   }
 
-  if (!profile) return null;
+  if (!user || !profile) return null;
 
   if (!canAccessResources(profile)) {
     return (

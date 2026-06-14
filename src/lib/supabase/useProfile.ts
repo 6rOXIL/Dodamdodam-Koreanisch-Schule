@@ -19,26 +19,38 @@ export function useProfile() {
     let cancelled = false;
 
     async function load() {
-      const supabase = createClient();
-      const {
-        data: { user: authUser },
-      } = await supabase.auth.getUser();
+      try {
+        const supabase = createClient();
+        const {
+          data: { user: authUser },
+        } = await supabase.auth.getUser();
 
-      if (!authUser) {
+        if (!authUser) {
+          if (!cancelled) {
+            setUser(null);
+            setProfile(null);
+          }
+          return;
+        }
+
+        const { data, error } = await supabase
+          .from("profiles")
+          .select("*")
+          .eq("id", authUser.id)
+          .maybeSingle();
+
+        if (error) {
+          console.error("useProfile:", error.message);
+        }
+
         if (!cancelled) {
-          setUser(null);
-          setProfile(null);
+          setUser(authUser);
+          setProfile((data as Profile | null) ?? null);
+        }
+      } finally {
+        if (!cancelled) {
           setLoading(false);
         }
-        return;
-      }
-
-      const { data } = await supabase.from("profiles").select("*").eq("id", authUser.id).single();
-
-      if (!cancelled) {
-        setUser(authUser);
-        setProfile((data as Profile | null) ?? null);
-        setLoading(false);
       }
     }
 
@@ -48,6 +60,9 @@ export function useProfile() {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(() => {
+      if (!cancelled) {
+        setLoading(true);
+      }
       load();
     });
 
