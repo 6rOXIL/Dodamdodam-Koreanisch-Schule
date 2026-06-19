@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { createClient } from "@/lib/supabase/client";
 import type { Resource } from "@/lib/supabase/database.types";
+import ResourceDescription from "@/components/ResourceDescription";
 import { fetchPublishedResourcesByCategorySlug, formatResourcePostDate } from "@/lib/resources/categoryResources";
 
 type NoticePostTableProps = {
@@ -110,9 +111,7 @@ export default function NoticePostTable({
                   >
                     {post.title}
                   </button>
-                  {post.description && (
-                    <p className="mt-1 text-xs text-ink-600">{post.description}</p>
-                  )}
+                  <ResourceDescription content={post.description ?? ""} className="text-xs" />
                 </td>
               </tr>
             ))}

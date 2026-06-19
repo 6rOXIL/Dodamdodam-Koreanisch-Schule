@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { fetchProfileForUser, getLoginErrorMessage } from "@/lib/supabase/authErrors";
 import { createClient } from "@/lib/supabase/client";
+import PasswordInput from "@/components/PasswordInput";
 
 export default function LoginForm() {
   const { t, language } = useLanguage();
@@ -13,6 +14,7 @@ export default function LoginForm() {
   const searchParams = useSearchParams();
   const nextPath = searchParams.get("next") ?? `/${language}/resources/`;
   const loginError = searchParams.get("login_error");
+  const resetSuccess = searchParams.get("reset") === "success";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -81,19 +83,31 @@ export default function LoginForm() {
         </div>
 
         <div>
-          <label htmlFor="password" className="mb-1 block text-sm font-medium text-ink-700">
-            {t("auth.password")}
-          </label>
-          <input
+          <div className="mb-1 flex items-center justify-between gap-2">
+            <label htmlFor="password" className="text-sm font-medium text-ink-700">
+              {t("auth.password")}
+            </label>
+            <Link
+              href={`/${language}/forgot-password/`}
+              className="text-xs font-medium text-brand-800 hover:underline"
+            >
+              {t("auth.forgotPasswordLink")}
+            </Link>
+          </div>
+          <PasswordInput
             id="password"
-            type="password"
             required
             autoComplete="current-password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full rounded-lg border border-ink-200 bg-surface px-3 py-2.5 text-ink-900 outline-none ring-brand-600 focus:ring-2"
+            onChange={setPassword}
           />
         </div>
+
+        {resetSuccess && (
+          <p className="rounded-lg bg-brand-50 px-3 py-2 text-sm text-brand-900" role="status">
+            {t("auth.resetPasswordSuccess")}
+          </p>
+        )}
 
         {error && (
           <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700" role="alert">

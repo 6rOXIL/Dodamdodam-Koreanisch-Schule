@@ -14,6 +14,7 @@ import {
   RESOURCE_COMMON_CLASS,
   type ResourceClassFilter,
 } from "@/lib/resources/classSlugs";
+import ResourceDescription from "@/components/ResourceDescription";
 import ResourceFormDialog from "@/features/resources/ResourceFormDialog";
 import ResourceFolderNav from "@/features/resources/ResourceFolderNav";
 import ResourceCategoryNav from "@/features/resources/ResourceCategoryNav";
@@ -361,9 +362,7 @@ export default function ResourcesClient({
                 <li key={resource.id} className="flex flex-wrap items-center justify-between gap-3 px-4 py-4">
                   <div className="min-w-0 flex-1">
                     <p className="font-medium text-ink-900">{resource.title}</p>
-                    {resource.description && (
-                      <p className="mt-1 text-sm text-ink-600">{resource.description}</p>
-                    )}
+                    <ResourceDescription content={resource.description ?? ""} />
                     <p className="mt-1 text-xs text-ink-500">
                       {category ? getResourceCategoryLabel(category, t) : "—"}
                       {resourceClass

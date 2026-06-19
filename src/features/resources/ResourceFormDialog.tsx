@@ -10,8 +10,10 @@ import {
 } from "@/lib/resources/fileConstraints";
 import { getResourceCategoryLabel } from "@/lib/resources/categoryLabel";
 import { getResourceClassLabel } from "@/lib/resources/classLabel";
+import { normalizeDescriptionForStorage } from "@/lib/resources/sanitizeResourceHtml";
 import { createClient } from "@/lib/supabase/client";
 import type { Resource, ResourceCategory, ResourceClass } from "@/lib/supabase/database.types";
+import ResourceRichTextEditor from "@/components/ResourceRichTextEditor";
 
 type ResourceFormDialogProps = {
   open: boolean;
@@ -161,7 +163,7 @@ export default function ResourceFormDialog({
         .from("resources")
         .insert({
           title: title.trim(),
-          description: description.trim() || null,
+          description: normalizeDescriptionForStorage(description),
           category_id: categoryId || null,
           class_slug: classSlug || null,
           storage_path: storagePath,
@@ -190,7 +192,7 @@ export default function ResourceFormDialog({
       .from("resources")
       .update({
         title: title.trim(),
-        description: description.trim() || null,
+        description: normalizeDescriptionForStorage(description),
         category_id: categoryId || null,
         class_slug: classSlug || null,
         storage_path: storagePath,
@@ -302,18 +304,13 @@ export default function ResourceFormDialog({
             </div>
           </div>
 
-          <div>
-            <label htmlFor="resource-dialog-description" className="mb-1 block text-sm font-medium text-ink-700">
-              {t("resources.fieldDescription")}
-            </label>
-            <textarea
-              id="resource-dialog-description"
-              rows={3}
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="w-full rounded-lg border border-ink-200 bg-surface px-3 py-2 text-ink-900"
-            />
-          </div>
+          <ResourceRichTextEditor
+            id="resource-dialog-description"
+            label={t("resources.fieldDescription")}
+            value={description}
+            onChange={setDescription}
+            disabled={submitting}
+          />
 
           <div>
             <label htmlFor="resource-dialog-file" className="mb-1 block text-sm font-medium text-ink-700">

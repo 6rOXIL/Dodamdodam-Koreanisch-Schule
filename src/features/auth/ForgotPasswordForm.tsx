@@ -3,15 +3,12 @@
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
-import { authCallbackUrl } from "@/lib/supabase/authPaths";
+import { passwordResetCallbackUrl } from "@/lib/supabase/authPaths";
 import { createClient } from "@/lib/supabase/client";
-import PasswordInput from "@/components/PasswordInput";
 
-export default function SignupForm() {
+export default function ForgotPasswordForm() {
   const { t, language } = useLanguage();
-  const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -21,22 +18,15 @@ export default function SignupForm() {
     setError(null);
     setLoading(true);
 
-    const redirectTo = authCallbackUrl(`/${language}/resources/`);
-
     const supabase = createClient();
-    const { error: signUpError } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: { display_name: displayName.trim() || undefined },
-        emailRedirectTo: redirectTo,
-      },
+    const { error: resetError } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+      redirectTo: passwordResetCallbackUrl(language),
     });
 
     setLoading(false);
 
-    if (signUpError) {
-      setError(signUpError.message);
+    if (resetError) {
+      setError(resetError.message);
       return;
     }
 
@@ -46,13 +36,13 @@ export default function SignupForm() {
   if (success) {
     return (
       <div className="mx-auto w-full max-w-md">
-        <h1 className="text-2xl font-bold text-ink-900">{t("auth.signupTitle")}</h1>
+        <h1 className="text-2xl font-bold text-ink-900">{t("auth.forgotPasswordTitle")}</h1>
         <p className="mt-4 rounded-lg bg-brand-50 px-4 py-3 text-sm text-brand-900">
-          {t("auth.signupSuccess")}
+          {t("auth.forgotPasswordSuccess")}
         </p>
         <p className="mt-6 text-center text-sm text-ink-600">
           <Link href={`/${language}/login/`} className="font-semibold text-brand-800 hover:underline">
-            {t("auth.loginLink")}
+            {t("auth.backToLogin")}
           </Link>
         </p>
       </div>
@@ -61,30 +51,16 @@ export default function SignupForm() {
 
   return (
     <div className="mx-auto w-full max-w-md">
-      <h1 className="text-2xl font-bold text-ink-900">{t("auth.signupTitle")}</h1>
-      <p className="mt-2 text-sm text-ink-600">{t("auth.signupLead")}</p>
+      <h1 className="text-2xl font-bold text-ink-900">{t("auth.forgotPasswordTitle")}</h1>
+      <p className="mt-2 text-sm text-ink-600">{t("auth.forgotPasswordLead")}</p>
 
       <form onSubmit={handleSubmit} className="mt-8 space-y-4">
         <div>
-          <label htmlFor="displayName" className="mb-1 block text-sm font-medium text-ink-700">
-            {t("auth.displayName")}
-          </label>
-          <input
-            id="displayName"
-            type="text"
-            autoComplete="name"
-            value={displayName}
-            onChange={(e) => setDisplayName(e.target.value)}
-            className="w-full rounded-lg border border-ink-200 bg-surface px-3 py-2.5 text-ink-900 outline-none ring-brand-600 focus:ring-2"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="email" className="mb-1 block text-sm font-medium text-ink-700">
+          <label htmlFor="forgot-email" className="mb-1 block text-sm font-medium text-ink-700">
             {t("auth.email")}
           </label>
           <input
-            id="email"
+            id="forgot-email"
             type="email"
             required
             autoComplete="email"
@@ -92,21 +68,6 @@ export default function SignupForm() {
             onChange={(e) => setEmail(e.target.value)}
             className="w-full rounded-lg border border-ink-200 bg-surface px-3 py-2.5 text-ink-900 outline-none ring-brand-600 focus:ring-2"
           />
-        </div>
-
-        <div>
-          <label htmlFor="password" className="mb-1 block text-sm font-medium text-ink-700">
-            {t("auth.password")}
-          </label>
-          <PasswordInput
-            id="password"
-            required
-            minLength={6}
-            autoComplete="new-password"
-            value={password}
-            onChange={setPassword}
-          />
-          <p className="mt-1 text-xs text-ink-500">{t("auth.passwordHint")}</p>
         </div>
 
         {error && (
@@ -120,14 +81,13 @@ export default function SignupForm() {
           disabled={loading}
           className="w-full rounded-lg bg-brand-600 px-4 py-2.5 font-semibold text-on-inverse transition hover:bg-brand-800 disabled:opacity-60"
         >
-          {loading ? t("auth.loading") : t("auth.signupButton")}
+          {loading ? t("auth.loading") : t("auth.forgotPasswordButton")}
         </button>
       </form>
 
       <p className="mt-6 text-center text-sm text-ink-600">
-        {t("auth.hasAccount")}{" "}
         <Link href={`/${language}/login/`} className="font-semibold text-brand-800 hover:underline">
-          {t("auth.loginLink")}
+          {t("auth.backToLogin")}
         </Link>
       </p>
     </div>

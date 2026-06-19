@@ -31,3 +31,9 @@ img {
   -ms-user-select: none;
   user-select: none;
 }
+
+[contenteditable][data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  color: rgb(var(--ink-500));
+  pointer-events: none;
+}

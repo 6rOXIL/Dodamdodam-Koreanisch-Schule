@@ -5,6 +5,11 @@ import { useRouter } from "next/navigation";
 import { defaultLocale } from "@/lib/i18n/config";
 import { resolveAuthNextPath } from "@/lib/supabase/authPaths";
 import { createClient } from "@/lib/supabase/client";
+import {
+  establishSessionFromUrl,
+  stripAuthParamsFromUrl,
+  waitForAuthSession,
+} from "@/lib/supabase/establishSessionFromUrl";
 
 export default function AuthCallbackPage() {
   const router = useRouter();
@@ -13,21 +18,13 @@ export default function AuthCallbackPage() {
     async function handleCallback() {
       const supabase = createClient();
       const url = new URL(window.location.href);
-      const code = url.searchParams.get("code");
       const next = resolveAuthNextPath(url.searchParams.get("next"));
 
-      if (code) {
-        const { error } = await supabase.auth.exchangeCodeForSession(code);
-        if (!error) {
-          router.replace(next);
-          return;
-        }
-      }
+      await establishSessionFromUrl(supabase, url);
+      const hasSession = await waitForAuthSession(supabase);
 
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-      if (session) {
+      if (hasSession) {
+        stripAuthParamsFromUrl();
         router.replace(next);
         return;
       }
@@ -35,7 +32,7 @@ export default function AuthCallbackPage() {
       router.replace(`/${defaultLocale}/login/?login_error=callback`);
     }
 
-    handleCallback();
+    void handleCallback();
   }, [router]);
 
   return (
