@@ -31,6 +31,14 @@ export interface ResourceCategory {
   created_at: string;
 }
 
+export interface ResourceClass {
+  id: string;
+  slug: string;
+  name_ko: string;
+  sort_order: number;
+  created_at: string;
+}
+
 export interface Resource {
   id: string;
   category_id: string | null;

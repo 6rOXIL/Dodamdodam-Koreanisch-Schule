@@ -32,7 +32,7 @@ export default function AuthCallbackPage() {
         return;
       }
 
-      router.replace(`/${defaultLocale}/login/?error=auth`);
+      router.replace(`/${defaultLocale}/login/?login_error=callback`);
     }
 
     handleCallback();

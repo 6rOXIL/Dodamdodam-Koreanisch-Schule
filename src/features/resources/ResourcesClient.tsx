@@ -6,19 +6,24 @@ import { useRouter } from "next/navigation";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { createClient } from "@/lib/supabase/client";
 import { canUploadResources, isAdmin } from "@/lib/supabase/auth";
-import type { Profile, Resource, ResourceCategory } from "@/lib/supabase/database.types";
+import type { Profile, Resource, ResourceCategory, ResourceClass } from "@/lib/supabase/database.types";
 import { getResourceCategoryLabel } from "@/lib/resources/categoryLabel";
+import { getResourceClassLabel } from "@/lib/resources/classLabel";
+import { sortResourceCategories } from "@/lib/resources/sortTaxonomy";
 import {
   RESOURCE_COMMON_CLASS,
   type ResourceClassFilter,
 } from "@/lib/resources/classSlugs";
 import ResourceFormDialog from "@/features/resources/ResourceFormDialog";
 import ResourceFolderNav from "@/features/resources/ResourceFolderNav";
+import ResourceCategoryNav from "@/features/resources/ResourceCategoryNav";
+import ResourceTaxonomySheet, { type TaxonomyTab } from "@/features/resources/ResourceTaxonomySheet";
 
 interface ResourcesClientProps {
   profile: Profile;
   initialResources: Resource[];
-  categories: ResourceCategory[];
+  initialCategories: ResourceCategory[];
+  initialResourceClasses: ResourceClass[];
 }
 
 function canManageResource(resource: Resource, profile: Profile, canUpload: boolean, admin: boolean) {
@@ -28,11 +33,14 @@ function canManageResource(resource: Resource, profile: Profile, canUpload: bool
 export default function ResourcesClient({
   profile,
   initialResources,
-  categories,
+  initialCategories,
+  initialResourceClasses,
 }: ResourcesClientProps) {
   const { t, language } = useLanguage();
   const router = useRouter();
   const [resources, setResources] = useState(initialResources);
+  const [categories, setCategories] = useState(initialCategories);
+  const [resourceClasses, setResourceClasses] = useState(initialResourceClasses);
   const [error, setError] = useState<string | null>(null);
   const [loggingOut, setLoggingOut] = useState(false);
   const [uploadOpen, setUploadOpen] = useState(false);
@@ -41,6 +49,8 @@ export default function ResourcesClient({
   const [deleting, setDeleting] = useState(false);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
   const [selectedClass, setSelectedClass] = useState<ResourceClassFilter>("all");
+  const [taxonomyOpen, setTaxonomyOpen] = useState(false);
+  const [taxonomyTab, setTaxonomyTab] = useState<TaxonomyTab>("categories");
   const deleteDialogRef = useRef<HTMLDialogElement>(null);
 
   const canUpload = canUploadResources(profile);
@@ -78,23 +88,22 @@ export default function ResourcesClient({
   }, [sortedResources, selectedClass]);
 
   const classCounts = useMemo(() => {
-    const counts = {
-      all: resources.length,
-      common: 0,
-      kindergarten: 0,
-      elementary: 0,
-      adults: 0,
-    };
+    const bySlug: Record<string, number> = {};
+    let common = 0;
 
     for (const resource of resources) {
       if (!resource.class_slug) {
-        counts.common += 1;
-      } else if (resource.class_slug in counts) {
-        counts[resource.class_slug as keyof Omit<typeof counts, "all" | "common">] += 1;
+        common += 1;
+      } else {
+        bySlug[resource.class_slug] = (bySlug[resource.class_slug] ?? 0) + 1;
       }
     }
 
-    return counts;
+    return {
+      all: resources.length,
+      common,
+      bySlug,
+    };
   }, [resources]);
 
   const categoryCounts = useMemo(() => {
@@ -109,8 +118,42 @@ export default function ResourcesClient({
   const selectedClassLabel = useMemo(() => {
     if (selectedClass === "all") return t("resources.allClassesFolder");
     if (selectedClass === RESOURCE_COMMON_CLASS) return t("resources.commonClass");
-    return t(`classes.links.${selectedClass}`);
-  }, [selectedClass, t]);
+    const resourceClass = resourceClasses.find((c) => c.slug === selectedClass);
+    if (resourceClass) return getResourceClassLabel(resourceClass, t);
+    return selectedClass;
+  }, [selectedClass, resourceClasses, t]);
+
+  const defaultUploadClassSlug = useMemo(() => {
+    if (selectedClass === "all" || selectedClass === RESOURCE_COMMON_CLASS) return "";
+    return selectedClass;
+  }, [selectedClass]);
+
+  const sortedCategories = useMemo(() => sortResourceCategories(categories), [categories]);
+
+  function openTaxonomy(tab: TaxonomyTab) {
+    setTaxonomyTab(tab);
+    setTaxonomyOpen(true);
+  }
+
+  function handleCategoryDeleted(categoryId: string) {
+    setResources((prev) =>
+      prev.map((r) => (r.category_id === categoryId ? { ...r, category_id: null } : r))
+    );
+    if (selectedCategoryId === categoryId) {
+      setSelectedCategoryId(null);
+    }
+    setError(null);
+  }
+
+  function handleClassDeleted(classSlug: string) {
+    setResources((prev) =>
+      prev.map((r) => (r.class_slug === classSlug ? { ...r, class_slug: null } : r))
+    );
+    if (selectedClass === classSlug) {
+      setSelectedClass("all");
+    }
+    setError(null);
+  }
 
   function getEmptyMessage() {
     if (selectedCategoryId && selectedClass !== "all") return t("resources.emptyFilter");
@@ -271,6 +314,9 @@ export default function ResourcesClient({
               setSelectedCategoryId(null);
             }}
             classCounts={classCounts}
+            resourceClasses={resourceClasses}
+            isAdmin={admin}
+            onManage={() => openTaxonomy("folders")}
           />
         </aside>
 
@@ -291,44 +337,16 @@ export default function ResourcesClient({
           )}
         </div>
 
-        {categories.length > 0 && (
-          <nav
-            className="mt-4 flex flex-wrap gap-2"
-            aria-label={t("resources.filterByCategory")}
-          >
-            <button
-              type="button"
-              onClick={() => setSelectedCategoryId(null)}
-              className={`rounded-full border px-3 py-1.5 text-xs font-medium transition sm:text-sm ${
-                selectedCategoryId === null
-                  ? "border-brand-600 bg-brand-100 text-brand-950"
-                  : "border-ink-200 bg-ink-50 text-ink-700 hover:border-brand-300 hover:bg-brand-50"
-              }`}
-            >
-              {t("resources.allCategories")}
-              <span className="ml-1.5 text-[0.7rem] opacity-70">({classFilteredResources.length})</span>
-            </button>
-            {categories.map((category) => {
-              const count = categoryCounts.get(category.id) ?? 0;
-              const active = selectedCategoryId === category.id;
-              return (
-                <button
-                  key={category.id}
-                  type="button"
-                  onClick={() => setSelectedCategoryId(category.id)}
-                  className={`rounded-full border px-3 py-1.5 text-xs font-medium transition sm:text-sm ${
-                    active
-                      ? "border-brand-600 bg-brand-100 text-brand-950"
-                      : "border-ink-200 bg-ink-50 text-ink-700 hover:border-brand-300 hover:bg-brand-50"
-                  }`}
-                >
-                  {getResourceCategoryLabel(category, t)}
-                  <span className="ml-1.5 text-[0.7rem] opacity-70">({count})</span>
-                </button>
-              );
-            })}
-          </nav>
-        )}
+        <ResourceCategoryNav
+          categories={categories}
+          selectedCategoryId={selectedCategoryId}
+          onSelectCategory={setSelectedCategoryId}
+          categoryCounts={categoryCounts}
+          totalCount={classFilteredResources.length}
+          language={language}
+          isAdmin={admin}
+          onManage={() => openTaxonomy("categories")}
+        />
 
         {filteredResources.length === 0 ? (
           <p className="mt-4 text-ink-500">{getEmptyMessage()}</p>
@@ -336,6 +354,7 @@ export default function ResourcesClient({
           <ul className="mt-4 divide-y divide-ink-200 rounded-xl border border-ink-200 bg-surface">
             {filteredResources.map((resource) => {
               const category = categories.find((c) => c.id === resource.category_id);
+              const resourceClass = resourceClasses.find((c) => c.slug === resource.class_slug);
               const manageable = canManageResource(resource, profile, canUpload, admin);
 
               return (
@@ -347,7 +366,11 @@ export default function ResourcesClient({
                     )}
                     <p className="mt-1 text-xs text-ink-500">
                       {category ? getResourceCategoryLabel(category, t) : "—"}
-                      {resource.class_slug ? ` · ${t(`classes.links.${resource.class_slug}`)}` : ""}
+                      {resourceClass
+                        ? ` · ${getResourceClassLabel(resourceClass, t)}`
+                        : resource.class_slug
+                          ? ` · ${resource.class_slug}`
+                          : ""}
                       {resource.file_name ? ` · ${resource.file_name}` : ""}
                       {!resource.is_published ? ` · ${t("resources.draft")}` : ""}
                     </p>
@@ -399,7 +422,9 @@ export default function ResourcesClient({
       <ResourceFormDialog
         open={uploadOpen}
         mode="upload"
-        categories={categories}
+        categories={sortedCategories}
+        resourceClasses={resourceClasses}
+        defaultClassSlug={defaultUploadClassSlug}
         onClose={() => setUploadOpen(false)}
         onSuccess={handleUploadSuccess}
         onError={setError}
@@ -409,11 +434,31 @@ export default function ResourcesClient({
         open={!!editingResource}
         mode="edit"
         resource={editingResource}
-        categories={categories}
+        categories={sortedCategories}
+        resourceClasses={resourceClasses}
         onClose={() => setEditingResource(null)}
         onSuccess={handleEditSuccess}
         onError={setError}
       />
+
+      {admin && (
+        <ResourceTaxonomySheet
+          open={taxonomyOpen}
+          tab={taxonomyTab}
+          onTabChange={setTaxonomyTab}
+          onClose={() => setTaxonomyOpen(false)}
+          categories={categories}
+          resourceClasses={resourceClasses}
+          categoryCounts={categoryCounts}
+          classCounts={classCounts}
+          language={language}
+          onCategoriesChange={setCategories}
+          onClassesChange={setResourceClasses}
+          onCategoryDeleted={handleCategoryDeleted}
+          onClassDeleted={handleClassDeleted}
+          onError={setError}
+        />
+      )}
 
       <dialog
         ref={deleteDialogRef}

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { getImagePath } from "@/lib/utils/imagePath";
@@ -20,14 +19,16 @@ export default function HomePage() {
         id="home"
         className="relative flex min-h-[min(100dvh,900px)] items-center justify-center overflow-hidden sm:min-h-[85vh]"
       >
-        <Image
-          src={getImagePath("/images/main.jpg")}
-          alt={t("hero.title")}
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src={getImagePath("/video/dodamdodam-video.mp4")} type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-ink-900/65 via-ink-900/50 to-ink-900/75" aria-hidden />
         <div className="relative z-10 mx-auto max-w-4xl px-4 py-16 text-center text-surface sm:px-6 sm:py-24">
           <p className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-secondary-300/95 sm:text-xs sm:tracking-[0.35em]">

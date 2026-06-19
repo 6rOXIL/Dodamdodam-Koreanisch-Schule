@@ -8,7 +8,7 @@ import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { canAccessResources } from "@/lib/supabase/auth";
 import { createClient } from "@/lib/supabase/client";
 import { useProfile } from "@/lib/supabase/useProfile";
-import type { Resource, ResourceCategory } from "@/lib/supabase/database.types";
+import type { Resource, ResourceCategory, ResourceClass } from "@/lib/supabase/database.types";
 
 function ResourcesPageInner() {
   const router = useRouter();
@@ -16,6 +16,7 @@ function ResourcesPageInner() {
   const { user, profile, loading: profileLoading } = useProfile();
   const [resources, setResources] = useState<Resource[]>([]);
   const [categories, setCategories] = useState<ResourceCategory[]>([]);
+  const [resourceClasses, setResourceClasses] = useState<ResourceClass[]>([]);
   const [loading, setLoading] = useState(true);
   const [signingOut, setSigningOut] = useState(false);
 
@@ -32,7 +33,7 @@ function ResourcesPageInner() {
       createClient()
         .auth.signOut()
         .finally(() => {
-          router.replace(`/${language}/login/?error=account`);
+          router.replace(`/${language}/login/?login_error=account`);
         });
       return;
     }
@@ -46,9 +47,11 @@ function ResourcesPageInner() {
     Promise.all([
       supabase.from("resources").select("*").order("created_at", { ascending: false }),
       supabase.from("resource_categories").select("*").order("sort_order"),
-    ]).then(([resourcesRes, categoriesRes]) => {
+      supabase.from("resource_classes").select("*").order("sort_order"),
+    ]).then(([resourcesRes, categoriesRes, classesRes]) => {
       setResources((resourcesRes.data as Resource[]) ?? []);
       setCategories((categoriesRes.data as ResourceCategory[]) ?? []);
+      setResourceClasses((classesRes.data as ResourceClass[]) ?? []);
       setLoading(false);
     });
   }, [user, profile, profileLoading, signingOut, language, router]);
@@ -73,7 +76,12 @@ function ResourcesPageInner() {
 
   return (
     <main className="bg-surface text-ink-900">
-      <ResourcesClient profile={profile} initialResources={resources} categories={categories} />
+      <ResourcesClient
+        profile={profile}
+        initialResources={resources}
+        initialCategories={categories}
+        initialResourceClasses={resourceClasses}
+      />
     </main>
   );
 }

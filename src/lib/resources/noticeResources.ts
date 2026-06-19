@@ -1,41 +1,18 @@
-import { createClient } from "@/lib/supabase/client";
-import type { Resource } from "@/lib/supabase/database.types";
+import {
+  ANNOUNCEMENT_CATEGORY_SLUG,
+  NOTICE_CATEGORY_SLUG,
+} from "@/lib/resources/fixedCategories";
+import {
+  fetchPublishedResourcesByCategorySlug,
+  formatResourcePostDate,
+} from "@/lib/resources/categoryResources";
 
-export const NOTICE_CATEGORY_SLUG = "notice";
+export { NOTICE_CATEGORY_SLUG, ANNOUNCEMENT_CATEGORY_SLUG };
 
-export async function fetchPublishedNoticeResources(): Promise<Resource[]> {
-  const supabase = createClient();
+export const fetchPublishedNoticeResources = () =>
+  fetchPublishedResourcesByCategorySlug(NOTICE_CATEGORY_SLUG);
 
-  const { data: category, error: categoryError } = await supabase
-    .from("resource_categories")
-    .select("id")
-    .eq("slug", NOTICE_CATEGORY_SLUG)
-    .maybeSingle();
+export const fetchPublishedAnnouncementResources = () =>
+  fetchPublishedResourcesByCategorySlug(ANNOUNCEMENT_CATEGORY_SLUG);
 
-  if (categoryError || !category) {
-    return [];
-  }
-
-  const { data, error } = await supabase
-    .from("resources")
-    .select("*")
-    .eq("category_id", category.id)
-    .eq("is_published", true)
-    .order("created_at", { ascending: false });
-
-  if (error) {
-    console.error("fetchPublishedNoticeResources:", error.message);
-    return [];
-  }
-
-  return (data as Resource[]) ?? [];
-}
-
-export function formatNoticeDate(iso: string, locale: string) {
-  const tag = locale === "ko" ? "ko-KR" : locale === "de" ? "de-DE" : "en-GB";
-  return new Date(iso).toLocaleDateString(tag, {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  });
-}
+export const formatNoticeDate = formatResourcePostDate;

@@ -82,9 +82,33 @@ GitHub 저장소 **Secrets**에 다음을 등록해야 합니다.
 
 Supabase에 마이그레이션 적용:
 
+**방법 A — CLI (권장, 최초 1회만 로그인·연결)**
+
 ```bash
-supabase db push
+npm install
+npx supabase login
+npx supabase link --project-ref <프로젝트_REF>
+npm run db:push
 ```
+
+- 프로젝트 REF: [Supabase Dashboard](https://supabase.com/dashboard) → 프로젝트 → **Settings → General → Reference ID**
+- `supabase: command not found` 가 나오면 전역 설치 대신 위처럼 `npx` 또는 `npm run db:push` 를 사용하세요.
+
+**방법 B — Dashboard SQL Editor**
+
+CLI 없이 적용하려면 `supabase/migrations/` 폴더의 `.sql` 파일을 **파일명 순서대로** SQL Editor에 붙여넣어 실행합니다.
+
+**이미 SQL Editor로 스키마를 만든 경우 (`user_role already exists` 등)**
+
+원격 DB에는 테이블이 있지만 CLI 마이그레이션 이력이 비어 있을 수 있습니다. 이미 적용된 버전을 이력에 등록한 뒤, 남은 것만 push합니다.
+
+```bash
+# 예: init ~ fixed_resource_categories 까지 이미 수동 적용됨
+npx supabase migration repair 20260517000000 20260611010000 20260611020000 20260612000000 20260619000000 20260620000000 --status applied
+npx supabase db push --include-all
+```
+
+`migration repair`에 넣을 버전은 `npx supabase migration list`와 Dashboard에서 실제로 존재하는 테이블·정책을 보고 맞춥니다.
 
 로컬 동기화 (`.env.local`에 Supabase 키 필요):
 

@@ -2,6 +2,7 @@
 
 import NoticePostTable from "@/components/NoticePostTable";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { NOTICE_CATEGORY_SLUG } from "@/lib/resources/fixedCategories";
 import { getHeadingTag, type HeadingLevel } from "@/features/shared/sectionHeading";
 
 export function ScheduleSection({
@@ -42,6 +43,7 @@ export function ScheduleSection({
         </div>
 
         <NoticePostTable
+          categorySlug={NOTICE_CATEGORY_SLUG}
           colDate={t("legacy.colDate")}
           colTitle={t("legacy.colTitle")}
           emptyMessage={t("schedule.boardEmpty")}

@@ -18,7 +18,7 @@ export default function SiteFooter() {
               {t("footer.addressTitle")}
             </p>
             <p className="mt-1 text-sm text-ink-600 whitespace-pre-line">
-              {t("location.address")}
+              {t("location.address3")}
             </p>
           </div>
           <div>

@@ -16,10 +16,5 @@ export function createClient() {
     );
   }
 
-  return createBrowserClient(url, anonKey, {
-    auth: {
-      detectSessionInUrl: true,
-      flowType: "pkce",
-    },
-  });
+  return createBrowserClient(url, anonKey);
 }

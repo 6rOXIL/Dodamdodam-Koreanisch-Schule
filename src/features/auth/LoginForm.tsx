@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { fetchProfileForUser, getLoginErrorMessage } from "@/lib/supabase/authErrors";
@@ -12,15 +12,21 @@ export default function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const nextPath = searchParams.get("next") ?? `/${language}/resources/`;
-  const authError = searchParams.get("error");
+  const loginError = searchParams.get("login_error");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(() => {
-    if (authError === "auth") return t("auth.callbackError");
-    if (authError === "account") return t("auth.accountNotFound");
-    return null;
-  });
+  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (loginError === "callback") {
+      setError(t("auth.callbackError"));
+      return;
+    }
+    if (loginError === "account") {
+      setError(t("auth.accountNotFound"));
+    }
+  }, [loginError, t]);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -48,7 +54,6 @@ export default function LoginForm() {
       }
 
       router.push(nextPath.startsWith("/") ? nextPath : `/${language}/resources/`);
-      router.refresh();
     } finally {
       setLoading(false);
     }

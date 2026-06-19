@@ -9,15 +9,17 @@ import {
   validateResourceFile,
 } from "@/lib/resources/fileConstraints";
 import { getResourceCategoryLabel } from "@/lib/resources/categoryLabel";
-import { RESOURCE_CLASS_SLUGS } from "@/lib/resources/classSlugs";
+import { getResourceClassLabel } from "@/lib/resources/classLabel";
 import { createClient } from "@/lib/supabase/client";
-import type { Resource, ResourceCategory } from "@/lib/supabase/database.types";
+import type { Resource, ResourceCategory, ResourceClass } from "@/lib/supabase/database.types";
 
 type ResourceFormDialogProps = {
   open: boolean;
   mode: "upload" | "edit";
   resource?: Resource | null;
   categories: ResourceCategory[];
+  resourceClasses: ResourceClass[];
+  defaultClassSlug?: string;
   onClose: () => void;
   onSuccess: (resource: Resource, replacedStoragePath?: string) => void;
   onError: (message: string) => void;
@@ -32,6 +34,8 @@ export default function ResourceFormDialog({
   mode,
   resource,
   categories,
+  resourceClasses,
+  defaultClassSlug = "",
   onClose,
   onSuccess,
   onError,
@@ -61,7 +65,7 @@ export default function ResourceFormDialog({
         setTitle("");
         setDescription("");
         setCategoryId(categories[0]?.id ?? "");
-        setClassSlug("");
+        setClassSlug(defaultClassSlug);
         setPublish(false);
       }
       setFile(null);
@@ -70,7 +74,7 @@ export default function ResourceFormDialog({
     } else {
       dialog.close();
     }
-  }, [open, mode, resource, categories]);
+  }, [open, mode, resource, categories, defaultClassSlug]);
 
   function handleClose() {
     if (submitting) return;
@@ -288,10 +292,10 @@ export default function ResourceFormDialog({
                 onChange={(e) => setClassSlug(e.target.value)}
                 className="w-full rounded-lg border border-ink-200 bg-surface px-3 py-2 text-ink-900"
               >
-                <option value="">{t("resources.allClasses")}</option>
-                {RESOURCE_CLASS_SLUGS.map((slug) => (
-                  <option key={slug} value={slug}>
-                    {t(`classes.links.${slug}`)}
+                <option value="">{t("resources.commonClass")}</option>
+                {resourceClasses.map((resourceClass) => (
+                  <option key={resourceClass.id} value={resourceClass.slug}>
+                    {getResourceClassLabel(resourceClass, t)}
                   </option>
                 ))}
               </select>

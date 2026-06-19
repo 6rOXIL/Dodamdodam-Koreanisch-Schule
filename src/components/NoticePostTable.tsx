@@ -4,12 +4,10 @@ import { useEffect, useState } from "react";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { createClient } from "@/lib/supabase/client";
 import type { Resource } from "@/lib/supabase/database.types";
-import {
-  fetchPublishedNoticeResources,
-  formatNoticeDate,
-} from "@/lib/resources/noticeResources";
+import { fetchPublishedResourcesByCategorySlug, formatResourcePostDate } from "@/lib/resources/categoryResources";
 
 type NoticePostTableProps = {
+  categorySlug: string;
   colDate: string;
   colTitle: string;
   emptyMessage: string;
@@ -17,6 +15,7 @@ type NoticePostTableProps = {
 };
 
 export default function NoticePostTable({
+  categorySlug,
   colDate,
   colTitle,
   emptyMessage,
@@ -31,7 +30,7 @@ export default function NoticePostTable({
   useEffect(() => {
     let cancelled = false;
 
-    fetchPublishedNoticeResources().then((data) => {
+    fetchPublishedResourcesByCategorySlug(categorySlug).then((data) => {
       if (!cancelled) {
         setPosts(data);
         setLoading(false);
@@ -41,7 +40,7 @@ export default function NoticePostTable({
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [categorySlug]);
 
   async function handleDownload(resource: Resource) {
     setDownloadingId(resource.id);
@@ -100,7 +99,7 @@ export default function NoticePostTable({
                 className="border-b border-ink-100 last:border-b-0 hover:bg-brand-50/40"
               >
                 <td className="whitespace-nowrap px-3 py-3 align-top text-ink-500 sm:px-4">
-                  {formatNoticeDate(post.created_at, language)}
+                  {formatResourcePostDate(post.created_at, language)}
                 </td>
                 <td className="px-3 py-3 sm:px-4">
                   <button

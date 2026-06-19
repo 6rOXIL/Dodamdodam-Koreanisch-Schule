@@ -1,8 +1,9 @@
 "use client";
 
-import PublicNoticeTable from "@/components/PublicNoticeTable";
+import NoticePostTable from "@/components/NoticePostTable";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { getHeadingTag, type HeadingLevel } from "@/features/shared/sectionHeading";
+import { ANNOUNCEMENT_CATEGORY_SLUG } from "@/lib/resources/fixedCategories";
 
 export function EventsSection({
   id,
@@ -28,10 +29,25 @@ export function EventsSection({
           </HeadingTag>
           <p className="mt-4 text-ink-600">{t("events.lead")}</p>
         </div>
-        <PublicNoticeTable
+
+        <div className="mt-10 text-center">
+          <p className="text-xs font-semibold uppercase tracking-widest text-secondary-600/80">
+            {t("events.boardLabel")}
+          </p>
+          <h3 className="mt-2 font-sans text-xl font-bold text-ink-900 sm:text-2xl">
+            {t("events.boardTitle")}
+          </h3>
+          <p className="mx-auto mt-2 max-w-2xl text-sm text-ink-600 sm:text-base">
+            {t("events.boardLead")}
+          </p>
+        </div>
+
+        <NoticePostTable
+          categorySlug={ANNOUNCEMENT_CATEGORY_SLUG}
           colDate={t("legacy.colDate")}
           colTitle={t("legacy.colTitle")}
-          emptyMessage={t("events.empty")}
+          emptyMessage={t("events.boardEmpty")}
+          downloadErrorMessage={t("resources.downloadError")}
         />
       </div>
     </section>
