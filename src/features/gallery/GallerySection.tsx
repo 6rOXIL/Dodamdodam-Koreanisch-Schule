@@ -2,6 +2,7 @@
 
 import InstagramFeed from "@/components/InstagramFeed";
 import PhotoGallery from "@/components/PhotoGallery";
+import SiteRichHtml from "@/components/SiteRichHtml";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import instagramFeedJson from "@/lib/data/instagramFeed.json";
 import type { InstagramFeedFile } from "@/lib/types/instagramFeed";
@@ -33,9 +34,10 @@ export function GallerySection({
             {t("gallery.title")}
           </HeadingTag>
           <p className="mx-auto mt-4 max-w-2xl text-ink-600">{t("gallery.lead")}</p>
-          <p className="mx-auto mt-4 max-w-2xl text-left text-sm leading-relaxed text-ink-500 sm:text-center">
-            {t("gallery.legacyNote")}
-          </p>
+          <SiteRichHtml
+            text={t("gallery.legacyNote")}
+            className="mx-auto mt-4 max-w-2xl text-left text-sm leading-relaxed text-ink-500 sm:text-center"
+          />
         </div>
         <div className="mt-12">
           <PhotoGallery photos={GALLERY_PHOTOS} altPrefix={t("gallery.alt")} />

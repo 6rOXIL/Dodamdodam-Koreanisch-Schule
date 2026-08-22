@@ -1,10 +1,11 @@
 "use client";
 
+import SiteRichHtml from "@/components/SiteRichHtml";
 import { useIntroductionContent } from "@/lib/hooks/useIntroductionContent";
-import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { useSubcategoryLabel } from "@/lib/hooks/useSiteSubnav";
 
 export default function GreetingSection() {
-  const { t } = useLanguage();
+  const title = useSubcategoryLabel("introduction", "greeting");
   const { greeting } = useIntroductionContent();
 
   return (
@@ -13,15 +14,13 @@ export default function GreetingSection() {
         id="page-heading"
         className="border-b border-brand-200/80 pb-2 font-sans text-2xl font-bold text-ink-900"
       >
-        {t("introduction.links.greeting")}
+        {title}
       </h2>
-      <div className="space-y-4 text-[15px] leading-relaxed text-ink-700 sm:text-base">
-        {greeting.paragraphs.map((p, i) => (
-          <p key={i} className="whitespace-pre-line">
-            {p}
-          </p>
-        ))}
-      </div>
+      <SiteRichHtml
+        html={greeting.html}
+        paragraphs={greeting.paragraphs}
+        className="space-y-4 text-[15px] leading-relaxed text-ink-700 sm:text-base [&_p]:mb-4 [&_p:last-child]:mb-0"
+      />
     </section>
   );
 }

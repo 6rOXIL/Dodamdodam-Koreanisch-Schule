@@ -2,11 +2,13 @@
 
 import { useClassesContent } from "@/lib/hooks/useClassesContent";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { useSubcategoryLabel } from "@/lib/hooks/useSiteSubnav";
 import ClassDetailBlock from "../components/ClassDetailBlock";
 import ClassScheduleTable from "../components/ClassScheduleTable";
 
 export default function ElementarySection() {
   const { t, language } = useLanguage();
+  const title = useSubcategoryLabel("classes", "elementary");
   const { elementary } = useClassesContent();
   const { petalSection, fruitSection } = elementary;
 
@@ -16,7 +18,7 @@ export default function ElementarySection() {
         id="page-heading"
         className="border-b border-brand-200/80 pb-2 font-sans text-2xl font-bold text-ink-900"
       >
-        {t("classes.links.elementary")}
+        {title}
       </h2>
       <div className="space-y-8 text-[15px] leading-relaxed text-ink-700 sm:text-base">
         <ClassScheduleTable
@@ -32,6 +34,7 @@ export default function ElementarySection() {
           locationLabel={t("classes.location")}
           lead={petalSection.lead}
           paragraphs={petalSection.paragraphs}
+          bodyHtml={petalSection.bodyHtml}
           bullets={petalSection.bullets}
           textbooks={petalSection.textbooks}
           note={petalSection.note}
@@ -50,6 +53,7 @@ export default function ElementarySection() {
           location={fruitSection.location}
           locationLabel={t("classes.location")}
           paragraphs={fruitSection.paragraphs}
+          bodyHtml={fruitSection.bodyHtml}
           bullets={fruitSection.bullets}
           textbooks={fruitSection.textbooks}
           note={fruitSection.note}

@@ -10,6 +10,8 @@ export type ClassLevelBlock = {
   location?: string;
   lead?: string;
   paragraphs?: string[];
+  /** 서식 있는 본문 (paragraphs 대체) */
+  bodyHtml?: string;
   bullets?: string[];
   textbooks?: string[];
   note?: string;

@@ -1,11 +1,13 @@
 "use client";
 
+import SiteRichHtml from "@/components/SiteRichHtml";
 import { LocationMapEmbed } from "@/features/location/LocationMapEmbed";
 import { useIntroductionContent } from "@/lib/hooks/useIntroductionContent";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { useSubcategoryLabel } from "@/lib/hooks/useSiteSubnav";
 
 export default function DirectionsSection() {
-  const { t } = useLanguage();
+  const title = useSubcategoryLabel("introduction", "directions");
   const { directions, schoolOrganization } = useIntroductionContent();
 
   return (
@@ -14,7 +16,7 @@ export default function DirectionsSection() {
         id="page-heading"
         className="border-b border-brand-200/80 pb-2 font-sans text-2xl font-bold text-ink-900"
       >
-        {t("introduction.links.map")}
+        {title}
       </h2>
       <div className="space-y-6 text-[15px] leading-relaxed text-ink-700 sm:text-base">
         <div>
@@ -24,11 +26,15 @@ export default function DirectionsSection() {
 
         <div>
           <p className="font-semibold text-ink-900">{directions.teachingSitesLabel}</p>
-          <ul className="mt-2 space-y-1">
-            {directions.lines.map((line, i) => (
-              <li key={i}>{line || "\u00A0"}</li>
-            ))}
-          </ul>
+          {directions.html ? (
+            <SiteRichHtml html={directions.html} className="mt-2" />
+          ) : (
+            <ul className="mt-2 space-y-1">
+              {directions.lines.map((line, i) => (
+                <li key={i}>{line || "\u00A0"}</li>
+              ))}
+            </ul>
+          )}
         </div>
 
         <ul className="space-y-1">

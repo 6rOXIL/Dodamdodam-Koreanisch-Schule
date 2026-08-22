@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Fragment } from "react";
+import SiteRichHtml from "@/components/SiteRichHtml";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { getImagePath } from "@/lib/utils/imagePath";
 
@@ -15,6 +16,7 @@ type Props = {
   locationLabel: string;
   lead?: string;
   paragraphs?: readonly string[];
+  bodyHtml?: string;
   bullets?: readonly string[];
   textbooks?: readonly string[];
   note?: string;
@@ -27,12 +29,15 @@ export default function ClassDetailBlock({
   locationLabel,
   lead,
   paragraphs,
+  bodyHtml,
   bullets,
   textbooks,
   note,
   koOnlyImage,
 }: Props) {
   const { language } = useLanguage();
+  const hasRichBody = Boolean(bodyHtml?.trim());
+
   return (
     <article className="space-y-4 rounded-xl border border-ink-200 bg-surface p-4 sm:p-5">
       <h3 className="font-semibold text-ink-900">{title}</h3>
@@ -45,25 +50,44 @@ export default function ClassDetailBlock({
         </div>
       )}
       {lead && <p className="font-medium text-ink-800">{lead}</p>}
-      {paragraphs?.map((p, i) => (
-        <Fragment key={i}>
-          <p className="leading-relaxed text-ink-700">{p}</p>
-          {language === "ko" &&
-            koOnlyImage &&
-            koOnlyImage.afterParagraphIndex === i && (
-              <figure className="my-2 w-1/2 max-w-full overflow-hidden rounded-xl border border-ink-200 bg-ink-50 shadow-sm">
-                <Image
-                  src={getImagePath(koOnlyImage.src)}
-                  alt={koOnlyImage.alt}
-                  width={800}
-                  height={500}
-                  className="h-auto w-full"
-                  sizes="(max-width: 768px) 50vw, 336px"
-                />
-              </figure>
-            )}
-        </Fragment>
-      ))}
+      {hasRichBody ? (
+        <SiteRichHtml
+          html={bodyHtml}
+          className="leading-relaxed text-ink-700 [&_p]:mb-3 [&_p:last-child]:mb-0"
+        />
+      ) : (
+        paragraphs?.map((p, i) => (
+          <Fragment key={i}>
+            <p className="leading-relaxed text-ink-700">{p}</p>
+            {language === "ko" &&
+              koOnlyImage &&
+              koOnlyImage.afterParagraphIndex === i && (
+                <figure className="my-2 w-1/2 max-w-full overflow-hidden rounded-xl border border-ink-200 bg-ink-50 shadow-sm">
+                  <Image
+                    src={getImagePath(koOnlyImage.src)}
+                    alt={koOnlyImage.alt}
+                    width={800}
+                    height={500}
+                    className="h-auto w-full"
+                    sizes="(max-width: 768px) 50vw, 336px"
+                  />
+                </figure>
+              )}
+          </Fragment>
+        ))
+      )}
+      {language === "ko" && hasRichBody && koOnlyImage && (
+        <figure className="my-2 w-1/2 max-w-full overflow-hidden rounded-xl border border-ink-200 bg-ink-50 shadow-sm">
+          <Image
+            src={getImagePath(koOnlyImage.src)}
+            alt={koOnlyImage.alt}
+            width={800}
+            height={500}
+            className="h-auto w-full"
+            sizes="(max-width: 768px) 50vw, 336px"
+          />
+        </figure>
+      )}
       {bullets && bullets.length > 0 && (
         <ul className="list-none space-y-2 border-l-2 border-brand-200 pl-4">
           {bullets.map((item, i) => (

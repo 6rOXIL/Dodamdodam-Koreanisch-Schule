@@ -2,9 +2,11 @@
 
 import { useClassesContent } from "@/lib/hooks/useClassesContent";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { useSubcategoryLabel } from "@/lib/hooks/useSiteSubnav";
 
 export default function AdultsSection() {
   const { t } = useLanguage();
+  const title = useSubcategoryLabel("classes", "adults");
   const adults = useClassesContent().adults;
 
   return (
@@ -13,7 +15,7 @@ export default function AdultsSection() {
         id="page-heading"
         className="border-b border-brand-200/80 pb-2 font-sans text-2xl font-bold text-ink-900"
       >
-        {t("classes.links.adults")}
+        {title}
       </h2>
       <div className="space-y-6 text-[15px] leading-relaxed text-ink-700 sm:text-base">
         <p className="font-medium text-ink-800">{adults.title}</p>

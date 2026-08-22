@@ -10,6 +10,8 @@ type ResourceRichTextEditorProps = {
   value: string;
   onChange: (value: string) => void;
   disabled?: boolean;
+  /** Tailwind min-height, e.g. min-h-[12rem] */
+  editorClassName?: string;
 };
 
 type ToolbarButton = {
@@ -25,6 +27,7 @@ export default function ResourceRichTextEditor({
   value,
   onChange,
   disabled = false,
+  editorClassName = "min-h-[7rem]",
 }: ResourceRichTextEditorProps) {
   const { t } = useLanguage();
   const editorRef = useRef<HTMLDivElement>(null);
@@ -120,7 +123,7 @@ export default function ResourceRichTextEditor({
           role="textbox"
           aria-multiline="true"
           onInput={emitChange}
-          className="min-h-[7rem] px-3 py-2 text-sm leading-relaxed text-ink-900 outline-none [&_ol]:ml-5 [&_ol]:list-decimal [&_ul]:ml-5 [&_ul]:list-disc"
+          className={`${editorClassName} px-3 py-2 text-sm leading-relaxed text-ink-900 outline-none [&_a]:text-brand-800 [&_a]:underline [&_ol]:ml-5 [&_ol]:list-decimal [&_ul]:ml-5 [&_ul]:list-disc`}
           data-placeholder={t("resources.editorPlaceholder")}
         />
       </div>

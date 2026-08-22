@@ -8,7 +8,7 @@ export type CalendarRow = {
 };
 
 export type IntroductionContent = {
-  greeting: { paragraphs: string[] };
+  greeting: { paragraphs?: string[]; html?: string };
   schoolOrganization: {
     name: string;
     principal: string;
@@ -18,17 +18,18 @@ export type IntroductionContent = {
     email: string;
   };
   educationGoals: {
-    purpose: { title: string; text: string };
-    goals: { title: string; items: string[] };
+    purpose: { title: string; text: string; html?: string };
+    goals: { title: string; items: string[]; html?: string };
     direction: {
       title: string;
-      paragraphs: string[];
+      paragraphs?: string[];
+      html?: string;
       quoteIntro: string;
       quote: string;
       closing: { before: string; highlight: string; after: string };
     };
   };
-  history: { period: string; lines: string[] }[];
+  history: { period: string; lines: string[]; html?: string }[];
   calendar: {
     title: string;
     monthWeekHeader: string;
@@ -46,6 +47,7 @@ export type IntroductionContent = {
     titleSecondary: string;
     teachingSitesLabel: string;
     lines: string[];
+    html?: string;
     phones: string[];
     emailLine: string;
     mapLabel: string;

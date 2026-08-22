@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CLASS_SUBPAGES } from "./classRoutes";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { useSiteSubnav } from "@/lib/hooks/useSiteSubnav";
 import { getPathWithoutLocalePrefix } from "@/lib/i18n/pathname";
 
 export default function ClassesSubnav() {
   const pathname = usePathname();
   const { t, language } = useLanguage();
+  const { links } = useSiteSubnav("classes");
   const pathRest = getPathWithoutLocalePrefix(pathname);
 
   return (
@@ -16,7 +17,7 @@ export default function ClassesSubnav() {
       className="mb-8 flex flex-wrap justify-center gap-2"
       aria-label={t("classes.sectionNav")}
     >
-      {CLASS_SUBPAGES.map(({ segment, labelKey }) => {
+      {links.map(({ segment, label }) => {
         const target = `/classes/${segment}/`;
         const active = pathRest === target;
         return (
@@ -29,7 +30,7 @@ export default function ClassesSubnav() {
                 : "border-ink-200 bg-ink-50 text-ink-700 hover:border-brand-300 hover:bg-brand-50"
             }`}
           >
-            {t(labelKey)}
+            {label}
           </Link>
         );
       })}

@@ -5,28 +5,20 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { useEffect, useState } from "react";
-import type { SectionId } from "@/lib/navConfig";
+import { useTopNav } from "@/lib/hooks/useTopNav";
 import { getPathWithoutLocalePrefix } from "@/lib/i18n/pathname";
+import { isAdmin } from "@/lib/supabase/auth";
 import { createClient } from "@/lib/supabase/client";
 import { useProfile } from "@/lib/supabase/useProfile";
 import { getImagePath } from "@/lib/utils/imagePath";
 import LanguageSwitcher from "./LanguageSwitcher";
-
-const NAV_KEYS: { id: SectionId; labelKey: string }[] = [
-  { id: "home", labelKey: "nav.home" },
-  { id: "about", labelKey: "nav.about" },
-  { id: "classes", labelKey: "nav.classes" },
-  { id: "schedule", labelKey: "nav.schedule" },
-  { id: "gallery", labelKey: "nav.gallery" },
-  { id: "events", labelKey: "nav.events" },
-  { id: "location", labelKey: "nav.location" },
-];
 
 export default function Navigation() {
   const pathname = usePathname();
   const router = useRouter();
   const { t, language } = useLanguage();
   const { user, profile, loading: profileLoading } = useProfile();
+  const topNav = useTopNav();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
 
@@ -35,6 +27,8 @@ export default function Navigation() {
     pathWithoutLocale !== "/" && pathWithoutLocale.endsWith("/")
       ? pathWithoutLocale.slice(0, -1)
       : pathWithoutLocale;
+
+  const isAdminRoute = normalizedPath === "/admin" || normalizedPath.startsWith("/admin/");
 
   useEffect(() => {
     if (typeof document === "undefined") return;
@@ -64,17 +58,10 @@ export default function Navigation() {
       active ? "bg-brand-100 font-semibold text-brand-950" : "text-ink-700 hover:bg-ink-100"
     }`;
 
-  const renderNavItem = (id: SectionId, labelKey: string, mobile = false) => {
+  const renderNavItem = (id: string, label: string, hrefPath: string, mobile = false) => {
     const targetPath =
-      id === "home" ? "/" : id === "about" ? "/introduction" : id === "classes" ? "/classes" : `/${id}`;
-    const href =
-      id === "home"
-        ? `/${language}/`
-        : id === "about"
-          ? `/${language}/introduction/`
-          : id === "classes"
-            ? `/${language}/classes/`
-            : `/${language}/${id}/`;
+      hrefPath === "/" ? "/" : hrefPath.endsWith("/") ? hrefPath.slice(0, -1) : hrefPath;
+    const href = hrefPath === "/" ? `/${language}/` : `/${language}${hrefPath}`;
     const active = normalizedPath === targetPath;
     const baseClass = mobile
       ? `w-full rounded-xl px-4 py-4 text-left text-base ${
@@ -89,7 +76,7 @@ export default function Navigation() {
         className={baseClass}
         onClick={() => setMobileOpen(false)}
       >
-        {t(labelKey)}
+        {label}
       </Link>
     );
   };
@@ -100,6 +87,9 @@ export default function Navigation() {
     if (user && profile) {
       const resourcesHref = `/${language}/resources/`;
       const resourcesActive = normalizedPath === "/resources";
+      const adminHref = `/${language}/admin/`;
+      const adminActive = isAdminRoute;
+      const showAdmin = isAdmin(profile);
 
       if (mobile) {
         return (
@@ -115,6 +105,19 @@ export default function Navigation() {
             >
               {t("resources.title")}
             </Link>
+            {showAdmin && (
+              <Link
+                href={adminHref}
+                className={`w-full rounded-xl px-4 py-4 text-left text-base ${
+                  adminActive
+                    ? "bg-brand-100 font-semibold text-brand-950"
+                    : "text-ink-800 active:bg-ink-100"
+                }`}
+                onClick={() => setMobileOpen(false)}
+              >
+                {t("admin.consoleTitle")}
+              </Link>
+            )}
             <button
               type="button"
               onClick={handleLogout}
@@ -139,6 +142,18 @@ export default function Navigation() {
           >
             {t("resources.title")}
           </Link>
+          {showAdmin && (
+            <Link
+              href={adminHref}
+              className={`whitespace-nowrap rounded-md px-2 py-2 text-sm transition-colors md:px-3 ${
+                adminActive
+                  ? "bg-brand-100 font-semibold text-brand-950"
+                  : "text-ink-700 hover:bg-ink-100"
+              }`}
+            >
+              {t("admin.consoleShort")}
+            </Link>
+          )}
           <button
             type="button"
             onClick={handleLogout}
@@ -252,12 +267,12 @@ export default function Navigation() {
             </span>
           </Link>
           <nav className="hidden flex-1 items-center justify-center gap-0.5 overflow-x-auto md:flex lg:gap-1">
-            {NAV_KEYS.map(({ id, labelKey }) => renderNavItem(id, labelKey, false))}
+            {topNav.map(({ id, label, hrefPath }) => renderNavItem(id, label, hrefPath, false))}
           </nav>
 
           <div className="flex shrink-0 items-center gap-8">
-          <LanguageSwitcher />
-          {authLinks()}
+            <LanguageSwitcher />
+            {authLinks()}
           </div>
         </div>
       </header>
@@ -273,7 +288,7 @@ export default function Navigation() {
             className="flex h-full max-h-[calc(100dvh-4rem-env(safe-area-inset-top,0px))] flex-col gap-0 overflow-y-auto overscroll-contain px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))]"
             aria-label="모바일 메뉴"
           >
-            {NAV_KEYS.map(({ id, labelKey }) => renderNavItem(id, labelKey, true))}
+            {topNav.map(({ id, label, hrefPath }) => renderNavItem(id, label, hrefPath, true))}
             {authLinks(true)}
           </nav>
         </div>

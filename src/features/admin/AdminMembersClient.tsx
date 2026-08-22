@@ -18,7 +18,6 @@ export default function AdminMembersClient({ initialMembers }: AdminMembersClien
   const [members, setMembers] = useState(initialMembers);
   const [pendingId, setPendingId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [loggingOut, setLoggingOut] = useState(false);
 
   async function handleRoleChange(userId: string, newRole: UserRole) {
     setError(null);
@@ -42,39 +41,20 @@ export default function AdminMembersClient({ initialMembers }: AdminMembersClien
     router.refresh();
   }
 
-  async function handleLogout() {
-    setLoggingOut(true);
-    const supabase = createClient();
-    await supabase.auth.signOut();
-    router.push(`/${language}/login/`);
-    router.refresh();
-  }
-
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10 md:px-6">
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <p className="text-sm font-medium uppercase tracking-wide text-secondary-600">{t("auth.adminLabel")}</p>
-          <h1 className="mt-1 text-3xl font-bold text-ink-900">{t("auth.membersTitle")}</h1>
-          <p className="mt-2 text-ink-600">{t("auth.membersLead")}</p>
-        </div>
-        <button
-          type="button"
-          onClick={handleLogout}
-          disabled={loggingOut}
-          className="rounded-lg border border-ink-200 px-4 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50"
-        >
-          {t("auth.logout")}
-        </button>
-      </div>
+    <div className="space-y-6">
+      <header>
+        <h2 className="text-2xl font-bold text-ink-900">{t("auth.membersTitle")}</h2>
+        <p className="mt-1 text-ink-600">{t("auth.membersLead")}</p>
+      </header>
 
       {error && (
-        <p className="mt-6 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700" role="alert">
+        <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700" role="alert">
           {error}
         </p>
       )}
 
-      <div className="mt-8 overflow-x-auto rounded-xl border border-ink-200">
+      <div className="overflow-x-auto rounded-2xl border border-ink-200 bg-surface shadow-sm">
         <table className="min-w-full divide-y divide-ink-200 text-sm">
           <thead className="bg-surface-muted">
             <tr>
@@ -84,7 +64,7 @@ export default function AdminMembersClient({ initialMembers }: AdminMembersClien
               <th className="px-4 py-3 text-left font-semibold text-ink-700">{t("auth.joinedAt")}</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-ink-200 bg-surface">
+          <tbody className="divide-y divide-ink-200">
             {members.map((member) => (
               <tr key={member.id}>
                 <td className="px-4 py-3 text-ink-900">{member.display_name || "—"}</td>
@@ -105,7 +85,9 @@ export default function AdminMembersClient({ initialMembers }: AdminMembersClien
                   </select>
                 </td>
                 <td className="px-4 py-3 text-ink-600">
-                  {new Date(member.created_at).toLocaleDateString(language === "ko" ? "ko-KR" : language === "de" ? "de-DE" : "en-GB")}
+                  {new Date(member.created_at).toLocaleDateString(
+                    language === "ko" ? "ko-KR" : language === "de" ? "de-DE" : "en-GB"
+                  )}
                 </td>
               </tr>
             ))}
@@ -114,7 +96,7 @@ export default function AdminMembersClient({ initialMembers }: AdminMembersClien
       </div>
 
       {members.length === 0 && (
-        <p className="mt-6 text-center text-ink-500">{t("auth.membersEmpty")}</p>
+        <p className="text-center text-ink-500">{t("auth.membersEmpty")}</p>
       )}
     </div>
   );

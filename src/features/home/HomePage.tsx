@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import SiteRichHtml from "@/components/SiteRichHtml";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { getImagePath } from "@/lib/utils/imagePath";
 import { LocationMapEmbed } from "@/features/location/LocationMapEmbed";
@@ -95,7 +96,10 @@ export default function HomePage() {
                   {card.sub}
                 </p>
                 <h3 className="mt-2 text-xl font-semibold text-ink-900">{card.title}</h3>
-                <p className="mt-4 text-sm leading-relaxed text-ink-600">{card.body}</p>
+                <SiteRichHtml
+                  text={card.body}
+                  className="mt-4 text-sm leading-relaxed text-ink-600"
+                />
               </article>
             ))}
           </div>

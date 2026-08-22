@@ -18,7 +18,6 @@ import ResourceDescription from "@/components/ResourceDescription";
 import ResourceFormDialog from "@/features/resources/ResourceFormDialog";
 import ResourceFolderNav from "@/features/resources/ResourceFolderNav";
 import ResourceCategoryNav from "@/features/resources/ResourceCategoryNav";
-import ResourceTaxonomySheet, { type TaxonomyTab } from "@/features/resources/ResourceTaxonomySheet";
 
 interface ResourcesClientProps {
   profile: Profile;
@@ -50,8 +49,6 @@ export default function ResourcesClient({
   const [deleting, setDeleting] = useState(false);
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
   const [selectedClass, setSelectedClass] = useState<ResourceClassFilter>("all");
-  const [taxonomyOpen, setTaxonomyOpen] = useState(false);
-  const [taxonomyTab, setTaxonomyTab] = useState<TaxonomyTab>("categories");
   const deleteDialogRef = useRef<HTMLDialogElement>(null);
 
   const canUpload = canUploadResources(profile);
@@ -131,29 +128,9 @@ export default function ResourcesClient({
 
   const sortedCategories = useMemo(() => sortResourceCategories(categories), [categories]);
 
-  function openTaxonomy(tab: TaxonomyTab) {
-    setTaxonomyTab(tab);
-    setTaxonomyOpen(true);
-  }
-
-  function handleCategoryDeleted(categoryId: string) {
-    setResources((prev) =>
-      prev.map((r) => (r.category_id === categoryId ? { ...r, category_id: null } : r))
-    );
-    if (selectedCategoryId === categoryId) {
-      setSelectedCategoryId(null);
-    }
-    setError(null);
-  }
-
-  function handleClassDeleted(classSlug: string) {
-    setResources((prev) =>
-      prev.map((r) => (r.class_slug === classSlug ? { ...r, class_slug: null } : r))
-    );
-    if (selectedClass === classSlug) {
-      setSelectedClass("all");
-    }
-    setError(null);
+  function openTaxonomy(tab: "categories" | "folders") {
+    const query = tab === "folders" ? "?tab=folders" : "";
+    router.push(`/${language}/admin/resources/${query}`);
   }
 
   function getEmptyMessage() {
@@ -277,10 +254,10 @@ export default function ResourcesClient({
         <div className="flex flex-wrap gap-2">
           {admin && (
             <Link
-              href={`/${language}/admin/members/`}
+              href={`/${language}/admin/`}
               className="rounded-lg border border-ink-200 px-4 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50"
             >
-              {t("auth.membersTitle")}
+              {t("admin.consoleTitle")}
             </Link>
           )}
           <button
@@ -439,25 +416,6 @@ export default function ResourcesClient({
         onSuccess={handleEditSuccess}
         onError={setError}
       />
-
-      {admin && (
-        <ResourceTaxonomySheet
-          open={taxonomyOpen}
-          tab={taxonomyTab}
-          onTabChange={setTaxonomyTab}
-          onClose={() => setTaxonomyOpen(false)}
-          categories={categories}
-          resourceClasses={resourceClasses}
-          categoryCounts={categoryCounts}
-          classCounts={classCounts}
-          language={language}
-          onCategoriesChange={setCategories}
-          onClassesChange={setResourceClasses}
-          onCategoryDeleted={handleCategoryDeleted}
-          onClassDeleted={handleClassDeleted}
-          onError={setError}
-        />
-      )}
 
       <dialog
         ref={deleteDialogRef}

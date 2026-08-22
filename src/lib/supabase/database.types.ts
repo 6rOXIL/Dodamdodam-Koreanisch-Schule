@@ -68,3 +68,67 @@ export interface PublicNotice {
   created_at: string;
   updated_at: string;
 }
+
+export type SitePageSlug =
+  | "home"
+  | "introduction"
+  | "classes"
+  | "schedule"
+  | "gallery"
+  | "events"
+  | "location";
+export type SiteLocale = "ko" | "en" | "de";
+
+export type SiteNavContentKind =
+  | "static"
+  | "pages:introduction"
+  | "pages:classes"
+  | "resources:notice"
+  | "resources:announcement"
+  | `form:${string}`;
+
+export interface SiteNavItem {
+  id: string;
+  slug: string;
+  href_path: string;
+  label_ko: string;
+  label_en: string;
+  label_de: string;
+  sort_order: number;
+  is_visible: boolean;
+  content_kind: SiteNavContentKind;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface SiteCategory {
+  id: string;
+  slug: "introduction" | "classes";
+  label_ko: string;
+  label_en: string;
+  label_de: string;
+  sort_order: number;
+  is_visible: boolean;
+  created_at: string;
+}
+
+export interface SiteSubcategory {
+  id: string;
+  category_id: string;
+  slug: string;
+  label_ko: string;
+  label_en: string;
+  label_de: string;
+  sort_order: number;
+  is_visible: boolean;
+  created_at: string;
+}
+
+export interface SitePageContent {
+  id: string;
+  page_slug: SitePageSlug;
+  locale: SiteLocale;
+  payload: Record<string, unknown>;
+  updated_at: string;
+  updated_by: string | null;
+}

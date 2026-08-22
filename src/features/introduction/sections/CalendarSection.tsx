@@ -2,9 +2,11 @@
 
 import { useIntroductionContent } from "@/lib/hooks/useIntroductionContent";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { useSubcategoryLabel } from "@/lib/hooks/useSiteSubnav";
 
 export default function CalendarSection() {
   const { t } = useLanguage();
+  const title = useSubcategoryLabel("introduction", "calendar");
   const { calendar } = useIntroductionContent();
 
   return (
@@ -13,7 +15,7 @@ export default function CalendarSection() {
         id="page-heading"
         className="border-b border-brand-200/80 pb-2 font-sans text-2xl font-bold text-ink-900"
       >
-        {t("introduction.links.calendar")}
+        {title}
       </h2>
       <div className="space-y-8">
         <p className="whitespace-pre-line text-center text-sm font-medium text-ink-800 sm:text-base">

@@ -110,6 +110,20 @@ npx supabase db push --include-all
 
 `migration repair`에 넣을 버전은 `npx supabase migration list`와 Dashboard에서 실제로 존재하는 테이블·정책을 보고 맞춥니다.
 
+### 관리자 콘솔
+
+어드민으로 로그인하면 상단 **관리** 또는 자료실의 **관리자** 링크로 `/admin/`에 들어갑니다.
+
+| 메뉴 | 역할 |
+|------|------|
+| 홈 | 전체 바로가기 + 사이트 메뉴 미리보기 |
+| 사이트 메뉴 | 상단 네비(홈~오시는 길) 라벨·순서·표시 |
+| 페이지 내용 | 학교 소개·학급 소개 본문 |
+| 자료 분류 | 자료실 카테고리/학급 폴더 (수업 안내·학교 소식 연결) |
+| 회원 | 권한 관리 |
+
+관련 마이그레이션: `site_homepage_content`, `site_nav_items` (`npm run db:push`).
+
 로컬 동기화 (`.env.local`에 Supabase 키 필요):
 
 ```bash
@@ -129,6 +143,19 @@ npm run sync:notices
 3. Actions 탭에서 실패한 **Deploy to GitHub Pages** 워크플로를 **Re-run** 하거나 `main`에 다시 푸시
 
 배포 URL: `https://6roxil.github.io/Dodamdodam-Koreanisch-Schule/`
+
+---
+
+## 입학·수강 신청 폼
+
+어드민 **신청 폼**(`/admin/forms/`)에서 입력 항목을 만들고 제출 내역을 확인합니다.
+
+| 용도 | URL |
+|------|-----|
+| 기본 입학 신청 (시드) | `/{locale}/apply/` |
+| 기타 폼 | `/{locale}/forms/open/?slug={슬러그}` |
+
+사이트 상단 메뉴에 넣으려면 폼 화면의 **사이트 메뉴에 추가**를 사용하거나, **사이트 메뉴**에서 경로를 `/apply/` 등으로 맞추면 됩니다. 마이그레이션 `20260625000000_site_forms` 적용 후 사용하세요 (`npm run db:push`).
 
 ---
 

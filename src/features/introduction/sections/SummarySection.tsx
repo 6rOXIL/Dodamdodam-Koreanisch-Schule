@@ -1,10 +1,13 @@
 "use client";
 
+import SiteRichHtml from "@/components/SiteRichHtml";
 import { useIntroductionContent } from "@/lib/hooks/useIntroductionContent";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { useSubcategoryLabel } from "@/lib/hooks/useSiteSubnav";
 
 export default function SummarySection() {
   const { t } = useLanguage();
+  const title = useSubcategoryLabel("introduction", "summary");
   const { schoolOrganization, educationGoals, history } = useIntroductionContent();
 
   return (
@@ -13,7 +16,7 @@ export default function SummarySection() {
         id="page-heading"
         className="border-b border-brand-200/80 pb-2 font-sans text-2xl font-bold text-ink-900"
       >
-        {t("introduction.links.summary")}
+        {title}
       </h2>
       <div className="space-y-8 text-[15px] leading-relaxed text-ink-700 sm:text-base">
         <div>
@@ -69,31 +72,39 @@ export default function SummarySection() {
               <h4 className="text-sm font-semibold tracking-wide text-secondary-700 uppercase">
                 {educationGoals.purpose.title}
               </h4>
-              <p className="mt-2 text-[15px] leading-relaxed font-medium text-ink-800 sm:text-base">
-                {educationGoals.purpose.text}
-              </p>
+              <SiteRichHtml
+                html={educationGoals.purpose.html}
+                text={educationGoals.purpose.text}
+                className="mt-2 text-[15px] leading-relaxed font-medium text-ink-800 sm:text-base"
+              />
             </div>
 
             <div>
               <h4 className="mb-3 font-semibold text-ink-900">{educationGoals.goals.title}</h4>
-              <ol className="list-none space-y-3 border-l-2 border-brand-200 pl-4">
-                {educationGoals.goals.items.map((item, i) => (
-                  <li key={i} className="flex gap-3">
-                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-100 text-sm font-semibold text-brand-900">
-                      {i + 1}
-                    </span>
-                    <span className="pt-0.5">{item}</span>
-                  </li>
-                ))}
-              </ol>
+              {educationGoals.goals.html ? (
+                <SiteRichHtml html={educationGoals.goals.html} className="text-ink-700" />
+              ) : (
+                <ol className="list-none space-y-3 border-l-2 border-brand-200 pl-4">
+                  {educationGoals.goals.items.map((item, i) => (
+                    <li key={i} className="flex gap-3">
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-100 text-sm font-semibold text-brand-900">
+                        {i + 1}
+                      </span>
+                      <span className="pt-0.5">{item}</span>
+                    </li>
+                  ))}
+                </ol>
+              )}
             </div>
 
             <div>
               <h4 className="mb-3 font-semibold text-ink-900">{educationGoals.direction.title}</h4>
               <div className="space-y-4">
-                {educationGoals.direction.paragraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
+                <SiteRichHtml
+                  html={educationGoals.direction.html}
+                  paragraphs={educationGoals.direction.paragraphs}
+                  className="space-y-4 [&_p]:mb-4 [&_p:last-child]:mb-0"
+                />
                 <p className="text-ink-600">{educationGoals.direction.quoteIntro}</p>
                 <blockquote className="border-l-4 border-brand-300 bg-ink-50 px-4 py-3 italic text-ink-800">
                   &ldquo;{educationGoals.direction.quote}&rdquo;
@@ -116,11 +127,15 @@ export default function SummarySection() {
             {history.map((h) => (
               <li key={h.period} className="border-b border-ink-100 pb-4 last:border-0">
                 <p className="font-semibold text-brand-900">{h.period}</p>
-                <ul className="mt-2 list-inside list-disc space-y-1 text-ink-700">
-                  {h.lines.map((line, i) => (
-                    <li key={i}>{line}</li>
-                  ))}
-                </ul>
+                {h.html ? (
+                  <SiteRichHtml html={h.html} className="mt-2 text-ink-700" />
+                ) : (
+                  <ul className="mt-2 list-inside list-disc space-y-1 text-ink-700">
+                    {h.lines.map((line, i) => (
+                      <li key={i}>{line}</li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>

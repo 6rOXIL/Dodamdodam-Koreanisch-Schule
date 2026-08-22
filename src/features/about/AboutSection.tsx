@@ -1,5 +1,6 @@
 "use client";
 
+import SiteRichHtml from "@/components/SiteRichHtml";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { getHeadingTag, type HeadingLevel } from "@/features/shared/sectionHeading";
 
@@ -24,9 +25,10 @@ export function AboutSection({
         <HeadingTag className="mt-3 font-sans text-2xl font-bold text-ink-900 sm:text-3xl md:text-4xl">
           {t("about.title")}
         </HeadingTag>
-        <p className="mt-6 text-[15px] leading-relaxed text-ink-600 sm:mt-8 sm:text-base md:text-lg">
-          {t("about.body")}
-        </p>
+        <SiteRichHtml
+          text={t("about.body")}
+          className="mt-6 text-[15px] leading-relaxed text-ink-600 sm:mt-8 sm:text-base md:text-lg"
+        />
       </div>
     </section>
   );
