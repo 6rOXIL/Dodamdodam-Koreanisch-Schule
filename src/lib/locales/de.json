@@ -242,7 +242,7 @@
     },
     "menu": {
       "title": "Seitenmenü",
-      "lead": "Kategorien der oberen Navigation hinzufügen/entfernen sowie Namen, Pfade, Reihenfolge und Sichtbarkeit bearbeiten.",
+      "lead": "Kategorien der oberen Navigation hinzufügen/entfernen sowie Namen, Pfade, Reihenfolge, Sichtbarkeit und Materialbibliothek-Verknüpfung bearbeiten.",
       "save": "Menü speichern",
       "saveSuccess": "Seitenmenü gespeichert.",
       "empty": "Keine Menüdaten. Bitte die Supabase-Migration für site_nav_items anwenden.",
@@ -256,12 +256,16 @@
       "deleteHint": "Nochmal klicken, um aus dem Menü zu entfernen. Verknüpfte Seiten bleiben erhalten.",
       "deleteSuccess": "Kategorie gelöscht.",
       "hrefPath": "Pfad",
-      "hrefHint": "z. B. /introduction/ oder /",
+      "hrefHint": "z. B. /introduction/ oder /board/open/?category=notice",
       "slug": "Slug",
       "slugHint": "Buchstaben und Zahlen bevorzugt. Leer lassen für Auto-Generierung.",
       "slugDuplicate": "Dieser Slug wird bereits verwendet.",
       "validationRequired": "Koreanischer Name und Slug sind erforderlich.",
-      "untitled": "(Ohne Titel)"
+      "untitled": "(Ohne Titel)",
+      "useResources": "Mit Materialbibliothek nutzen",
+      "useResourcesHint": "Aktiviert: Dieses Menü wird mit einer Material-Kategorie verknüpft und zeigt Beiträge öffentlich.",
+      "resourceCategory": "Verknüpfte Material-Kategorie",
+      "resourceCategoryRequired": "Bitte eine Material-Kategorie wählen."
     },
     "pages": {
       "title": "Seiteninhalt",
@@ -303,9 +307,10 @@
     },
     "resources": {
       "title": "Material-Kategorien",
-      "lead": "Kategorien und Klassenordner der Bibliothek verwalten. Stundenplan und Nachrichten sind mit festen Kategorien verknüpft.",
+      "lead": "Kategorien und Klassenordner verwalten. Mit dem Seitenmenü verknüpfte Kategorien werden öffentliche Pinnwände.",
       "focusNotice": "Kategorie für den Stundenplan. Beiträge/Dateien in der Bibliothek verwalten.",
       "focusAnnouncement": "Kategorie für Schulnachrichten. Beiträge/Dateien in der Bibliothek verwalten.",
+      "focusLinked": "Diese Kategorie (‘{{slug}}’) ist mit dem Seitenmenü verknüpft. Beiträge/Dateien in der Bibliothek verwalten.",
       "saved": "Gespeichert.",
       "deleted": "Gelöscht."
     }
@@ -475,6 +480,7 @@
     "taxonomyAddCategory": "Kategorie hinzufügen",
     "taxonomyAddFolder": "Ordner hinzufügen",
     "taxonomyFixedBadge": "Fest",
+    "taxonomyBoardBadge": "Menü-verknüpft",
     "taxonomyEdit": "Bearbeiten",
     "taxonomySortOrder": "Reihenfolge",
     "taxonomyItemCountSuffix": " Einträge",
@@ -486,5 +492,11 @@
     "requiredError": "Bitte {{field}} ausfüllen.",
     "notFound": "Formular nicht gefunden",
     "notFoundLead": "Dieses Formular ist nicht veröffentlicht oder wurde entfernt."
+  },
+  "board": {
+    "fallbackTitle": "Pinnwand",
+    "missingCategory": "Keine Kategorie angegeben.",
+    "lead": "Materialien ansehen und herunterladen.",
+    "empty": "Noch keine Materialien."
   }
 }

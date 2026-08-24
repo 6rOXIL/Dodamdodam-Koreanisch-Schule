@@ -102,5 +102,6 @@ export function navSlugToPageSlug(navSlug: string, contentKind: string): string 
   if (navSlug === "location") return "location";
   if (navSlug === "schedule" || contentKind === "resources:notice") return "schedule";
   if (navSlug === "events" || contentKind === "resources:announcement") return "events";
+  if (contentKind.startsWith("resources:")) return navSlug;
   return navSlug;
 }

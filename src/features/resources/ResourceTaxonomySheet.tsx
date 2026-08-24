@@ -3,12 +3,10 @@
 import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { useLinkedResourceCategorySlugs } from "@/lib/hooks/useResourceBoards";
 import { getResourceCategoryLabel } from "@/lib/resources/categoryLabel";
 import { getResourceClassLabel } from "@/lib/resources/classLabel";
-import {
-  getFixedCategoryPagePath,
-  isFixedResourceCategorySlug,
-} from "@/lib/resources/fixedCategories";
+import { getResourceBoardHref } from "@/lib/resources/navBoards";
 import {
   nextTaxonomySortOrder,
   sortResourceCategories,
@@ -72,6 +70,7 @@ export default function ResourceTaxonomySheet({
   onError,
 }: ResourceTaxonomySheetProps) {
   const { t } = useLanguage();
+  const { slugs: linkedSlugs, items: navItems } = useLinkedResourceCategorySlugs();
   const [adding, setAdding] = useState(false);
   const [newName, setNewName] = useState("");
   const [editTarget, setEditTarget] = useState<EditTarget>(null);
@@ -317,8 +316,8 @@ export default function ResourceTaxonomySheet({
           {tab === "categories" ? (
             <ul className="space-y-2">
               {sortedCategories.map((category) => {
-                const fixed = isFixedResourceCategorySlug(category.slug);
-                const pagePath = getFixedCategoryPagePath(category.slug, language);
+                const linked = linkedSlugs.includes(category.slug);
+                const pagePath = getResourceBoardHref(category.slug, language, navItems);
                 const isEditing = editTarget?.type === "category" && editTarget.item.id === category.id;
                 const count = categoryCounts.get(category.id) ?? 0;
 
@@ -366,10 +365,10 @@ export default function ResourceTaxonomySheet({
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-center gap-2">
                             <p className="font-medium text-ink-900">{getResourceCategoryLabel(category, t)}</p>
-                            {fixed && (
-                              <span className="inline-flex items-center gap-1 rounded-full bg-ink-100 px-2 py-0.5 text-[0.65rem] font-medium text-ink-600">
+                            {linked && (
+                              <span className="inline-flex items-center gap-1 rounded-full bg-brand-50 px-2 py-0.5 text-[0.65rem] font-medium text-brand-800">
                                 <LockIcon />
-                                {t("resources.taxonomyFixedBadge")}
+                                {t("resources.taxonomyBoardBadge")}
                               </span>
                             )}
                           </div>
@@ -379,7 +378,7 @@ export default function ResourceTaxonomySheet({
                           </p>
                         </div>
                         <div className="flex shrink-0 items-center gap-1">
-                          {fixed && pagePath && (
+                          {linked && pagePath && (
                             <Link
                               href={pagePath}
                               className="rounded-lg p-2 text-ink-400 hover:bg-brand-50 hover:text-brand-700"
@@ -390,37 +389,35 @@ export default function ResourceTaxonomySheet({
                               </svg>
                             </Link>
                           )}
-                          {!fixed && (
-                            <>
-                              <button
-                                type="button"
-                                onClick={() => startEdit({ type: "category", item: category })}
-                                className="rounded-lg p-2 text-ink-400 hover:bg-ink-100 hover:text-ink-700"
-                                aria-label={t("resources.taxonomyEdit")}
-                              >
-                                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                </svg>
-                              </button>
-                              <button
-                                type="button"
-                                onClick={() => handleDelete(category.id, "category")}
-                                disabled={submitting && deletingId === category.id}
-                                className={`rounded-lg p-2 hover:bg-red-50 ${
-                                  confirmDeleteId === category.id ? "text-red-700" : "text-ink-400 hover:text-red-600"
-                                }`}
-                                aria-label={t("resources.categoryDeleteButton")}
-                              >
-                                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                </svg>
-                              </button>
-                            </>
+                          <button
+                            type="button"
+                            onClick={() => startEdit({ type: "category", item: category })}
+                            className="rounded-lg p-2 text-ink-400 hover:bg-ink-100 hover:text-ink-700"
+                            aria-label={t("resources.taxonomyEdit")}
+                          >
+                            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                            </svg>
+                          </button>
+                          {!linked && (
+                            <button
+                              type="button"
+                              onClick={() => handleDelete(category.id, "category")}
+                              disabled={submitting && deletingId === category.id}
+                              className={`rounded-lg p-2 hover:bg-red-50 ${
+                                confirmDeleteId === category.id ? "text-red-700" : "text-ink-400 hover:text-red-600"
+                              }`}
+                              aria-label={t("resources.categoryDeleteButton")}
+                            >
+                              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                              </svg>
+                            </button>
                           )}
                         </div>
                       </div>
                     )}
-                    {confirmDeleteId === category.id && !fixed && (
+                    {confirmDeleteId === category.id && !linked && (
                       <p className="border-t border-red-100 bg-red-50 px-4 py-2 text-xs text-red-700">
                         {t("resources.categoryDeleteConfirmMessage")}
                       </p>

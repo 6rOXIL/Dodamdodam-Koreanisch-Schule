@@ -3,7 +3,8 @@
 import NoticePostTable from "@/components/NoticePostTable";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { getHeadingTag, type HeadingLevel } from "@/features/shared/sectionHeading";
-import { ANNOUNCEMENT_CATEGORY_SLUG } from "@/lib/resources/fixedCategories";
+import { useResourceCategorySlugForPath } from "@/lib/hooks/useResourceBoards";
+import { ANNOUNCEMENT_CATEGORY_SLUG } from "@/lib/resources/navBoards";
 
 export function EventsSection({
   id,
@@ -16,6 +17,7 @@ export function EventsSection({
 }) {
   const { t } = useLanguage();
   const HeadingTag = getHeadingTag(headingLevel);
+  const { categorySlug } = useResourceCategorySlugForPath("/events/", ANNOUNCEMENT_CATEGORY_SLUG);
 
   return (
     <section id={id} className={className}>
@@ -43,7 +45,7 @@ export function EventsSection({
         </div>
 
         <NoticePostTable
-          categorySlug={ANNOUNCEMENT_CATEGORY_SLUG}
+          categorySlug={categorySlug}
           colDate={t("legacy.colDate")}
           colTitle={t("legacy.colTitle")}
           emptyMessage={t("events.boardEmpty")}

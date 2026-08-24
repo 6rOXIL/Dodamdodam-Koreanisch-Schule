@@ -336,13 +336,13 @@ export default function AdminPagesClient() {
     );
   }
 
-  const isResource =
-    selectedNav?.content_kind === "resources:notice" ||
-    selectedNav?.content_kind === "resources:announcement";
-  const resourcesHref =
-    selectedNav?.content_kind === "resources:notice"
-      ? `/${language}/admin/resources/?focus=notice`
-      : `/${language}/admin/resources/?focus=announcement`;
+  const isResource = Boolean(selectedNav?.content_kind?.startsWith("resources:"));
+  const resourceCategorySlug = isResource
+    ? selectedNav!.content_kind.slice("resources:".length)
+    : null;
+  const resourcesHref = resourceCategorySlug
+    ? `/${language}/admin/resources/?focus=${encodeURIComponent(resourceCategorySlug)}`
+    : `/${language}/admin/resources/`;
   const isForm = Boolean(selectedNav?.content_kind?.startsWith("form:"));
   const formManageSlug = isForm
     ? selectedNav!.content_kind.slice("form:".length) || selectedNav!.slug

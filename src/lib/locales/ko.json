@@ -242,7 +242,7 @@
     },
     "menu": {
       "title": "사이트 메뉴",
-      "lead": "상단 네비게이션 카테고리를 추가·삭제하고, 이름·경로·순서·표시 여부를 수정합니다.",
+      "lead": "상단 네비게이션 카테고리를 추가·삭제하고, 이름·경로·순서·표시 여부·자료실 연동을 수정합니다.",
       "save": "메뉴 저장",
       "saveSuccess": "사이트 메뉴를 저장했습니다.",
       "empty": "메뉴 데이터가 없습니다. Supabase 마이그레이션(site_nav_items)을 적용해 주세요.",
@@ -256,12 +256,16 @@
       "deleteHint": "한 번 더 누르면 메뉴에서 제거됩니다. (연결된 페이지 자체는 삭제되지 않습니다.)",
       "deleteSuccess": "카테고리를 삭제했습니다.",
       "hrefPath": "경로",
-      "hrefHint": "예: /introduction/ 또는 /",
+      "hrefHint": "예: /introduction/ 또는 /board/open/?category=notice",
       "slug": "슬러그",
       "slugHint": "영문·숫자 권장. 비우면 자동 생성됩니다.",
       "slugDuplicate": "이미 사용 중인 슬러그입니다.",
       "validationRequired": "한국어 이름과 슬러그는 필수입니다.",
-      "untitled": "(이름 없음)"
+      "untitled": "(이름 없음)",
+      "useResources": "자료실과 함께 사용",
+      "useResourcesHint": "체크하면 이 메뉴가 자료실 분류와 연결되어, 공개 페이지에 자료를 올리고 보여줄 수 있습니다.",
+      "resourceCategory": "연결할 자료실 분류",
+      "resourceCategoryRequired": "자료실 연동 시 분류를 선택해 주세요."
     },
     "pages": {
       "title": "페이지 내용",
@@ -303,9 +307,10 @@
     },
     "resources": {
       "title": "자료 분류",
-      "lead": "자료실 카테고리와 학급 폴더를 관리합니다. 수업 안내·학교 소식은 여기 고정 분류와 연결됩니다.",
+      "lead": "자료실 카테고리와 학급 폴더를 관리합니다. 사이트 메뉴에서 자료실 연동을 켠 분류는 공개 게시판으로 쓰입니다.",
       "focusNotice": "수업 안내와 연결된 ‘수업안내’ 분류입니다. 실제 글/파일은 자료실에서 관리하세요.",
       "focusAnnouncement": "학교 소식과 연결된 ‘학교소식’ 분류입니다. 실제 글/파일은 자료실에서 관리하세요.",
+      "focusLinked": "사이트 메뉴와 연결된 분류(‘{{slug}}’)입니다. 글·파일은 자료실에서 관리하세요.",
       "saved": "저장했습니다.",
       "deleted": "삭제했습니다."
     }
@@ -475,6 +480,7 @@
     "taxonomyAddCategory": "분류 추가",
     "taxonomyAddFolder": "폴더 추가",
     "taxonomyFixedBadge": "고정",
+    "taxonomyBoardBadge": "메뉴 연동",
     "taxonomyEdit": "수정",
     "taxonomySortOrder": "순서",
     "taxonomyItemCountSuffix": "건",
@@ -486,5 +492,11 @@
     "requiredError": "{{field}} 항목을 입력해 주세요.",
     "notFound": "폼을 찾을 수 없습니다",
     "notFoundLead": "공개되지 않았거나 삭제된 신청 페이지입니다."
+  },
+  "board": {
+    "fallbackTitle": "게시판",
+    "missingCategory": "게시판 분류가 지정되지 않았습니다.",
+    "lead": "자료를 확인하고 내려받을 수 있습니다.",
+    "empty": "등록된 자료가 없습니다."
   }
 }

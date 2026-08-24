@@ -5,13 +5,20 @@ import { FormEvent, useEffect, useState } from "react";
 import { Field, TextInput } from "@/features/admin/homepage/FormFields";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import {
+  canToggleResourceBoard,
+  defaultBoardOpenPath,
+  parseResourcesContentKind,
+  toResourcesContentKind,
+} from "@/lib/resources/navBoards";
+import {
   createTopNavItem,
   deleteTopNavItem,
   fetchTopNavItems,
   getAdminManagePath,
   updateTopNavItem,
 } from "@/lib/siteContent/api";
-import type { SiteNavItem } from "@/lib/supabase/database.types";
+import { createClient } from "@/lib/supabase/client";
+import type { ResourceCategory, SiteNavItem } from "@/lib/supabase/database.types";
 
 function nextSortOrder(items: SiteNavItem[]) {
   if (items.length === 0) return 1;
@@ -32,6 +39,7 @@ function normalizeHref(path: string) {
   const trimmed = path.trim() || "/";
   if (trimmed === "/") return "/";
   const withSlash = trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+  if (withSlash.includes("?")) return withSlash;
   return withSlash.endsWith("/") ? withSlash : `${withSlash}/`;
 }
 
@@ -41,6 +49,8 @@ type Draft = {
   label_de: string;
   href_path: string;
   slug: string;
+  useResources: boolean;
+  resourceCategorySlug: string;
 };
 
 const emptyDraft = (): Draft => ({
@@ -49,11 +59,14 @@ const emptyDraft = (): Draft => ({
   label_de: "",
   href_path: "/",
   slug: "",
+  useResources: false,
+  resourceCategorySlug: "",
 });
 
 export default function AdminMenuClient() {
   const { t, language } = useLanguage();
   const [items, setItems] = useState<SiteNavItem[]>([]);
+  const [categories, setCategories] = useState<ResourceCategory[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [adding, setAdding] = useState(false);
@@ -64,11 +77,17 @@ export default function AdminMenuClient() {
 
   useEffect(() => {
     let cancelled = false;
-    fetchTopNavItems().then((data) => {
+    (async () => {
+      const supabase = createClient();
+      const [nav, catsRes] = await Promise.all([
+        fetchTopNavItems(),
+        supabase.from("resource_categories").select("*").order("sort_order"),
+      ]);
       if (cancelled) return;
-      setItems(data);
+      setItems(nav);
+      setCategories((catsRes.data as ResourceCategory[]) ?? []);
       setLoading(false);
-    });
+    })();
     return () => {
       cancelled = true;
     };
@@ -76,6 +95,27 @@ export default function AdminMenuClient() {
 
   function patchItem(id: string, patch: Partial<SiteNavItem>) {
     setItems((prev) => prev.map((item) => (item.id === id ? { ...item, ...patch } : item)));
+  }
+
+  function setResourceLink(item: SiteNavItem, enabled: boolean, categorySlug?: string) {
+    if (!enabled) {
+      patchItem(item.id, { content_kind: "static" });
+      return;
+    }
+    const slug =
+      categorySlug ||
+      parseResourcesContentKind(item.content_kind) ||
+      categories[0]?.slug ||
+      item.slug;
+    const nextKind = toResourcesContentKind(slug);
+    const keepHref =
+      item.href_path === "/schedule/" ||
+      item.href_path === "/events/" ||
+      item.href_path.includes("/board/open/");
+    patchItem(item.id, {
+      content_kind: nextKind,
+      href_path: keepHref ? item.href_path : defaultBoardOpenPath(slug),
+    });
   }
 
   async function handleSave() {
@@ -92,6 +132,15 @@ export default function AdminMenuClient() {
         return;
       }
 
+      if (isResourcesContentKindSafe(item.content_kind)) {
+        const catSlug = parseResourcesContentKind(item.content_kind);
+        if (!catSlug || !categories.some((c) => c.slug === catSlug)) {
+          setSaving(false);
+          setError(t("admin.menu.resourceCategoryRequired"));
+          return;
+        }
+      }
+
       const { error: saveError } = await updateTopNavItem(item.id, {
         label_ko: item.label_ko.trim(),
         label_en: item.label_en.trim() || item.label_ko.trim(),
@@ -100,6 +149,7 @@ export default function AdminMenuClient() {
         is_visible: item.is_visible,
         href_path,
         slug,
+        content_kind: item.content_kind,
       });
       if (saveError) {
         setSaving(false);
@@ -131,16 +181,28 @@ export default function AdminMenuClient() {
       return;
     }
 
+    let content_kind: SiteNavItem["content_kind"] = "static";
+    let href_path = normalizeHref(draft.href_path);
+    if (draft.useResources) {
+      const catSlug = draft.resourceCategorySlug || categories[0]?.slug;
+      if (!catSlug) {
+        setError(t("admin.menu.resourceCategoryRequired"));
+        return;
+      }
+      content_kind = toResourcesContentKind(catSlug);
+      if (href_path === "/") href_path = defaultBoardOpenPath(catSlug);
+    }
+
     setSaving(true);
     const { data, error: createError } = await createTopNavItem({
       slug,
-      href_path: normalizeHref(draft.href_path),
+      href_path,
       label_ko,
       label_en: draft.label_en.trim() || label_ko,
       label_de: draft.label_de.trim() || label_ko,
       sort_order: nextSortOrder(items),
       is_visible: true,
-      content_kind: "static",
+      content_kind,
     });
     setSaving(false);
 
@@ -194,7 +256,10 @@ export default function AdminMenuClient() {
             onClick={() => {
               setAdding(true);
               setConfirmDeleteId(null);
-              setDraft(emptyDraft());
+              setDraft({
+                ...emptyDraft(),
+                resourceCategorySlug: categories[0]?.slug ?? "",
+              });
             }}
             className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
           >
@@ -252,6 +317,51 @@ export default function AdminMenuClient() {
               />
             </Field>
           </div>
+          <div className="space-y-2 rounded-xl border border-ink-200 bg-surface px-3 py-3">
+            <label className="flex items-center gap-2 text-sm font-medium text-ink-800">
+              <input
+                type="checkbox"
+                checked={draft.useResources}
+                onChange={(e) =>
+                  setDraft((d) => ({
+                    ...d,
+                    useResources: e.target.checked,
+                    href_path:
+                      e.target.checked && (d.href_path === "/" || !d.href_path)
+                        ? defaultBoardOpenPath(d.resourceCategorySlug || categories[0]?.slug || "board")
+                        : d.href_path,
+                  }))
+                }
+              />
+              {t("admin.menu.useResources")}
+            </label>
+            <p className="text-xs text-ink-500">{t("admin.menu.useResourcesHint")}</p>
+            {draft.useResources && (
+              <Field label={t("admin.menu.resourceCategory")}>
+                <select
+                  value={draft.resourceCategorySlug}
+                  onChange={(e) => {
+                    const resourceCategorySlug = e.target.value;
+                    setDraft((d) => ({
+                      ...d,
+                      resourceCategorySlug,
+                      href_path:
+                        d.href_path.includes("/board/open/") || d.href_path === "/"
+                          ? defaultBoardOpenPath(resourceCategorySlug)
+                          : d.href_path,
+                    }));
+                  }}
+                  className="w-full rounded-lg border border-ink-200 bg-surface px-3 py-2 text-sm"
+                >
+                  {categories.map((cat) => (
+                    <option key={cat.id} value={cat.slug}>
+                      {cat.name_ko} ({cat.slug})
+                    </option>
+                  ))}
+                </select>
+              </Field>
+            )}
+          </div>
           <div className="flex flex-wrap justify-end gap-2">
             <button
               type="button"
@@ -282,6 +392,10 @@ export default function AdminMenuClient() {
         <ul className="space-y-4">
           {items.map((item, index) => {
             const managePath = getAdminManagePath(item.content_kind, language, item.slug);
+            const canResources = canToggleResourceBoard(item.content_kind);
+            const linkedSlug = parseResourcesContentKind(item.content_kind);
+            const useResources = Boolean(linkedSlug);
+
             return (
               <li
                 key={item.id}
@@ -293,9 +407,12 @@ export default function AdminMenuClient() {
                       {index + 1}
                     </span>
                     <div>
-                      <p className="font-semibold text-ink-900">{item.label_ko || t("admin.menu.untitled")}</p>
+                      <p className="font-semibold text-ink-900">
+                        {item.label_ko || t("admin.menu.untitled")}
+                      </p>
                       <p className="text-xs text-ink-500">
                         {item.slug} · {item.href_path}
+                        {linkedSlug ? ` · resources:${linkedSlug}` : ""}
                       </p>
                     </div>
                   </div>
@@ -379,6 +496,35 @@ export default function AdminMenuClient() {
                     />
                   </Field>
                 </div>
+
+                {canResources && (
+                  <div className="mt-4 space-y-2 rounded-xl border border-ink-100 bg-surface-muted/40 px-3 py-3">
+                    <label className="flex items-center gap-2 text-sm font-medium text-ink-800">
+                      <input
+                        type="checkbox"
+                        checked={useResources}
+                        onChange={(e) => setResourceLink(item, e.target.checked)}
+                      />
+                      {t("admin.menu.useResources")}
+                    </label>
+                    <p className="text-xs text-ink-500">{t("admin.menu.useResourcesHint")}</p>
+                    {useResources && (
+                      <Field label={t("admin.menu.resourceCategory")}>
+                        <select
+                          value={linkedSlug ?? ""}
+                          onChange={(e) => setResourceLink(item, true, e.target.value)}
+                          className="w-full rounded-lg border border-ink-200 bg-surface px-3 py-2 text-sm"
+                        >
+                          {categories.map((cat) => (
+                            <option key={cat.id} value={cat.slug}>
+                              {cat.name_ko} ({cat.slug})
+                            </option>
+                          ))}
+                        </select>
+                      </Field>
+                    )}
+                  </div>
+                )}
               </li>
             );
           })}
@@ -395,4 +541,8 @@ export default function AdminMenuClient() {
       </button>
     </div>
   );
+}
+
+function isResourcesContentKindSafe(kind: string) {
+  return kind.startsWith("resources:") && kind.length > "resources:".length;
 }

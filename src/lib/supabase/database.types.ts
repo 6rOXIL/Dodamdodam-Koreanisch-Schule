@@ -85,6 +85,7 @@ export type SiteNavContentKind =
   | "pages:classes"
   | "resources:notice"
   | "resources:announcement"
+  | `resources:${string}`
   | `form:${string}`;
 
 export interface SiteNavItem {

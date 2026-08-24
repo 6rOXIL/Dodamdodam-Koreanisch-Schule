@@ -2,11 +2,8 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { useCategoryBoardHref, useLinkedResourceCategorySlugs } from "@/lib/hooks/useResourceBoards";
 import { getResourceCategoryLabel } from "@/lib/resources/categoryLabel";
-import {
-  getFixedCategoryPagePath,
-  isFixedResourceCategorySlug,
-} from "@/lib/resources/fixedCategories";
 import { sortResourceCategories } from "@/lib/resources/sortTaxonomy";
 import type { ResourceCategory } from "@/lib/supabase/database.types";
 
@@ -21,6 +18,41 @@ type ResourceCategoryNavProps = {
   onManage: () => void;
 };
 
+function CategoryPageLink({
+  slug,
+  language,
+  active,
+}: {
+  slug: string;
+  language: string;
+  active: boolean;
+}) {
+  const { t } = useLanguage();
+  const pagePath = useCategoryBoardHref(slug, language);
+  if (!pagePath) return null;
+  return (
+    <Link
+      href={pagePath}
+      className={`inline-flex items-center rounded-full rounded-l-none px-2 py-1.5 ring-1 ring-inset transition sm:text-sm ${
+        active
+          ? "bg-brand-700 text-on-inverse ring-brand-700 hover:bg-brand-800"
+          : "bg-surface text-ink-400 ring-ink-200 hover:bg-ink-50 hover:text-brand-700"
+      }`}
+      aria-label={t("resources.categoryPageLink")}
+      title={t("resources.categoryPageLink")}
+    >
+      <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+        />
+      </svg>
+    </Link>
+  );
+}
+
 export default function ResourceCategoryNav({
   categories,
   selectedCategoryId,
@@ -33,6 +65,7 @@ export default function ResourceCategoryNav({
 }: ResourceCategoryNavProps) {
   const { t } = useLanguage();
   const sortedCategories = sortResourceCategories(categories);
+  const { slugs: linkedSlugs } = useLinkedResourceCategorySlugs();
 
   if (sortedCategories.length === 0 && !isAdmin) return null;
 
@@ -77,8 +110,7 @@ export default function ResourceCategoryNav({
         {sortedCategories.map((category) => {
           const count = categoryCounts.get(category.id) ?? 0;
           const active = selectedCategoryId === category.id;
-          const fixed = isFixedResourceCategorySlug(category.slug);
-          const pagePath = getFixedCategoryPagePath(category.slug, language);
+          const linked = linkedSlugs.includes(category.slug);
 
           return (
             <span key={category.id} className="inline-flex items-center">
@@ -89,32 +121,14 @@ export default function ResourceCategoryNav({
                   active
                     ? "bg-brand-600 text-on-inverse shadow-sm"
                     : "bg-surface text-ink-600 ring-1 ring-inset ring-ink-200 hover:bg-ink-50"
-                } ${fixed && pagePath ? "rounded-r-none" : ""}`}
+                } ${linked ? "rounded-r-none" : ""}`}
               >
                 {getResourceCategoryLabel(category, t)}
                 <span className="ml-1.5 opacity-70">({count})</span>
               </button>
-              {fixed && pagePath && (
-                <Link
-                  href={pagePath}
-                  className={`inline-flex items-center rounded-full rounded-l-none px-2 py-1.5 ring-1 ring-inset transition sm:text-sm ${
-                    active
-                      ? "bg-brand-700 text-on-inverse ring-brand-700 hover:bg-brand-800"
-                      : "bg-surface text-ink-400 ring-ink-200 hover:bg-ink-50 hover:text-brand-700"
-                  }`}
-                  aria-label={t("resources.categoryPageLink")}
-                  title={t("resources.categoryPageLink")}
-                >
-                  <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                </Link>
-              )}
+              {linked ? (
+                <CategoryPageLink slug={category.slug} language={language} active={active} />
+              ) : null}
             </span>
           );
         })}

@@ -225,7 +225,7 @@
     },
     "menu": {
       "title": "Site menu",
-      "lead": "Add or remove top navigation categories, and edit names, paths, order, and visibility.",
+      "lead": "Add or remove top navigation categories, and edit names, paths, order, visibility, and resource-library links.",
       "save": "Save menu",
       "saveSuccess": "Site menu saved.",
       "empty": "No menu data. Apply the Supabase migration for site_nav_items.",
@@ -239,12 +239,16 @@
       "deleteHint": "Click again to remove it from the menu. Linked pages are not deleted.",
       "deleteSuccess": "Category deleted.",
       "hrefPath": "Path",
-      "hrefHint": "e.g. /introduction/ or /",
+      "hrefHint": "e.g. /introduction/ or /board/open/?category=notice",
       "slug": "Slug",
       "slugHint": "Prefer letters and numbers. Leave blank to auto-generate.",
       "slugDuplicate": "That slug is already in use.",
       "validationRequired": "Korean name and slug are required.",
-      "untitled": "(Untitled)"
+      "untitled": "(Untitled)",
+      "useResources": "Use with resource library",
+      "useResourcesHint": "When checked, this menu links to a resource category so posts can be published on a public board.",
+      "resourceCategory": "Linked resource category",
+      "resourceCategoryRequired": "Select a resource category when linking the library."
     },
     "pages": {
       "title": "Page content",
@@ -286,9 +290,10 @@
     },
     "resources": {
       "title": "Resource taxonomy",
-      "lead": "Manage library categories and class folders. Schedule and news pages are linked to fixed categories.",
+      "lead": "Manage library categories and class folders. Categories linked from the site menu become public boards.",
       "focusNotice": "This is the Class schedule category. Manage posts/files in the resource library.",
       "focusAnnouncement": "This is the School news category. Manage posts/files in the resource library.",
+      "focusLinked": "This category (‘{{slug}}’) is linked from the site menu. Manage posts/files in the resource library.",
       "saved": "Saved.",
       "deleted": "Deleted."
     }
@@ -458,6 +463,7 @@
     "taxonomyAddCategory": "Add category",
     "taxonomyAddFolder": "Add folder",
     "taxonomyFixedBadge": "Fixed",
+    "taxonomyBoardBadge": "Menu-linked",
     "taxonomyEdit": "Edit",
     "taxonomySortOrder": "Order",
     "taxonomyItemCountSuffix": " items",
@@ -469,5 +475,11 @@
     "requiredError": "Please fill in {{field}}.",
     "notFound": "Form not found",
     "notFoundLead": "This form is unpublished or was removed."
+  },
+  "board": {
+    "fallbackTitle": "Board",
+    "missingCategory": "No board category was specified.",
+    "lead": "Browse and download materials.",
+    "empty": "No materials yet."
   }
 }

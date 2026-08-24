@@ -50,7 +50,14 @@ export async function updateTopNavItem(
   patch: Partial<
     Pick<
       SiteNavItem,
-      "label_ko" | "label_en" | "label_de" | "sort_order" | "is_visible" | "href_path" | "slug"
+      | "label_ko"
+      | "label_en"
+      | "label_de"
+      | "sort_order"
+      | "is_visible"
+      | "href_path"
+      | "slug"
+      | "content_kind"
     >
   >
 ): Promise<{ error: string | null }> {
@@ -227,15 +234,21 @@ export function getAdminManagePath(
     const formSlug = contentKind.slice("form:".length) || navSlug || "enrollment";
     return `/${language}/admin/forms/?slug=${encodeURIComponent(formSlug)}`;
   }
+  if (contentKind.startsWith("resources:")) {
+    const categorySlug = contentKind.slice("resources:".length);
+    if (navSlug === "schedule" || categorySlug === "notice") {
+      return `/${language}/admin/pages/?section=schedule`;
+    }
+    if (navSlug === "events" || categorySlug === "announcement") {
+      return `/${language}/admin/pages/?section=events`;
+    }
+    return `/${language}/admin/resources/?focus=${encodeURIComponent(categorySlug)}`;
+  }
   switch (contentKind) {
     case "pages:introduction":
       return `/${language}/admin/pages/?section=introduction`;
     case "pages:classes":
       return `/${language}/admin/pages/?section=classes`;
-    case "resources:notice":
-      return `/${language}/admin/pages/?section=schedule`;
-    case "resources:announcement":
-      return `/${language}/admin/pages/?section=events`;
     case "static":
       if (navSlug === "home" || navSlug === "gallery" || navSlug === "location") {
         return `/${language}/admin/pages/?section=${navSlug}`;

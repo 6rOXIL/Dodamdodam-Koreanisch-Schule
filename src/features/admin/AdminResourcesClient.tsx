@@ -4,12 +4,10 @@ import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { useLinkedResourceCategorySlugs } from "@/lib/hooks/useResourceBoards";
 import { getResourceCategoryLabel } from "@/lib/resources/categoryLabel";
 import { getResourceClassLabel } from "@/lib/resources/classLabel";
-import {
-  getFixedCategoryPagePath,
-  isFixedResourceCategorySlug,
-} from "@/lib/resources/fixedCategories";
+import { getResourceBoardHref } from "@/lib/resources/navBoards";
 import {
   nextTaxonomySortOrder,
   sortResourceCategories,
@@ -43,6 +41,7 @@ export default function AdminResourcesClient() {
 
   const sortedCategories = useMemo(() => sortResourceCategories(categories), [categories]);
   const sortedClasses = useMemo(() => sortResourceClasses(resourceClasses), [resourceClasses]);
+  const { slugs: linkedSlugs, items: navItems } = useLinkedResourceCategorySlugs();
 
   const categoryCounts = useMemo(() => {
     const counts = new Map<string, number>();
@@ -96,12 +95,9 @@ export default function AdminResourcesClient() {
   }, [tabParam]);
 
   useEffect(() => {
-    if (focus === "notice" || focus === "announcement") {
-      setTab("categories");
-      setMessage(
-        focus === "notice" ? t("admin.resources.focusNotice") : t("admin.resources.focusAnnouncement")
-      );
-    }
+    if (!focus) return;
+    setTab("categories");
+    setMessage(t("admin.resources.focusLinked").replace("{{slug}}", focus));
   }, [focus, t]);
 
   async function handleAdd(e: FormEvent) {
@@ -192,8 +188,8 @@ export default function AdminResourcesClient() {
     setMessage(t("admin.resources.saved"));
   }
 
-  async function handleDelete(id: string, fixed: boolean) {
-    if (fixed) return;
+  async function handleDelete(id: string, linked: boolean) {
+    if (linked) return;
     if (confirmDeleteId !== id) {
       setConfirmDeleteId(id);
       return;
@@ -226,7 +222,7 @@ export default function AdminResourcesClient() {
       active ? "bg-surface text-ink-900 shadow-sm" : "text-ink-500 hover:text-ink-800"
     }`;
 
-  const highlightedSlug = focus === "notice" || focus === "announcement" ? focus : null;
+  const highlightedSlug = focus || null;
 
   if (loading) {
     return <p className="text-ink-500">{t("auth.loading")}</p>;
@@ -270,8 +266,8 @@ export default function AdminResourcesClient() {
       <ul className="space-y-2">
         {tab === "categories"
           ? sortedCategories.map((category) => {
-              const fixed = isFixedResourceCategorySlug(category.slug);
-              const pagePath = getFixedCategoryPagePath(category.slug, language);
+              const linked = linkedSlugs.includes(category.slug);
+              const pagePath = getResourceBoardHref(category.slug, language, navItems);
               const isEditing = editId === category.id;
               const highlighted = highlightedSlug === category.slug;
               const count = categoryCounts.get(category.id) ?? 0;
@@ -314,9 +310,9 @@ export default function AdminResourcesClient() {
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-2">
                           <p className="font-medium text-ink-900">{getResourceCategoryLabel(category, t)}</p>
-                          {fixed && (
-                            <span className="rounded-full bg-ink-100 px-2 py-0.5 text-[0.65rem] font-medium text-ink-600">
-                              {t("resources.taxonomyFixedBadge")}
+                          {linked && (
+                            <span className="rounded-full bg-brand-50 px-2 py-0.5 text-[0.65rem] font-medium text-brand-800">
+                              {t("resources.taxonomyBoardBadge")}
                             </span>
                           )}
                         </div>
@@ -326,35 +322,33 @@ export default function AdminResourcesClient() {
                         </p>
                       </div>
                       <div className="flex shrink-0 items-center gap-1">
-                        {fixed && pagePath && (
+                        {linked && pagePath && (
                           <Link href={pagePath} className="rounded-lg px-2 py-1.5 text-xs font-medium text-brand-700 hover:bg-brand-50">
                             {t("resources.categoryPageLink")}
                           </Link>
                         )}
-                        {!fixed && (
-                          <>
-                            <button
-                              type="button"
-                              onClick={() => {
-                                setEditId(category.id);
-                                setEditName(category.name_ko);
-                                setEditSortOrder(category.sort_order);
-                                setConfirmDeleteId(null);
-                              }}
-                              className="rounded-lg px-2 py-1.5 text-xs font-medium text-ink-600 hover:bg-ink-50"
-                            >
-                              {t("resources.taxonomyEdit")}
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => handleDelete(category.id, false)}
-                              className="rounded-lg px-2 py-1.5 text-xs font-medium text-red-600 hover:bg-red-50"
-                            >
-                              {confirmDeleteId === category.id
-                                ? t("resources.categoryDeleteConfirmButton")
-                                : t("resources.categoryDeleteButton")}
-                            </button>
-                          </>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setEditId(category.id);
+                            setEditName(category.name_ko);
+                            setEditSortOrder(category.sort_order);
+                            setConfirmDeleteId(null);
+                          }}
+                          className="rounded-lg px-2 py-1.5 text-xs font-medium text-ink-600 hover:bg-ink-50"
+                        >
+                          {t("resources.taxonomyEdit")}
+                        </button>
+                        {!linked && (
+                          <button
+                            type="button"
+                            onClick={() => handleDelete(category.id, false)}
+                            className="rounded-lg px-2 py-1.5 text-xs font-medium text-red-600 hover:bg-red-50"
+                          >
+                            {confirmDeleteId === category.id
+                              ? t("resources.categoryDeleteConfirmButton")
+                              : t("resources.categoryDeleteButton")}
+                          </button>
                         )}
                       </div>
                     </div>
