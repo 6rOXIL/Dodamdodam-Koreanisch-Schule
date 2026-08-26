@@ -20,6 +20,7 @@ export const COPY_FIELDS_BY_PAGE: Record<CopyPageSlug, CopyField[]> = {
     { path: "hero.cta", label: "히어로 · CTA" },
     { path: "about.title", label: "소개 · 제목" },
     { path: "about.body", label: "소개 · 본문", multiline: true },
+    { path: "about.consultCta", label: "소개 · 입학상담문의 버튼" },
     { path: "vision.title", label: "비전 · 제목" },
     { path: "vision.lead", label: "비전 · 리드", multiline: true },
     { path: "vision.card1Title", label: "비전 카드1 · 제목" },
@@ -52,14 +53,10 @@ export const COPY_FIELDS_BY_PAGE: Record<CopyPageSlug, CopyField[]> = {
   schedule: [
     { path: "schedule.title", label: "제목" },
     { path: "schedule.lead", label: "리드", multiline: true },
-    { path: "schedule.boardTitle", label: "게시판 제목" },
-    { path: "schedule.boardLead", label: "게시판 안내", multiline: true },
   ],
   events: [
     { path: "events.title", label: "제목" },
     { path: "events.lead", label: "리드", multiline: true },
-    { path: "events.boardTitle", label: "게시판 제목" },
-    { path: "events.boardLead", label: "게시판 안내", multiline: true },
   ],
 };
 

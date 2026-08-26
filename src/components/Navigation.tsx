@@ -11,6 +11,11 @@ import { isAdmin } from "@/lib/supabase/auth";
 import { createClient } from "@/lib/supabase/client";
 import { useProfile } from "@/lib/supabase/useProfile";
 import { getImagePath } from "@/lib/utils/imagePath";
+import {
+  ENROLLMENT_GOOGLE_FORM_URL,
+  isEnrollmentApplyPath,
+  isExternalHref,
+} from "@/lib/forms/enrollment";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navigation() {
@@ -59,15 +64,38 @@ export default function Navigation() {
     }`;
 
   const renderNavItem = (id: string, label: string, hrefPath: string, mobile = false) => {
+    const external =
+      isExternalHref(hrefPath) || isEnrollmentApplyPath(hrefPath);
+    const href = external
+      ? isEnrollmentApplyPath(hrefPath)
+        ? ENROLLMENT_GOOGLE_FORM_URL
+        : hrefPath
+      : hrefPath === "/"
+        ? `/${language}/`
+        : `/${language}${hrefPath}`;
     const targetPath =
       hrefPath === "/" ? "/" : hrefPath.endsWith("/") ? hrefPath.slice(0, -1) : hrefPath;
-    const href = hrefPath === "/" ? `/${language}/` : `/${language}${hrefPath}`;
-    const active = normalizedPath === targetPath;
+    const active = !external && normalizedPath === targetPath;
     const baseClass = mobile
       ? `w-full rounded-xl px-4 py-4 text-left text-base ${
           active ? "bg-brand-100 font-semibold text-brand-950" : "text-ink-800 active:bg-ink-100"
         }`
       : navItemClass(active);
+
+    if (external) {
+      return (
+        <a
+          key={id}
+          href={href}
+          className={baseClass}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setMobileOpen(false)}
+        >
+          {label}
+        </a>
+      );
+    }
 
     return (
       <Link

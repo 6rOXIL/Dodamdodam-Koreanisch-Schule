@@ -12,7 +12,7 @@
     "gallery": "Galerie",
     "classes": "Klassen",
     "events": "Aktuelles",
-    "schedule": "Unterricht",
+    "schedule": "Klassenlehrplan",
     "location": "Anfahrt"
   },
   "hero": {
@@ -66,7 +66,8 @@
   "about": {
     "label": "about",
     "title": "Über uns",
-    "body": "Dodam Dodam Koreanische Schule bieten Unterricht in Koreanisch, Hangul, Kultur und Geschichte an, um der nächsten Generation – darunter koreanischen Kindern, Kindern aus multikulturellen Familien, Adoptierten und hier lebenden Ausländer*innen – zu einer starken koreanischen Identität, sicherer Koreanischkompetenz sowie einer gesunden und stabilen Entwicklung durch emotionale Begleitung und Werteerziehung zu verhelfen."
+    "body": "Dodam Dodam Koreanische Schule bieten Unterricht in Koreanisch, Hangul, Kultur und Geschichte an, um der nächsten Generation – darunter koreanischen Kindern, Kindern aus multikulturellen Familien, Adoptierten und hier lebenden Ausländer*innen – zu einer starken koreanischen Identität, sicherer Koreanischkompetenz sowie einer gesunden und stabilen Entwicklung durch emotionale Begleitung und Werteerziehung zu verhelfen.",
+    "consultCta": "Aufnahmeberatung"
   },
   "legacy": {
     "colDate": "Datum",
@@ -105,9 +106,6 @@
     "label": "news",
     "title": "Schulnachrichten",
     "lead": "Schulnachrichten und Mitteilungen.",
-    "boardLabel": "board",
-    "boardTitle": "Schulnachrichten-Board",
-    "boardLead": "Veröffentlichte Beiträge aus Materialbibliothek → Schulnachrichten. Titel anklicken, um den Anhang zu öffnen.",
     "boardEmpty": "Noch keine Schulnachrichten.",
     "empty": "Noch keine Schulnachrichten.",
     "notFound": "Bekanntmachung nicht gefunden.",
@@ -120,12 +118,9 @@
   },
   "schedule": {
     "label": "schedule",
-    "title": "Unterricht",
-    "lead": "Schulmitteilungen und unterrichtsbezogene Hinweise.",
-    "boardLabel": "board",
-    "boardTitle": "Unterrichts-Hinweisboard",
-    "boardLead": "Veröffentlichte Beiträge aus Materialbibliothek → Unterrichtshinweise. Titel anklicken, um den Anhang zu öffnen.",
-    "boardEmpty": "Noch keine Hinweise.",
+    "title": "Klassenlehrplan",
+    "lead": "Lehrpläne und unterrichtsbezogene Materialien nach Klasse.",
+    "boardEmpty": "Noch keine Lehrplan-Beiträge.",
     "class1Title": "Kita & Grundschule",
     "class1Time": "Samstag 10:00 – 12:00",
     "class1Note": "Hangul-Grundlagen · spielerisch",
@@ -156,7 +151,7 @@
     "addressTitle": "Adresse",
     "quickTitle": "Schnellzugriff",
     "linkGallery": "Galerie",
-    "linkSchedule": "Unterricht",
+    "linkSchedule": "Klassenlehrplan",
     "linkLegacyNotice": "Korean Net: Bekanntmachungen"
   },
   "auth": {
@@ -232,7 +227,7 @@
       "menuLead": "Namen, Reihenfolge und Sichtbarkeit der Navigation",
       "pagesLead": "Inhalte Schule & Klassen bearbeiten",
       "formsLead": "Anmeldeformulare und Einsendungen",
-      "resourcesLead": "Stundenplan- und Nachrichten-Kategorien",
+      "resourcesLead": "Klassenlehrplan- und Nachrichten-Kategorien",
       "membersLead": "Mitgliederrollen ändern",
       "menuPreview": "Menü-Vorschau",
       "menuPreviewLead": "Direkt zur Inhaltsverwaltung jedes Eintrags.",
@@ -269,7 +264,7 @@
     },
     "pages": {
       "title": "Seiteninhalt",
-      "lead": "Texte für jede Menükategorie bearbeiten. Schule und Klassen inkl. Unterseiten; Stundenplan und Nachrichten sind mit der Materialbibliothek verknüpft.",
+      "lead": "Texte für jede Menükategorie bearbeiten. Schule und Klassen inkl. Unterseiten; Klassenlehrplan und Nachrichten sind mit der Materialbibliothek verknüpft.",
       "resourceHint": "Beiträge und Anhänge verwalten Sie unter Material-Kategorien. Unten können Sie Seitentitel und Einleitungstexte bearbeiten.",
       "formHint": "Dieser Menüpunkt ist ein Anmeldeformular. Felder und Einsendungen unter Formulare bearbeiten."
     },
@@ -308,7 +303,7 @@
     "resources": {
       "title": "Material-Kategorien",
       "lead": "Kategorien und Klassenordner verwalten. Mit dem Seitenmenü verknüpfte Kategorien werden öffentliche Pinnwände.",
-      "focusNotice": "Kategorie für den Stundenplan. Beiträge/Dateien in der Bibliothek verwalten.",
+      "focusNotice": "Kategorie für den Klassenlehrplan. Beiträge/Dateien in der Bibliothek verwalten.",
       "focusAnnouncement": "Kategorie für Schulnachrichten. Beiträge/Dateien in der Bibliothek verwalten.",
       "focusLinked": "Diese Kategorie (‘{{slug}}’) ist mit dem Seitenmenü verknüpft. Beiträge/Dateien in der Bibliothek verwalten.",
       "saved": "Gespeichert.",
@@ -400,7 +395,7 @@
     "categories": {
       "handout": "Unterrichtsmaterialien",
       "homework": "Hausaufgaben",
-      "notice": "Unterrichtshinweise",
+      "notice": "Klassenlehrplan",
       "announcement": "Schulnachrichten"
     },
     "fieldClass": "Klasse",

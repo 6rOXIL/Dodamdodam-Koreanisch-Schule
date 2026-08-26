@@ -3,6 +3,7 @@
 import SiteRichHtml from "@/components/SiteRichHtml";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { getHeadingTag, type HeadingLevel } from "@/features/shared/sectionHeading";
+import { ENROLLMENT_GOOGLE_FORM_URL } from "@/lib/forms/enrollment";
 
 export function AboutSection({
   id,
@@ -29,6 +30,14 @@ export function AboutSection({
           text={t("about.body")}
           className="mt-6 text-[15px] leading-relaxed text-ink-600 sm:mt-8 sm:text-base md:text-lg"
         />
+        <a
+          href={ENROLLMENT_GOOGLE_FORM_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 inline-flex min-h-11 items-center justify-center rounded-full bg-brand-700 px-7 py-2.5 text-sm font-semibold text-surface transition hover:bg-brand-800 sm:mt-10"
+        >
+          {t("about.consultCta")}
+        </a>
       </div>
     </section>
   );

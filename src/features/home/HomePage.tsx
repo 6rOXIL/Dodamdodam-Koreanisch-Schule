@@ -66,9 +66,10 @@ export default function HomePage() {
             <h2 className="mt-3 font-serif text-2xl font-bold text-ink-900 sm:text-3xl md:text-4xl">
               {t("vision.title")}
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-[15px] text-ink-600 sm:text-base">
-              {t("vision.lead")}
-            </p>
+            <SiteRichHtml
+              text={t("vision.lead")}
+              className="mx-auto mt-4 max-w-2xl text-[15px] text-ink-600 sm:text-base"
+            />
           </div>
           <div className="mt-10 grid gap-6 sm:mt-14 sm:gap-8 md:grid-cols-3">
             {[

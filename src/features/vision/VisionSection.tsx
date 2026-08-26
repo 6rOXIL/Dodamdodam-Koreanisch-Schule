@@ -1,5 +1,6 @@
 "use client";
 
+import SiteRichHtml from "@/components/SiteRichHtml";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { getHeadingTag, type HeadingLevel } from "@/features/shared/sectionHeading";
 
@@ -25,9 +26,10 @@ export function VisionSection({
           <HeadingTag className="mt-3 font-sans text-2xl font-bold text-ink-900 sm:text-3xl md:text-4xl">
             {t("vision.title")}
           </HeadingTag>
-          <p className="mx-auto mt-4 max-w-2xl text-[15px] text-ink-600 sm:text-base">
-            {t("vision.lead")}
-          </p>
+          <SiteRichHtml
+            text={t("vision.lead")}
+            className="mx-auto mt-4 max-w-2xl text-[15px] text-ink-600 sm:text-base"
+          />
         </div>
         <div className="mt-10 grid gap-6 sm:mt-14 sm:gap-8 md:grid-cols-3">
           {[
@@ -55,7 +57,10 @@ export function VisionSection({
                 {card.sub}
               </p>
               <h3 className="mt-2 text-xl font-semibold text-ink-900">{card.title}</h3>
-              <p className="mt-4 text-sm leading-relaxed text-ink-600">{card.body}</p>
+              <SiteRichHtml
+                text={card.body}
+                className="mt-4 text-sm leading-relaxed text-ink-600"
+              />
             </article>
           ))}
         </div>

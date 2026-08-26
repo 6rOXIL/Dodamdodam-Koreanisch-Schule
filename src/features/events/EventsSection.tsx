@@ -1,6 +1,7 @@
 "use client";
 
 import NoticePostTable from "@/components/NoticePostTable";
+import SiteRichHtml from "@/components/SiteRichHtml";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { getHeadingTag, type HeadingLevel } from "@/features/shared/sectionHeading";
 import { useResourceCategorySlugForPath } from "@/lib/hooks/useResourceBoards";
@@ -29,19 +30,10 @@ export function EventsSection({
           <HeadingTag className="mt-3 font-sans text-2xl font-bold text-ink-900 sm:text-3xl md:text-4xl">
             {t("events.title")}
           </HeadingTag>
-          <p className="mt-4 text-ink-600">{t("events.lead")}</p>
-        </div>
-
-        <div className="mt-10 text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-secondary-600/80">
-            {t("events.boardLabel")}
-          </p>
-          <h3 className="mt-2 font-sans text-xl font-bold text-ink-900 sm:text-2xl">
-            {t("events.boardTitle")}
-          </h3>
-          <p className="mx-auto mt-2 max-w-2xl text-sm text-ink-600 sm:text-base">
-            {t("events.boardLead")}
-          </p>
+          <SiteRichHtml
+            text={t("events.lead")}
+            className="mx-auto mt-4 max-w-2xl text-ink-600"
+          />
         </div>
 
         <NoticePostTable

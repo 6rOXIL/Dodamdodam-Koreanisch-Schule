@@ -33,7 +33,10 @@ export function GallerySection({
           <HeadingTag className="mt-3 font-sans text-2xl font-bold text-ink-900 sm:text-3xl md:text-4xl">
             {t("gallery.title")}
           </HeadingTag>
-          <p className="mx-auto mt-4 max-w-2xl text-ink-600">{t("gallery.lead")}</p>
+          <SiteRichHtml
+            text={t("gallery.lead")}
+            className="mx-auto mt-4 max-w-2xl text-ink-600"
+          />
           <SiteRichHtml
             text={t("gallery.legacyNote")}
             className="mx-auto mt-4 max-w-2xl text-left text-sm leading-relaxed text-ink-500 sm:text-center"

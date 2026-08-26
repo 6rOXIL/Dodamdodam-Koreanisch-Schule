@@ -1,5 +1,6 @@
-import PublicFormLoader from "@/features/forms/PublicFormLoader";
+import { redirect } from "next/navigation";
+import { ENROLLMENT_GOOGLE_FORM_URL } from "@/lib/forms/enrollment";
 
 export default function ApplyPage() {
-  return <PublicFormLoader slug="enrollment" />;
+  redirect(ENROLLMENT_GOOGLE_FORM_URL);
 }

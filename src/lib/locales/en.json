@@ -12,7 +12,7 @@
     "gallery": "Gallery",
     "classes": "Classes",
     "events": "News",
-    "schedule": "Classes",
+    "schedule": "Class curriculum",
     "location": "Visit"
   },
   "hero": {
@@ -43,7 +43,8 @@
   "about": {
     "label": "about",
     "title": "About",
-    "body": "Dodamdodam Korean Language School in Berlin provide Korean language, Hangul, culture, and history education with the goal of helping the next generation- including Korean children, multicultural children, adoptees, and local foreigners- develop a strong Korean identity, speak Korean confidently, and grow up in a healthy and emotionally supported environment through emotional coaching and character education."
+    "body": "Dodamdodam Korean Language School in Berlin provide Korean language, Hangul, culture, and history education with the goal of helping the next generation- including Korean children, multicultural children, adoptees, and local foreigners- develop a strong Korean identity, speak Korean confidently, and grow up in a healthy and emotionally supported environment through emotional coaching and character education.",
+    "consultCta": "Admission inquiry"
   },
   "legacy": {
     "colDate": "Date",
@@ -88,9 +89,6 @@
     "label": "news",
     "title": "School news",
     "lead": "School news and announcements.",
-    "boardLabel": "board",
-    "boardTitle": "School news board",
-    "boardLead": "Posts published under Resources → School news. Click a title to open the attachment.",
     "boardEmpty": "No school news yet.",
     "empty": "No school news yet.",
     "notFound": "Notice not found.",
@@ -103,12 +101,9 @@
   },
   "schedule": {
     "label": "schedule",
-    "title": "Classes",
-    "lead": "School notices and class-related announcements.",
-    "boardLabel": "board",
-    "boardTitle": "Class notice board",
-    "boardLead": "Posts published under Resources → Class schedule. Click a title to open the attachment.",
-    "boardEmpty": "No notices yet.",
+    "title": "Class curriculum",
+    "lead": "Curriculum materials and class-related posts by group.",
+    "boardEmpty": "No curriculum posts yet.",
     "class1Title": "Early elementary",
     "class1Time": "Saturday 10:00 – 12:00",
     "class1Note": "Hangul basics · play-based",
@@ -139,7 +134,7 @@
     "addressTitle": "Address",
     "quickTitle": "Quick links",
     "linkGallery": "Gallery",
-    "linkSchedule": "Classes",
+    "linkSchedule": "Class curriculum",
     "linkLegacyNotice": "Korean Net notices"
   },
   "auth": {
@@ -215,7 +210,7 @@
       "menuLead": "Top nav labels, order, and visibility",
       "pagesLead": "About & Classes page content",
       "formsLead": "Enrollment forms and submissions",
-      "resourcesLead": "Schedule & news resource categories",
+      "resourcesLead": "Class curriculum & school news categories",
       "membersLead": "Change member roles",
       "menuPreview": "Site menu preview",
       "menuPreviewLead": "Jump to content management for each item.",
@@ -291,7 +286,7 @@
     "resources": {
       "title": "Resource taxonomy",
       "lead": "Manage library categories and class folders. Categories linked from the site menu become public boards.",
-      "focusNotice": "This is the Class schedule category. Manage posts/files in the resource library.",
+      "focusNotice": "This is the Class curriculum category. Manage posts/files in the resource library.",
       "focusAnnouncement": "This is the School news category. Manage posts/files in the resource library.",
       "focusLinked": "This category (‘{{slug}}’) is linked from the site menu. Manage posts/files in the resource library.",
       "saved": "Saved.",
@@ -383,7 +378,7 @@
     "categories": {
       "handout": "Class materials",
       "homework": "Homework",
-      "notice": "Class schedule",
+      "notice": "Class curriculum",
       "announcement": "School news"
     },
     "fieldClass": "Class",
