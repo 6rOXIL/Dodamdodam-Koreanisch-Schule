@@ -250,7 +250,7 @@ export function getAdminManagePath(
     case "pages:classes":
       return `/${language}/admin/pages/?section=classes`;
     case "static":
-      if (navSlug === "home" || navSlug === "gallery" || navSlug === "location") {
+      if (navSlug === "home" || navSlug === "gallery" || navSlug === "location" || navSlug === "tuition") {
         return `/${language}/admin/pages/?section=${navSlug}`;
       }
       return `/${language}/admin/pages/`;

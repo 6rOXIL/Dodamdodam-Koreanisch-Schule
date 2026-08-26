@@ -76,7 +76,8 @@ export type SitePageSlug =
   | "schedule"
   | "gallery"
   | "events"
-  | "location";
+  | "location"
+  | "tuition";
 export type SiteLocale = "ko" | "en" | "de";
 
 export type SiteNavContentKind =
@@ -132,4 +133,16 @@ export interface SitePageContent {
   payload: Record<string, unknown>;
   updated_at: string;
   updated_by: string | null;
+}
+
+export interface GalleryImage {
+  id: string;
+  storage_path: string;
+  file_name: string;
+  alt_text: string;
+  sort_order: number;
+  is_published: boolean;
+  uploaded_by: string | null;
+  created_at: string;
+  updated_at: string;
 }

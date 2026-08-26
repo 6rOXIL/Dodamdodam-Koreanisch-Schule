@@ -59,7 +59,7 @@ export default function ResourceFolderNav({
   return (
     <nav
       aria-label={t("resources.folderNavLabel")}
-      className="rounded-2xl border border-ink-200/80 bg-surface p-2 shadow-sm lg:sticky lg:top-[calc(4rem+env(safe-area-inset-top,0px)+1.5rem)]"
+      className="rounded-2xl border border-ink-200/80 bg-surface p-2 shadow-sm lg:sticky lg:top-[calc(var(--site-header-height)+env(safe-area-inset-top,0px)+1.5rem)]"
     >
       <div className="mb-1 flex items-center justify-between gap-2 px-2 py-1">
         <p className="text-xs font-semibold uppercase tracking-wider text-ink-500">

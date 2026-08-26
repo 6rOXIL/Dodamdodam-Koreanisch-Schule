@@ -4,10 +4,22 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* 모바일: 상단 1단(4rem) */
+  --site-header-height: 4rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    /* 데스크톱: 브랜드 줄(4rem) + 메뉴 줄(3rem) */
+    --site-header-height: 7rem;
+  }
+}
+
 html {
   scroll-behavior: smooth;
-  /* 고정 헤더(4rem) + 노치/상태바 */
-  scroll-padding-top: calc(4rem + env(safe-area-inset-top, 0px));
+  /* 고정 헤더 + 노치/상태바 */
+  scroll-padding-top: calc(var(--site-header-height) + env(safe-area-inset-top, 0px));
 }
 
 /* 이미지 다운로드 방지 */

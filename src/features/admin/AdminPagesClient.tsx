@@ -8,6 +8,7 @@ import type { IntroductionContent } from "@/lib/data/introduction";
 import ClassesContentEditor from "@/features/admin/homepage/ClassesContentEditor";
 import IntroductionContentEditor from "@/features/admin/homepage/IntroductionContentEditor";
 import SimpleCopyEditor from "@/features/admin/homepage/SimpleCopyEditor";
+import AdminGalleryPhotos from "@/features/admin/homepage/AdminGalleryPhotos";
 import { Field, TextInput } from "@/features/admin/homepage/FormFields";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import type { Locale } from "@/lib/i18n/config";
@@ -552,6 +553,7 @@ export default function AdminPagesClient() {
 
           {!isForm && isCopyPageSlug(pageSlug) ? (
             <div className="space-y-4">
+              {pageSlug === "gallery" ? <AdminGalleryPhotos /> : null}
               {isResource && (
                 <div className="rounded-lg border border-ink-200 bg-surface-muted/50 px-4 py-3 text-sm text-ink-700">
                   <p>{t("admin.pages.resourceHint")}</p>

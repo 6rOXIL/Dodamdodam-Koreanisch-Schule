@@ -59,7 +59,7 @@ export default function Navigation() {
   }
 
   const navItemClass = (active: boolean) =>
-    `whitespace-nowrap rounded-md px-2 py-2 text-sm transition-colors md:px-3 ${
+    `whitespace-nowrap rounded-md px-2.5 py-1.5 text-sm transition-colors ${
       active ? "bg-brand-100 font-semibold text-brand-950" : "text-ink-700 hover:bg-ink-100"
     }`;
 
@@ -257,63 +257,70 @@ export default function Navigation() {
   return (
     <>
       <header className="fixed left-0 right-0 top-0 z-50 border-b border-ink-200/80 bg-surface/95 backdrop-blur-md pt-[env(safe-area-inset-top,0px)]">
-        <div className="mx-auto flex h-16 max-w-7xl items-center gap-2 px-3 md:gap-4 md:px-6">
-          <button
-            type="button"
-            className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-lg p-2 text-ink-800 md:hidden"
-            onClick={() => setMobileOpen((o) => !o)}
-            aria-expanded={mobileOpen}
-            aria-label={mobileOpen ? "메뉴 닫기" : "메뉴 열기"}
-          >
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {mobileOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+        {/* 1단: 브랜드 · 언어 · 계정 */}
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-3 md:gap-8 md:px-6">
+          <div className="flex min-w-0 items-center gap-2">
+            <button
+              type="button"
+              className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-lg p-2 text-ink-800 md:hidden"
+              onClick={() => setMobileOpen((o) => !o)}
+              aria-expanded={mobileOpen}
+              aria-label={mobileOpen ? "메뉴 닫기" : "메뉴 열기"}
+            >
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {mobileOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
 
-          <Link
-            href={`/${language}/`}
-            className="flex min-w-0 flex-1 items-center gap-2.5 text-left md:flex-none"
-            onClick={() => setMobileOpen(false)}
-          >
-            <Image
-              src={getImagePath("/images/logo.png")}
-              alt={t("site.nameShort")}
-              width={40}
-              height={40}
-              className="h-9 w-12 shrink-0 rounded-full sm:h-10 sm:w-14"
-              priority
-            />
-            <span className="min-w-0">
-              <span className="block truncate font-semibold text-ink-900 sm:text-base md:text-lg">
-                {t("site.name")}
+            <Link
+              href={`/${language}/`}
+              className="flex min-w-0 items-center gap-2.5 text-left"
+              onClick={() => setMobileOpen(false)}
+            >
+              <Image
+                src={getImagePath("/images/logo.png")}
+                alt={t("site.nameShort")}
+                width={36}
+                height={40}
+                className="h-9 w-auto shrink-0 object-contain sm:h-10"
+                priority
+              />
+              <span className="min-w-0">
+                <span className="block text-sm font-semibold leading-snug text-ink-900 sm:text-base md:text-lg">
+                  {t("site.name")}
+                </span>
+                <span className="hidden text-xs text-ink-500 sm:block">{t("site.nameEn")}</span>
               </span>
-              <span className="hidden text-xs text-ink-500 sm:block">{t("site.nameEn")}</span>
-            </span>
-          </Link>
-          <nav className="hidden flex-1 items-center justify-center gap-0.5 overflow-x-auto md:flex lg:gap-1">
-            {topNav.map(({ id, label, hrefPath }) => renderNavItem(id, label, hrefPath, false))}
-          </nav>
+            </Link>
+          </div>
 
-          <div className="flex shrink-0 items-center gap-8">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <LanguageSwitcher />
             {authLinks()}
           </div>
         </div>
+
+        {/* 2단: 사이트 메뉴 (데스크톱) — 1단과 동일 너비 */}
+        <nav className="hidden md:block" aria-label="주요 메뉴">
+          <div className="mx-auto flex h-12 max-w-7xl items-center justify-between gap-1 px-3 md:px-6">
+            {topNav.map(({ id, label, hrefPath }) => renderNavItem(id, label, hrefPath, false))}
+          </div>
+        </nav>
       </header>
 
       {mobileOpen && (
         <div
           className="fixed inset-0 z-40 bg-surface md:hidden"
           style={{
-            paddingTop: "calc(4rem + env(safe-area-inset-top, 0px))",
+            paddingTop: "calc(var(--site-header-height) + env(safe-area-inset-top, 0px))",
           }}
         >
           <nav
-            className="flex h-full max-h-[calc(100dvh-4rem-env(safe-area-inset-top,0px))] flex-col gap-0 overflow-y-auto overscroll-contain px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))]"
+            className="flex h-full max-h-[calc(100dvh-var(--site-header-height)-env(safe-area-inset-top,0px))] flex-col gap-0 overflow-y-auto overscroll-contain px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))]"
             aria-label="모바일 메뉴"
           >
             {topNav.map(({ id, label, hrefPath }) => renderNavItem(id, label, hrefPath, true))}

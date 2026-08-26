@@ -1,21 +1,23 @@
 "use client";
 
-import Link from "next/link";
-import SiteRichHtml from "@/components/SiteRichHtml";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import { getImagePath } from "@/lib/utils/imagePath";
-import { LocationMapEmbed } from "@/features/location/LocationMapEmbed";
 import { AboutSection } from "@/features/about/AboutSection";
-import { ScheduleSection } from "@/features/schedule/ScheduleSection";
-import { GallerySection } from "@/features/gallery/GallerySection";
-import { EventsSection } from "@/features/events/EventsSection";
+import { VisionSection } from "@/features/vision/VisionSection";
+import { ClassesSection } from "@/features/classes/ClassesSection";
+import { EnrollmentSection } from "@/features/enrollment/EnrollmentSection";
+import { TuitionSection } from "@/features/tuition/TuitionSection";
+import { LocationSection } from "@/features/location/LocationSection";
+
+const scrollMt =
+  "scroll-mt-[calc(var(--site-header-height)+env(safe-area-inset-top,0px))]";
 
 export default function HomePage() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <main className="bg-surface text-ink-900">
-      {/* Hero — full-bleed welcome (참고: berlin-vision.de 스타일) */}
+      {/* Hero — full-bleed welcome */}
       <section
         id="home"
         className="relative flex min-h-[min(100dvh,900px)] items-center justify-center overflow-hidden sm:min-h-[85vh]"
@@ -41,150 +43,39 @@ export default function HomePage() {
           <p className="mt-4 text-base leading-relaxed text-surface/90 sm:mt-6 sm:text-lg md:text-xl">
             {t("hero.subtitle")}
           </p>
-          <Link
-            href={`/${language}/introduction/greeting/`}
+          <a
+            href="#about"
             className="mt-8 inline-flex min-h-12 w-full max-w-xs items-center justify-center rounded-full border border-surface/40 bg-surface/10 px-8 py-3 text-sm font-semibold backdrop-blur-sm transition hover:bg-surface/20 sm:mt-10 sm:w-auto"
           >
             {t("hero.cta")}
-          </Link>
+          </a>
         </div>
       </section>
 
       <AboutSection
         id="about"
-        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] border-b border-ink-100 bg-surface py-14 sm:py-20 md:py-28"
+        className={`${scrollMt} border-b border-ink-100 bg-surface py-14 sm:py-20 md:py-28`}
       />
-      <section
+      <VisionSection
         id="vision"
-        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-surface-muted py-14 sm:py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-secondary-600/80">
-              {t("vision.label")}
-            </p>
-            <h2 className="mt-3 font-serif text-2xl font-bold text-ink-900 sm:text-3xl md:text-4xl">
-              {t("vision.title")}
-            </h2>
-            <SiteRichHtml
-              text={t("vision.lead")}
-              className="mx-auto mt-4 max-w-2xl text-[15px] text-ink-600 sm:text-base"
-            />
-          </div>
-          <div className="mt-10 grid gap-6 sm:mt-14 sm:gap-8 md:grid-cols-3">
-            {[
-              {
-                title: t("vision.card1Title"),
-                sub: t("vision.card1Subtitle"),
-                body: t("vision.card1Body"),
-              },
-              {
-                title: t("vision.card2Title"),
-                sub: t("vision.card2Subtitle"),
-                body: t("vision.card2Body"),
-              },
-              {
-                title: t("vision.card3Title"),
-                sub: t("vision.card3Subtitle"),
-                body: t("vision.card3Body"),
-              },
-            ].map((card) => (
-              <article
-                key={card.title}
-                className="rounded-2xl border border-ink-200/80 bg-surface p-6 shadow-sm transition hover:shadow-md sm:p-8"
-              >
-                <p className="text-xs font-medium uppercase tracking-wide text-secondary-600/90">
-                  {card.sub}
-                </p>
-                <h3 className="mt-2 text-xl font-semibold text-ink-900">{card.title}</h3>
-                <SiteRichHtml
-                  text={card.body}
-                  className="mt-4 text-sm leading-relaxed text-ink-600"
-                />
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Class */}
-      <section
+        className={`${scrollMt} bg-surface-muted py-14 sm:py-20 md:py-28`}
+      />
+      <ClassesSection
         id="classes"
-        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] border-b border-ink-100 bg-surface py-14 sm:py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-secondary-600/80">
-              {t("classes.label")}
-            </p>
-            <h2 className="mt-3 font-serif text-2xl font-bold text-ink-900 sm:text-3xl md:text-4xl">
-              {t("classes.title")}
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-ink-600">{t("classes.lead")}</p>
-          </div>
-          <div className="mt-12 flex justify-center">
-            <div className="max-w-md rounded-2xl border border-dashed border-ink-200 bg-surface-muted px-5 py-12 text-center text-sm text-ink-500 sm:px-8 sm:py-14 sm:text-base">
-              {t("classes.placeholder")}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Schedule: 커리큘럼 게시판 + 요약 카드 */}
-      <ScheduleSection
-        id="schedule"
-        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] border-t border-ink-100 bg-surface py-14 sm:py-20 md:py-28"
+        className={`${scrollMt} border-b border-ink-100 bg-surface py-14 sm:py-20 md:py-28`}
       />
-      <GallerySection
-        id="gallery"
-        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-ink-50 py-14 sm:py-20 md:py-28"
+      <EnrollmentSection
+        id="enrollment"
+        className={`${scrollMt} border-b border-ink-100 bg-surface-muted py-14 sm:py-20 md:py-28`}
       />
-      <EventsSection
-        id="events"
-        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-surface py-14 sm:py-20 md:py-28"
+      <TuitionSection
+        id="tuition"
+        className={`${scrollMt} border-b border-ink-100 bg-surface py-14 sm:py-20 md:py-28`}
       />
-      <section
+      <LocationSection
         id="location"
-        className="scroll-mt-[calc(4rem+env(safe-area-inset-top,0px))] bg-surface-inverse py-14 text-on-inverse sm:py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-8">
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-secondary-300/90">
-              {t("location.label")}
-            </p>
-            <h2 className="mt-3 font-serif text-2xl font-bold sm:text-3xl md:text-4xl">
-              {t("location.title")}
-            </h2>
-          </div>
-          <div className="mt-10 grid gap-8 sm:mt-12 md:grid-cols-2 md:gap-16">
-            <div>
-              <h3 className="text-sm font-semibold text-brand-300/95">{t("location.addressLabel1")}</h3>
-              <p className="mt-2 mb-6 break-words whitespace-pre-line text-on-inverse/90">{t("location.address1")}</p>
-              
-              <h3 className="text-sm font-semibold text-brand-300/95">{t("location.addressLabel2")}</h3>
-              <p className="mt-2 break-words whitespace-pre-line text-on-inverse/90">{t("location.address2")}</p>
-
-            </div>
-            <div>
-              <h3 className="text-sm font-semibold text-brand-300/95">{t("location.contactLabel")}</h3>
-              <p className="mt-2 text-on-inverse/90">{t("location.phone")}</p>
-              <a
-                href={`mailto:${t("location.email")}`}
-                className="mt-1 inline-block text-brand-300 underline-offset-4 hover:underline"
-              >
-                {t("location.email")}
-              </a>
-
-              <h3 className="text-sm mt-6 font-semibold text-brand-300/95">{t("location.addressLabel3")}</h3>
-              <p className="mt-2 break-words whitespace-pre-line text-on-inverse/90">{t("location.address3")}</p>
-
-            </div>
-          </div>
-          <div className="mt-10">
-            <LocationMapEmbed variant="dark" />
-          </div>
-        </div>
-      </section>
+        className={`${scrollMt} bg-ink-900 py-14 text-surface sm:py-20 md:py-28`}
+      />
     </main>
   );
 }

@@ -3,17 +3,17 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
 import type { Locale } from "@/lib/i18n/config";
-import type { SectionId } from "@/lib/navConfig";
 import { fetchTopNavItems, getLocalizedLabel } from "@/lib/siteContent/api";
 import type { SiteNavItem } from "@/lib/supabase/database.types";
 
-const FALLBACK_NAV: { id: SectionId; labelKey: string; hrefPath: string }[] = [
-  { id: "home", labelKey: "nav.home", hrefPath: "/" },
+const FALLBACK_NAV: { id: string; labelKey: string; hrefPath: string }[] = [
   { id: "about", labelKey: "nav.about", hrefPath: "/introduction/" },
   { id: "classes", labelKey: "nav.classes", hrefPath: "/classes/" },
   { id: "schedule", labelKey: "nav.schedule", hrefPath: "/schedule/" },
   { id: "gallery", labelKey: "nav.gallery", hrefPath: "/gallery/" },
   { id: "events", labelKey: "nav.events", hrefPath: "/events/" },
+  { id: "enrollment", labelKey: "nav.enrollment", hrefPath: "/apply/" },
+  { id: "tuition", labelKey: "nav.tuition", hrefPath: "/tuition/" },
   { id: "location", labelKey: "nav.location", hrefPath: "/location/" },
 ];
 

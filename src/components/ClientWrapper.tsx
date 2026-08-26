@@ -50,7 +50,7 @@ export default function ClientWrapper({
       <HtmlLangSync />
       <HomeHashScroll />
       <Navigation />
-      <div className="min-h-[100dvh] pt-[calc(4rem+env(safe-area-inset-top,0px))] pb-[env(safe-area-inset-bottom,0px)]">
+      <div className="min-h-[100dvh] pt-[calc(var(--site-header-height)+env(safe-area-inset-top,0px))] pb-[env(safe-area-inset-bottom,0px)]">
         {children}
       </div>
       <SiteFooter />

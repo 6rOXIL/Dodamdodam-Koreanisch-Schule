@@ -1,9 +1,9 @@
 {
   "site": {
-    "name": "도담도담 한글학교",
+    "name": "베를린 도담도담한글학교",
     "nameShort": "도담도담",
-    "nameEn": "Dodamdodam Korean Language School",
-    "copyright": "© 2026 도담도담 한글학교. All rights reserved."
+    "nameEn": "Berlin Dodamdodam Korean Language School",
+    "copyright": "© 2026 베를린 도담도담한글학교. All rights reserved."
   },
   "nav": {
     "home": "홈",
@@ -13,18 +13,27 @@
     "gallery": "갤러리",
     "events": "학교 소식",
     "schedule": "반별 커리큘럼",
-    "location": "오시는 길"
+    "enrollment": "입학안내",
+    "location": "오시는 길",
+    "tuition": "수업료 안내"
   },
   "hero": {
     "welcome": "WELCOME",
-    "title": "도담도담 한글학교",
+    "title": "베를린 도담도담한글학교",
     "subtitle": "함께 자라는 한글, 함께 여는 내일",
     "cta": "학교 소개 보기"
+  },
+  "enrollment": {
+    "label": "enrollment",
+    "title": "입학안내",
+    "lead": "베를린 도담도담한글학교에 관심을 가져 주셔서 감사합니다. 아래 버튼을 눌러 입학·수강 신청서를 작성해 주세요. 작성하신 내용은 상담 외 목적으로 사용하지 않습니다.",
+    "cta": "입학·수강 신청하기"
   },
   "classes": {
     "label": "classes",
     "title": "학급 소개",
     "lead": "연령별 반 구성, 수업 시간, 교육 방향을 안내합니다.",
+    "viewDetail": "자세히 보기",
     "sectionNav": "이 페이지 안에서 이동",
     "location": "수업 장소",
     "table": {
@@ -66,7 +75,7 @@
   "about": {
     "label": "about",
     "title": "학교 소개",
-    "body": "한국인, 다문화 자녀, 입양인, 현지 외국인을 대상으로 다음 세대가 한국인의 정체성을 가지고 한구겅를 구사할수 있으며, 건강하게 성장할수 있도록 정서코칭과 바른 인성교육을 목적으로 한국어와, 한국 문화, 역사교육을 합니다.",
+    "body": "도담도담한글학교는 유아부터 성인까지 한국어와 한국 문화·역사를 배우고 싶은 모든 학생을 위한 학교입니다. 한국어 교육과 문화·역사 교육, 정서 코칭과 바른 인성교육을 통해 건강한 성장을 함께합니다.",
     "consultCta": "입학상담문의"
   },
   "legacy": {
@@ -79,7 +88,7 @@
   "vision": {
     "label": "vision",
     "title": "비전",
-    "lead": "한글로 세상을 넓히고, 공동체 안에서 함께 성장합니다.",
+    "lead": "한국어와 한국 문화를 통해 정체성을 키우고, 바른 인성과 공동체 의식을 갖춘 세계시민으로 함께 성장합니다.",
     "card1Title": "다음 세대 한글",
     "card1Subtitle": "Next Generation",
     "card1Body": "연령에 맞는 수업으로 한글의 기초를 다집니다.",
@@ -100,7 +109,11 @@
     "instagramTitle": "Instagram",
     "instagramHint": "아래 글은 배포 전에 스크립트로 가져온 최근 게시물입니다. 실시간 피드가 아닙니다.",
     "instagramProfile": "프로필 보기",
-    "instagramViewPost": "인스타그램에서 보기"
+    "instagramViewPost": "인스타그램에서 보기",
+    "paginationLabel": "갤러리 페이지",
+    "prevPage": "이전",
+    "nextPage": "다음",
+    "pageStatus": "{{current}} / {{total}}"
   },
   "events": {
     "label": "news",
@@ -132,12 +145,12 @@
   "location": {
     "label": "location",
     "title": "오시는 길",
-    "addressLabel1": "초등반 주소",
-    "address1": "Ruppin Grundschule: Offenbacher Str. 5A, 14197 Berlin 107/108호",
-    "addressLabel2": "유치/중등반 주소",
-    "address2": "Pangea Haus: Trautenaustraße 5, 10717 Berlin 215/217호",
+    "addressLabel1": "초등반",
+    "address1": "Ruppin-Grundschule / Offenbacher Str. 5A, 14197 Berlin",
+    "addressLabel2": "유치·중등반",
+    "address2": "Pangea Haus e.V. / Trautenaustraße 5, 10717 Berlin",
     "addressLabel3": "사무실",
-    "address3": "Pangea Haus: Trautenaustraße 5, 10717 Berlin 216호",
+    "address3": "Pangea Haus e.V. / Trautenaustraße 5, 10717 Berlin",
     "contactLabel": "연락처",
     "phone": "+49-30-8550-6368",
     "email": "dodamdodam054@gmail.com",
@@ -146,6 +159,38 @@
     "mapTabsLabel": "수업 장소 선택",
     "mapPangea": "Pangea Haus",
     "mapRuppin": "Ruppin Grundschule"
+  },
+  "tuition": {
+    "label": "tuition",
+    "title": "수업료 안내",
+    "lead": "학급별 수업료와 납부 방법을 안내합니다.",
+    "tableCaption": "학비 안내",
+    "colGroup": "구분",
+    "colFee": "수업료",
+    "kindergartenLabel": "유치반 (씨앗·새싹)",
+    "kindergartenFee": "한 학기(6개월) 300€",
+    "elementaryLabel": "초등/중등반 (줄기·꽃잎·열매·초등기초)",
+    "elementaryFee": "한 학기(6개월) 300€",
+    "adultsLabel": "성인반",
+    "adultsFee": "총 20회 350€",
+    "policyTitle": "납부 안내",
+    "policyBody": "수업료는 방학과 공휴일을 포함한 수업일이 기준입니다.\n\n한 학기(6개월) 300유로를 학기 시작 전에 납부하는 것을 원칙으로 하나, 매월 50유로씩(형제가 있는 경우 한 명은 40유로) 분납하실 수 있습니다.\n\n분납하실 경우 매월 첫 주까지 계좌이체 또는 현금으로 납부 가능합니다.",
+    "trialTitle": "수업참관료",
+    "trialBody": "참관 수업은 1회 가능하며, 부모님과 함께 참관하실 수 있습니다. 희망자는 학교 측에 미리 신청해 주세요.\n\n참관 수업료는 20유로이며, 선불로 현금 또는 계좌이체하시면 됩니다.",
+    "admissionTitle": "입학금",
+    "admissionBody": "입학금은 50유로입니다. 입학 시 한 번 납부하며, 현금 또는 계좌이체하시면 됩니다.",
+    "paymentNote": "본교는 카드결제 시스템이 구축되지 않아 카드결제가 불가능합니다.",
+    "bankTitle": "계좌 정보",
+    "bankNameLabel": "은행",
+    "bankName": "Postbank",
+    "ibanLabel": "IBAN",
+    "iban": "DE92 1001 0010 0724 7331 35",
+    "bicLabel": "BIC",
+    "bic": "PBNKDEFF",
+    "accountHolderLabel": "계좌주",
+    "accountHolder": "CHUN HEE HA",
+    "transferPurposeLabel": "송금용도",
+    "transferPurpose": "학생 이름, 해당 월"
   },
   "footer": {
     "addressTitle": "주소",
@@ -267,6 +312,22 @@
       "lead": "사이트 메뉴의 각 카테고리 본문·안내 문구를 편집합니다. 학교 소개·학급 소개는 하위 페이지까지, 반별 커리큘럼·학교 소식은 제목/리드와 자료실 분류를 함께 관리합니다.",
       "resourceHint": "게시글·첨부 파일은 자료 분류(자료실)에서 관리합니다. 아래에서 페이지 제목과 안내 문구를 수정할 수 있습니다.",
       "formHint": "이 메뉴는 신청 폼입니다. 입력 항목과 제출 내역은 ‘신청 폼’에서 관리하세요."
+    },
+    "gallery": {
+      "title": "갤러리 사진",
+      "lead": "사진을 업로드하면 갤러리 페이지에 바로 반영됩니다. 순서·공개 여부·삭제도 여기서 관리합니다.",
+      "upload": "사진 업로드",
+      "empty": "등록된 사진이 없습니다. 사진을 업로드해 주세요. (업로드 전에는 기본 정적 사진이 표시됩니다.)",
+      "uploadSuccess": "사진을 업로드했습니다.",
+      "delete": "삭제",
+      "deleteConfirm": "이 사진을 삭제할까요?",
+      "deleteSuccess": "사진을 삭제했습니다.",
+      "moveUp": "위로",
+      "moveDown": "아래로",
+      "hide": "숨기기",
+      "show": "공개",
+      "hidden": "숨김",
+      "invalidType": "이미지 파일만 업로드할 수 있습니다."
     },
     "forms": {
       "title": "신청 폼",

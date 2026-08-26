@@ -1,9 +1,9 @@
 {
   "site": {
-    "name": "Dodam Dodam Koreanische Schule",
+    "name": "Berlin Dodam Dodam Koreanische Schule",
     "nameShort": "Dodamdodam",
-    "nameEn": "Dodamdodam Korean Language School",
-    "copyright": "© 2026 Dodam Dodam Koreanische Schule. Alle Rechte vorbehalten."
+    "nameEn": "Berlin Dodamdodam Korean Language School",
+    "copyright": "© 2026 Berlin Dodam Dodam Koreanische Schule. Alle Rechte vorbehalten."
   },
   "nav": {
     "home": "Start",
@@ -13,18 +13,27 @@
     "classes": "Klassen",
     "events": "Aktuelles",
     "schedule": "Klassenlehrplan",
-    "location": "Anfahrt"
+    "enrollment": "Anmeldung",
+    "location": "Anfahrt",
+    "tuition": "Gebühren"
   },
   "hero": {
     "welcome": "WILLKOMMEN",
-    "title": "Dodam Dodam Koreanische Schule",
+    "title": "Berlin Dodam Dodam Koreanische Schule",
     "subtitle": "Gemeinsam Koreanisch lernen, gemeinsam wachsen",
     "cta": "Zur Schulvorstellung"
+  },
+  "enrollment": {
+    "label": "enrollment",
+    "title": "Anmeldung",
+    "lead": "Vielen Dank für Ihr Interesse an der Berlin Dodam Dodam Koreanischen Schule. Bitte füllen Sie über den Button unten das Anmeldeformular aus. Ihre Angaben werden nur für die Beratung verwendet.",
+    "cta": "Jetzt anmelden"
   },
   "classes": {
     "label": "classes",
     "title": "Klassenübersicht",
     "lead": "Klassen, Unterrichtszeiten und pädagogische Schwerpunkte nach Alter.",
+    "viewDetail": "Mehr erfahren",
     "sectionNav": "Auf dieser Seite",
     "location": "Unterrichtsort",
     "table": {
@@ -66,7 +75,7 @@
   "about": {
     "label": "about",
     "title": "Über uns",
-    "body": "Dodam Dodam Koreanische Schule bieten Unterricht in Koreanisch, Hangul, Kultur und Geschichte an, um der nächsten Generation – darunter koreanischen Kindern, Kindern aus multikulturellen Familien, Adoptierten und hier lebenden Ausländer*innen – zu einer starken koreanischen Identität, sicherer Koreanischkompetenz sowie einer gesunden und stabilen Entwicklung durch emotionale Begleitung und Werteerziehung zu verhelfen.",
+    "body": "Die Dodamdodam Koreanische Schule ist für alle Schülerinnen und Schüler – vom Kindes- bis zum Erwachsenenalter – da, die Koreanisch sowie koreanische Kultur und Geschichte lernen möchten. Mit Sprach-, Kultur- und Geschichtsunterricht sowie emotionaler Begleitung und Werteerziehung wachsen wir gemeinsam gesund.",
     "consultCta": "Aufnahmeberatung"
   },
   "legacy": {
@@ -79,7 +88,7 @@
   "vision": {
     "label": "vision",
     "title": "Vision",
-    "lead": "Wir erweitern den Horizont mit Koreanisch und wachsen in der Gemeinschaft.",
+    "lead": "Durch koreanische Sprache und Kultur stärken wir Identität und wachsen gemeinsam zu Weltbürgerinnen und Weltbürgern mit Charakter und Gemeinschaftssinn.",
     "card1Title": "Nächste Generation",
     "card1Subtitle": "Next Generation",
     "card1Body": "Altersgerechter Unterricht für eine solide Hangul-Grundlage.",
@@ -100,7 +109,11 @@
     "instagramTitle": "Instagram",
     "instagramHint": "Die Beiträge werden vor dem Build per Skript geladen — kein Live-Feed.",
     "instagramProfile": "Profil ansehen",
-    "instagramViewPost": "Auf Instagram öffnen"
+    "instagramViewPost": "Auf Instagram öffnen",
+    "paginationLabel": "Galerieseiten",
+    "prevPage": "Zurück",
+    "nextPage": "Weiter",
+    "pageStatus": "{{current}} / {{total}}"
   },
   "events": {
     "label": "news",
@@ -132,12 +145,12 @@
   "location": {
     "label": "location",
     "title": "Anfahrt",
-    "addressLabel1": "Adresse der Grundschulklasse",
-    "address1": "Ruppin Grundschule: Offenbacher Str. 5A, 14197 Berlin Raum 107/108",
-    "addressLabel2": "Adresse der Kindergarten- / Mittelstufenklasse  ",
-    "address2": "Pangea Haus: Trautenaustraße 5, 10717 Berlin Raum 215/217",
-    "addressLabel3": "Büroadresse",
-    "address3": "Pangea Haus: Trautenaustraße 5, 10717 Berlin Raum 216",
+    "addressLabel1": "Grundschulklasse",
+    "address1": "Ruppin-Grundschule / Offenbacher Str. 5A, 14197 Berlin",
+    "addressLabel2": "Kindergarten / Mittelstufe",
+    "address2": "Pangea Haus e.V. / Trautenaustraße 5, 10717 Berlin",
+    "addressLabel3": "Büro",
+    "address3": "Pangea Haus e.V. / Trautenaustraße 5, 10717 Berlin",
     "contactLabel": "Kontakt",
     "phone": "+49-30-8550-6368",
     "email": "dodamdodam054@gmail.com",
@@ -146,6 +159,38 @@
     "mapTabsLabel": "Unterrichtsort wählen",
     "mapPangea": "Pangea Haus",
     "mapRuppin": "Ruppin Grundschule"
+  },
+  "tuition": {
+    "label": "tuition",
+    "title": "Unterrichtsgebühren",
+    "lead": "Gebühren und Zahlungsinformationen nach Klassengruppe.",
+    "tableCaption": "Gebührenübersicht",
+    "colGroup": "Gruppe",
+    "colFee": "Gebühr",
+    "kindergartenLabel": "Kindergarten (Samen · Spross)",
+    "kindergartenFee": "300 € pro Semester (6 Monate)",
+    "elementaryLabel": "Grund-/Mittelstufe (Stamm · Blüte · Frucht · Grundkurs)",
+    "elementaryFee": "300 € pro Semester (6 Monate)",
+    "adultsLabel": "Erwachsene",
+    "adultsFee": "350 € für 20 Termine",
+    "policyTitle": "Zahlung",
+    "policyBody": "Die Unterrichtsgebühr richtet sich nach dem Schulkalender einschließlich Ferien und Feiertagen.\n\nGrundsätzlich sind 300 € für ein Semester (6 Monate) vor Semesterbeginn zu zahlen. Eine monatliche Zahlung von 50 € ist möglich (bei Geschwistern 40 € für ein Kind).\n\nBei Ratenzahlung bitte bis zur ersten Woche jedes Monats per Überweisung oder bar zahlen.",
+    "trialTitle": "Schnupperunterricht",
+    "trialBody": "Ein Schnuppertermin ist möglich; Eltern dürfen mitkommen. Bitte melden Sie sich vorher bei der Schule an.\n\nDie Gebühr beträgt 20 € und ist im Voraus bar oder per Überweisung zu zahlen.",
+    "admissionTitle": "Aufnahmegebühr",
+    "admissionBody": "Die Aufnahmegebühr beträgt 50 € und wird einmalig bei der Anmeldung bar oder per Überweisung gezahlt.",
+    "paymentNote": "Kartenzahlung ist nicht möglich.",
+    "bankTitle": "Kontodaten",
+    "bankNameLabel": "Bank",
+    "bankName": "Postbank",
+    "ibanLabel": "IBAN",
+    "iban": "DE92 1001 0010 0724 7331 35",
+    "bicLabel": "BIC",
+    "bic": "PBNKDEFF",
+    "accountHolderLabel": "Kontoinhaber",
+    "accountHolder": "CHUN HEE HA",
+    "transferPurposeLabel": "Verwendungszweck",
+    "transferPurpose": "Schülername, Monat"
   },
   "footer": {
     "addressTitle": "Adresse",
@@ -267,6 +312,22 @@
       "lead": "Texte für jede Menükategorie bearbeiten. Schule und Klassen inkl. Unterseiten; Klassenlehrplan und Nachrichten sind mit der Materialbibliothek verknüpft.",
       "resourceHint": "Beiträge und Anhänge verwalten Sie unter Material-Kategorien. Unten können Sie Seitentitel und Einleitungstexte bearbeiten.",
       "formHint": "Dieser Menüpunkt ist ein Anmeldeformular. Felder und Einsendungen unter Formulare bearbeiten."
+    },
+    "gallery": {
+      "title": "Galerie-Fotos",
+      "lead": "Hochgeladene Fotos erscheinen auf der Galerieseite. Reihenfolge, Sichtbarkeit und Löschen verwalten Sie hier.",
+      "upload": "Fotos hochladen",
+      "empty": "Noch keine Fotos. Laden Sie Bilder hoch. (Bis dahin werden Standardfotos angezeigt.)",
+      "uploadSuccess": "Fotos hochgeladen.",
+      "delete": "Löschen",
+      "deleteConfirm": "Dieses Foto löschen?",
+      "deleteSuccess": "Foto gelöscht.",
+      "moveUp": "Nach oben",
+      "moveDown": "Nach unten",
+      "hide": "Ausblenden",
+      "show": "Veröffentlichen",
+      "hidden": "Ausgeblendet",
+      "invalidType": "Nur Bilddateien können hochgeladen werden."
     },
     "forms": {
       "title": "Formulare",

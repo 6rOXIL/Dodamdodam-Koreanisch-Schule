@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useMemo, useState } from "react";
 import InstagramFeed from "@/components/InstagramFeed";
 import PhotoGallery from "@/components/PhotoGallery";
 import SiteRichHtml from "@/components/SiteRichHtml";
@@ -7,8 +8,17 @@ import { useLanguage } from "@/lib/contexts/LanguageContext";
 import instagramFeedJson from "@/lib/data/instagramFeed.json";
 import type { InstagramFeedFile } from "@/lib/types/instagramFeed";
 import { getHeadingTag, type HeadingLevel } from "@/features/shared/sectionHeading";
+import {
+  fetchPublishedGalleryImages,
+  getGalleryPublicUrl,
+} from "@/lib/gallery/api";
+import { getImagePath } from "@/lib/utils/imagePath";
 
-const GALLERY_PHOTOS = Array.from({ length: 12 }, (_, i) => `photo-${i + 1}.jpg`);
+const FALLBACK_PHOTOS = Array.from({ length: 12 }, (_, i) => ({
+  src: getImagePath(`/images/photo-${i + 1}.jpg`),
+  alt: "",
+}));
+
 const instagramFeed = instagramFeedJson as InstagramFeedFile;
 
 export function GallerySection({
@@ -22,6 +32,33 @@ export function GallerySection({
 }) {
   const { t } = useLanguage();
   const HeadingTag = getHeadingTag(headingLevel);
+  const [remotePhotos, setRemotePhotos] = useState<{ src: string; alt: string }[] | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchPublishedGalleryImages().then((rows) => {
+      if (cancelled) return;
+      if (rows.length === 0) {
+        setRemotePhotos([]);
+        return;
+      }
+      setRemotePhotos(
+        rows.map((row) => ({
+          src: getGalleryPublicUrl(row.storage_path),
+          alt: row.alt_text,
+        }))
+      );
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const photos = useMemo(() => {
+    if (remotePhotos === null) return [];
+    if (remotePhotos.length > 0) return remotePhotos;
+    return FALLBACK_PHOTOS;
+  }, [remotePhotos]);
 
   return (
     <section id={id} className={className}>
@@ -43,7 +80,7 @@ export function GallerySection({
           />
         </div>
         <div className="mt-12">
-          <PhotoGallery photos={GALLERY_PHOTOS} altPrefix={t("gallery.alt")} />
+          <PhotoGallery photos={photos} altPrefix={t("gallery.alt")} />
         </div>
         <InstagramFeed feed={instagramFeed} />
       </div>

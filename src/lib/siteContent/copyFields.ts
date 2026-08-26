@@ -3,7 +3,7 @@ import ko from "@/lib/locales/ko.json";
 import en from "@/lib/locales/en.json";
 import de from "@/lib/locales/de.json";
 
-export type CopyPageSlug = "home" | "gallery" | "location" | "schedule" | "events";
+export type CopyPageSlug = "home" | "gallery" | "location" | "schedule" | "events" | "tuition";
 
 export type CopyField = {
   path: string;
@@ -32,6 +32,9 @@ export const COPY_FIELDS_BY_PAGE: Record<CopyPageSlug, CopyField[]> = {
     { path: "vision.card3Title", label: "비전 카드3 · 제목" },
     { path: "vision.card3Subtitle", label: "비전 카드3 · 부제" },
     { path: "vision.card3Body", label: "비전 카드3 · 본문", multiline: true },
+    { path: "enrollment.title", label: "입학안내 · 제목" },
+    { path: "enrollment.lead", label: "입학안내 · 본문", multiline: true },
+    { path: "enrollment.cta", label: "입학안내 · 신청 버튼" },
   ],
   gallery: [
     { path: "gallery.title", label: "제목" },
@@ -57,6 +60,28 @@ export const COPY_FIELDS_BY_PAGE: Record<CopyPageSlug, CopyField[]> = {
   events: [
     { path: "events.title", label: "제목" },
     { path: "events.lead", label: "리드", multiline: true },
+  ],
+  tuition: [
+    { path: "tuition.title", label: "제목" },
+    { path: "tuition.lead", label: "리드", multiline: true },
+    { path: "tuition.kindergartenLabel", label: "유치반 · 구분" },
+    { path: "tuition.kindergartenFee", label: "유치반 · 수업료" },
+    { path: "tuition.elementaryLabel", label: "초등/중등 · 구분" },
+    { path: "tuition.elementaryFee", label: "초등/중등 · 수업료" },
+    { path: "tuition.adultsLabel", label: "성인반 · 구분" },
+    { path: "tuition.adultsFee", label: "성인반 · 수업료" },
+    { path: "tuition.policyTitle", label: "납부 안내 · 제목" },
+    { path: "tuition.policyBody", label: "납부 안내 · 본문", multiline: true },
+    { path: "tuition.trialTitle", label: "참관료 · 제목" },
+    { path: "tuition.trialBody", label: "참관료 · 본문", multiline: true },
+    { path: "tuition.admissionTitle", label: "입학금 · 제목" },
+    { path: "tuition.admissionBody", label: "입학금 · 본문", multiline: true },
+    { path: "tuition.paymentNote", label: "결제 불가 안내", multiline: true },
+    { path: "tuition.bankName", label: "은행" },
+    { path: "tuition.iban", label: "IBAN" },
+    { path: "tuition.bic", label: "BIC" },
+    { path: "tuition.accountHolder", label: "계좌주" },
+    { path: "tuition.transferPurpose", label: "송금용도" },
   ],
 };
 
@@ -97,6 +122,7 @@ export function navSlugToPageSlug(navSlug: string, contentKind: string): string 
   if (navSlug === "home") return "home";
   if (navSlug === "gallery") return "gallery";
   if (navSlug === "location") return "location";
+  if (navSlug === "tuition") return "tuition";
   if (navSlug === "schedule" || contentKind === "resources:notice") return "schedule";
   if (navSlug === "events" || contentKind === "resources:announcement") return "events";
   if (contentKind.startsWith("resources:")) return navSlug;

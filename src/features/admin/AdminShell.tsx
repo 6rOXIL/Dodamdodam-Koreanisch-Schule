@@ -98,7 +98,7 @@ export default function AdminShell({ children }: { children: ReactNode }) {
   );
 
   return (
-    <div className="min-h-[calc(100dvh-4rem)] bg-surface-muted/40">
+    <div className="min-h-[calc(100dvh-var(--site-header-height))] bg-surface-muted/40">
       <div className="border-b border-ink-200 bg-surface">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 md:px-6">
           <div className="flex min-w-0 items-center gap-3">
@@ -140,7 +140,7 @@ export default function AdminShell({ children }: { children: ReactNode }) {
 
       <div className="mx-auto flex max-w-7xl gap-0 lg:gap-8 lg:px-6 lg:py-8">
         <aside className="hidden w-56 shrink-0 lg:block">
-          <div className="sticky top-[calc(4rem+1rem)] rounded-2xl border border-ink-200 bg-surface p-3 shadow-sm">
+          <div className="sticky top-[calc(var(--site-header-height)+1rem)] rounded-2xl border border-ink-200 bg-surface p-3 shadow-sm">
             {sidebar}
           </div>
         </aside>
