@@ -30,9 +30,14 @@ export default function SiteFooter() {
             <p className="mt-6 text-sm font-medium text-ink-800">
               {t("footer.addressTitle")}
             </p>
-            <p className="mt-1 text-sm text-ink-600 whitespace-pre-line">
-              {t("location.address3")}
-            </p>
+            <div className="mt-2 space-y-3 text-sm text-ink-600">
+              <div>
+                <p className="mt-0.5 break-words whitespace-pre-line">{t("location.address1")}</p>
+              </div>
+              <div>
+                <p className="mt-0.5 break-words whitespace-pre-line">{t("location.address2")}</p>
+              </div>
+            </div>
           </div>
           <div>
             <p className="text-sm font-medium text-ink-800">
