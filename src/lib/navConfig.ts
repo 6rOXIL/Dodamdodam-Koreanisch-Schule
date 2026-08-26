@@ -4,8 +4,9 @@ export const SECTION_IDS = [
   "about",
   "vision",
   "classes",
-  "enrollment",
-  "tuition",
+  "schedule",
+  "gallery",
+  "events",
   "location",
 ] as const;
 

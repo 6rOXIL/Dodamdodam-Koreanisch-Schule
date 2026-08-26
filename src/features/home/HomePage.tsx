@@ -5,8 +5,9 @@ import { getImagePath } from "@/lib/utils/imagePath";
 import { AboutSection } from "@/features/about/AboutSection";
 import { VisionSection } from "@/features/vision/VisionSection";
 import { ClassesSection } from "@/features/classes/ClassesSection";
-import { EnrollmentSection } from "@/features/enrollment/EnrollmentSection";
-import { TuitionSection } from "@/features/tuition/TuitionSection";
+import { ScheduleSection } from "@/features/schedule/ScheduleSection";
+import { GallerySection } from "@/features/gallery/GallerySection";
+import { EventsSection } from "@/features/events/EventsSection";
 import { LocationSection } from "@/features/location/LocationSection";
 
 const scrollMt =
@@ -64,13 +65,18 @@ export default function HomePage() {
         id="classes"
         className={`${scrollMt} border-b border-ink-100 bg-surface py-14 sm:py-20 md:py-28`}
       />
-      <EnrollmentSection
-        id="enrollment"
-        className={`${scrollMt} border-b border-ink-100 bg-surface-muted py-14 sm:py-20 md:py-28`}
+      <ScheduleSection
+        id="schedule"
+        preview
+        className={`${scrollMt} border-t border-ink-100 bg-surface py-14 sm:py-20 md:py-28`}
       />
-      <TuitionSection
-        id="tuition"
-        className={`${scrollMt} border-b border-ink-100 bg-surface py-14 sm:py-20 md:py-28`}
+      <GallerySection
+        id="gallery"
+        className={`${scrollMt} bg-ink-50 py-14 sm:py-20 md:py-28`}
+      />
+      <EventsSection
+        id="events"
+        className={`${scrollMt} bg-surface py-14 sm:py-20 md:py-28`}
       />
       <LocationSection
         id="location"
