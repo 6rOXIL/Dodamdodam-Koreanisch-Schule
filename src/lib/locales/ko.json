@@ -194,10 +194,7 @@
   },
   "footer": {
     "addressTitle": "주소",
-    "quickTitle": "바로가기",
-    "linkGallery": "갤러리",
-    "linkSchedule": "반별 커리큘럼",
-    "linkLegacyNotice": "코리안넷 공지"
+    "quickTitle": "바로가기"
   },
   "auth": {
     "loginTitle": "로그인",

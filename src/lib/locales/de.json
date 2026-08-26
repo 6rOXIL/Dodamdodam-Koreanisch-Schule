@@ -194,10 +194,7 @@
   },
   "footer": {
     "addressTitle": "Adresse",
-    "quickTitle": "Schnellzugriff",
-    "linkGallery": "Galerie",
-    "linkSchedule": "Klassenlehrplan",
-    "linkLegacyNotice": "Korean Net: Bekanntmachungen"
+    "quickTitle": "Schnellzugriff"
   },
   "auth": {
     "loginTitle": "Anmelden",

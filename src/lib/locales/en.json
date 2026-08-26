@@ -193,10 +193,7 @@
   },
   "footer": {
     "addressTitle": "Address",
-    "quickTitle": "Quick links",
-    "linkGallery": "Gallery",
-    "linkSchedule": "Class curriculum",
-    "linkLegacyNotice": "Korean Net notices"
+    "quickTitle": "Quick links"
   },
   "auth": {
     "loginTitle": "Log in",

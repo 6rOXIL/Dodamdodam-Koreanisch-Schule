@@ -2,7 +2,20 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/lib/contexts/LanguageContext";
-import { LEGACY_BOARDS } from "@/lib/data/legacySite";
+import {
+  ENROLLMENT_GOOGLE_FORM_URL,
+  isEnrollmentApplyPath,
+} from "@/lib/forms/enrollment";
+
+const FOOTER_LINKS = [
+  { labelKey: "nav.classes", hrefPath: "/classes/" },
+  { labelKey: "nav.enrollment", hrefPath: "/apply/" },
+  { labelKey: "nav.tuition", hrefPath: "/tuition/" },
+  { labelKey: "nav.location", hrefPath: "/location/" },
+] as const;
+
+const linkClass =
+  "-mx-1 inline-block rounded-md px-1 py-2.5 text-ink-600 underline-offset-4 hover:text-brand-800 hover:underline";
 
 export default function SiteFooter() {
   const { t, language } = useLanguage();
@@ -25,33 +38,31 @@ export default function SiteFooter() {
             <p className="text-sm font-medium text-ink-800">
               {t("footer.quickTitle")}
             </p>
-            <ul className="mt-3 space-y-1 text-sm">
-              <li>
-                <Link
-                  href={`/${language}/#gallery`}
-                  className="-mx-1 inline-block rounded-md px-1 py-2.5 text-ink-600 underline-offset-4 hover:text-brand-800 hover:underline"
-                >
-                  {t("footer.linkGallery")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={`/${language}/#schedule`}
-                  className="-mx-1 inline-block rounded-md px-1 py-2.5 text-ink-600 underline-offset-4 hover:text-brand-800 hover:underline"
-                >
-                  {t("footer.linkSchedule")}
-                </Link>
-              </li>
-              <li>
-                <a
-                  href={LEGACY_BOARDS.noticeList}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="-mx-1 inline-block rounded-md px-1 py-2.5 text-ink-600 underline-offset-4 hover:text-brand-800 hover:underline"
-                >
-                  {t("footer.linkLegacyNotice")}
-                </a>
-              </li>
+            <ul className="mt-3 text-sm">
+              {FOOTER_LINKS.map(({ labelKey, hrefPath }) => {
+                const enrollment = isEnrollmentApplyPath(hrefPath);
+                if (enrollment) {
+                  return (
+                    <li key={labelKey}>
+                      <a
+                        href={ENROLLMENT_GOOGLE_FORM_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={linkClass}
+                      >
+                        {t(labelKey)}
+                      </a>
+                    </li>
+                  );
+                }
+                return (
+                  <li key={labelKey}>
+                    <Link href={`/${language}${hrefPath}`} className={linkClass}>
+                      {t(labelKey)}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
