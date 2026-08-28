@@ -4,6 +4,7 @@ export const INTRO_SUBPAGES = [
   { segment: "summary", labelKey: "introduction.links.summary" },
   { segment: "calendar", labelKey: "introduction.links.calendar" },
   { segment: "directions", labelKey: "introduction.links.map" },
+  { segment: "regulations", labelKey: "introduction.links.regulations" },
 ] as const;
 
 export type IntroSegment = (typeof INTRO_SUBPAGES)[number]["segment"];

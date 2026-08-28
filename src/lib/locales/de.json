@@ -55,7 +55,7 @@
   "introduction": {
     "label": "introduction",
     "title": "Über die Schule",
-    "lead": "Begrüßung, Schulportrait, Kalender und Anfahrt.",
+    "lead": "Begrüßung, Schulportrait, Kalender, Anfahrt und Schulordnung.",
     "backHome": "← Start",
     "sectionNav": "Auf dieser Seite",
     "schoolOrgTitle": "Träger & Kontakt",
@@ -69,7 +69,21 @@
       "greeting": "Begrüßung",
       "summary": "Schulportrait",
       "calendar": "Schulkalender",
-      "map": "Anfahrt"
+      "map": "Anfahrt",
+      "regulations": "Schulordnung"
+    },
+    "regulations": {
+      "pdfTitle": "Betriebsordnung der Dodamdodam Koreanischen Schule Berlin",
+      "pdfLead": "Offizielle Schulordnung mit Regelungen zu Abmeldung, Beurlaubung und weiteren schulischen Angelegenheiten.",
+      "viewPdf": "PDF ansehen",
+      "downloadPdf": "PDF herunterladen",
+      "applicationsTitle": "Zugehörige Anträge",
+      "applicationsLead": "Über die Links unten können Sie die Online-Formulare direkt ausfüllen. Dieselben Informationen finden Sie auch im PDF oben.",
+      "withdrawalTitle": "Abmeldeformular",
+      "withdrawalCta": "Abmeldeformular öffnen →",
+      "leaveTitle": "Beurlaubungsantrag",
+      "leaveCta": "Beurlaubungsantrag öffnen →",
+      "externalHint": "Öffnet Google Forms in einem neuen Tab"
     }
   },
   "about": {

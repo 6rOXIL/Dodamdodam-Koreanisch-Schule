@@ -32,7 +32,7 @@
   "introduction": {
     "label": "introduction",
     "title": "About the school",
-    "lead": "Greeting, school overview, calendar, and directions. Main text is in Korean.",
+    "lead": "Greeting, school overview, calendar, directions, and academic regulations.",
     "backHome": "← Home",
     "sectionNav": "On this page",
     "schoolOrgTitle": "Organization & contact",
@@ -45,7 +45,21 @@
       "greeting": "Greeting",
       "summary": "School overview",
       "calendar": "School calendar",
-      "map": "Directions"
+      "map": "Directions",
+      "regulations": "Academic regulations"
+    },
+    "regulations": {
+      "pdfTitle": "Dodamdodam Korean School Berlin — Operating regulations",
+      "pdfLead": "Official school regulations, including guidance on withdrawal, leave of absence, and other academic matters.",
+      "viewPdf": "View PDF",
+      "downloadPdf": "Download PDF",
+      "applicationsTitle": "Related applications",
+      "applicationsLead": "Use the links below to complete the online forms directly. The same information is also included in the PDF above.",
+      "withdrawalTitle": "Withdrawal application",
+      "withdrawalCta": "Open withdrawal form →",
+      "leaveTitle": "Leave of absence application",
+      "leaveCta": "Open leave form →",
+      "externalHint": "Opens Google Forms in a new tab"
     }
   },
   "about": {

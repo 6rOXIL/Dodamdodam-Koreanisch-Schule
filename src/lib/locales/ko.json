@@ -7,15 +7,15 @@
   },
   "nav": {
     "home": "홈",
-    "about": "학교 소개",
-    "classes": "학급 소개",
+    "about": "학교소개",
+    "classes": "학급소개",
     "vision": "비전",
     "gallery": "갤러리",
-    "events": "학교 소식",
+    "events": "학교소식",
     "schedule": "반별 커리큘럼",
     "enrollment": "입학안내",
     "location": "오시는 길",
-    "tuition": "수업료 안내"
+    "tuition": "수업료안내"
   },
   "hero": {
     "welcome": "WELCOME",
@@ -55,7 +55,7 @@
   "introduction": {
     "label": "introduction",
     "title": "학교 소개",
-    "lead": "인사말, 학교 소개, 학사일정, 오시는 길을 안내합니다.",
+    "lead": "인사말, 학교 소개, 학사일정, 오시는 길, 학사규정을 안내합니다.",
     "backHome": "← 홈",
     "sectionNav": "이 페이지 안에서 이동",
     "schoolOrgTitle": "단체명 · 연락처",
@@ -69,7 +69,21 @@
       "greeting": "인사말",
       "summary": "학교소개",
       "calendar": "학사일정",
-      "map": "오시는 길"
+      "map": "오시는 길",
+      "regulations": "학사규정"
+    },
+    "regulations": {
+      "pdfTitle": "베를린 도담도담 한글학교 운영규정",
+      "pdfLead": "학교 운영에 관한 공식 규정입니다. 자퇴·휴학 등 학사 관련 안내도 포함되어 있습니다.",
+      "viewPdf": "PDF 보기",
+      "downloadPdf": "PDF 다운로드",
+      "applicationsTitle": "관련 신청서",
+      "applicationsLead": "아래 링크에서 온라인 신청서를 바로 작성할 수 있습니다. (운영규정 PDF에도 동일한 안내가 포함되어 있습니다.)",
+      "withdrawalTitle": "자퇴신청서",
+      "withdrawalCta": "자퇴신청서 작성 →",
+      "leaveTitle": "휴학신청서",
+      "leaveCta": "휴학신청서 작성 →",
+      "externalHint": "새 탭에서 Google Forms 열기"
     }
   },
   "about": {

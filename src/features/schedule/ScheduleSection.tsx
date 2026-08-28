@@ -24,19 +24,6 @@ export function ScheduleSection({
   const HeadingTag = getHeadingTag(headingLevel);
   const { categorySlug } = useResourceCategorySlugForPath("/schedule/", NOTICE_CATEGORY_SLUG);
 
-  const summaryCards = [
-    {
-      title: t("schedule.class1Title"),
-      time: t("schedule.class1Time"),
-      note: t("schedule.class1Note"),
-    },
-    {
-      title: t("schedule.class2Title"),
-      time: t("schedule.class2Time"),
-      note: t("schedule.class2Note"),
-    },
-  ];
-
   return (
     <section id={id} className={className}>
       <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-8">
@@ -55,19 +42,7 @@ export function ScheduleSection({
 
         {preview ? (
           <div className="mt-10 sm:mt-12">
-            <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-              {summaryCards.map((card) => (
-                <article
-                  key={card.title}
-                  className="rounded-2xl border border-ink-200/80 bg-surface-muted/50 px-5 py-6 text-center sm:px-6"
-                >
-                  <h3 className="text-lg font-semibold text-ink-900">{card.title}</h3>
-                  <p className="mt-2 text-sm font-medium text-brand-800">{card.time}</p>
-                  <p className="mt-2 text-sm text-ink-600">{card.note}</p>
-                </article>
-              ))}
-            </div>
-            <p className="mt-6 text-center text-sm text-ink-500">{t("schedule.note")}</p>
+
             <div className="mt-8 flex justify-center">
               <Link
                 href={`/${language}/schedule/`}

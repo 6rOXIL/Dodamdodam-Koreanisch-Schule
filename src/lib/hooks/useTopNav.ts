@@ -8,13 +8,13 @@ import type { SiteNavItem } from "@/lib/supabase/database.types";
 
 const FALLBACK_NAV: { id: string; labelKey: string; hrefPath: string }[] = [
   { id: "about", labelKey: "nav.about", hrefPath: "/introduction/" },
-  { id: "classes", labelKey: "nav.classes", hrefPath: "/classes/" },
-  { id: "schedule", labelKey: "nav.schedule", hrefPath: "/schedule/" },
-  { id: "gallery", labelKey: "nav.gallery", hrefPath: "/gallery/" },
-  { id: "events", labelKey: "nav.events", hrefPath: "/events/" },
   { id: "enrollment", labelKey: "nav.enrollment", hrefPath: "/apply/" },
   { id: "tuition", labelKey: "nav.tuition", hrefPath: "/tuition/" },
   { id: "location", labelKey: "nav.location", hrefPath: "/location/" },
+  { id: "classes", labelKey: "nav.classes", hrefPath: "/classes/" },
+  { id: "schedule", labelKey: "nav.schedule", hrefPath: "/schedule/" },
+  { id: "events", labelKey: "nav.events", hrefPath: "/events/" },
+  { id: "gallery", labelKey: "nav.gallery", hrefPath: "/gallery/" },
 ];
 
 export type TopNavLink = {

@@ -70,12 +70,12 @@ export default function HomePage() {
         preview
         className={`${scrollMt} border-t border-ink-100 bg-surface py-14 sm:py-20 md:py-28`}
       />
-      <GallerySection
-        id="gallery"
-        className={`${scrollMt} bg-ink-50 py-14 sm:py-20 md:py-28`}
-      />
       <EventsSection
         id="events"
+        className={`${scrollMt} bg-ink-50 py-14 sm:py-20 md:py-28`}
+      />
+      <GallerySection
+        id="gallery"
         className={`${scrollMt} bg-surface py-14 sm:py-20 md:py-28`}
       />
       <LocationSection
