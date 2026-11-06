@@ -22,7 +22,7 @@ export default function Navigation() {
   const pathname = usePathname();
   const router = useRouter();
   const { t, language } = useLanguage();
-  const { user, profile, loading: profileLoading } = useProfile();
+  const { user, profile } = useProfile();
   const topNav = useTopNav();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
@@ -110,14 +110,13 @@ export default function Navigation() {
   };
 
   const authLinks = (mobile = false) => {
-    if (profileLoading) return null;
-
-    if (user && profile) {
+    // 로딩 중에도 게스트 버튼은 바로 표시. 로그인 사용자는 세션(user)만으로 계정 메뉴 표시.
+    if (user) {
       const resourcesHref = `/${language}/resources/`;
       const resourcesActive = normalizedPath === "/resources";
       const adminHref = `/${language}/admin/`;
       const adminActive = isAdminRoute;
-      const showAdmin = isAdmin(profile);
+      const showAdmin = !!profile && isAdmin(profile);
 
       if (mobile) {
         return (

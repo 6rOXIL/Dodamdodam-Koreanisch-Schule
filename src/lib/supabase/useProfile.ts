@@ -21,9 +21,11 @@ export function useProfile() {
     async function load() {
       try {
         const supabase = createClient();
+        // getSession은 로컬 세션을 먼저 읽어 헤더를 빨리 결정할 수 있음
         const {
-          data: { user: authUser },
-        } = await supabase.auth.getUser();
+          data: { session },
+        } = await supabase.auth.getSession();
+        const authUser = session?.user ?? null;
 
         if (!authUser) {
           if (!cancelled) {
@@ -31,6 +33,10 @@ export function useProfile() {
             setProfile(null);
           }
           return;
+        }
+
+        if (!cancelled) {
+          setUser(authUser);
         }
 
         const { data, error } = await supabase
@@ -44,7 +50,6 @@ export function useProfile() {
         }
 
         if (!cancelled) {
-          setUser(authUser);
           setProfile((data as Profile | null) ?? null);
         }
       } finally {
@@ -60,9 +65,6 @@ export function useProfile() {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange(() => {
-      if (!cancelled) {
-        setLoading(true);
-      }
       load();
     });
 
